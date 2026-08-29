@@ -1,63 +1,71 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Star, Award, ShieldCheck, Zap } from "lucide-react";
+import { Sparkles, Code2, Cpu, Boxes, Search, Palette, TrendingUp, Gauge, Zap } from "lucide-react";
 
-const CLIENT_LOGOS = [
-  { name: "Stripe", category: "FinTech" },
-  { name: "Vercel", category: "Infrastructure" },
-  { name: "Figma", category: "Design Tools" },
-  { name: "Linear", category: "Issue Tracking" },
-  { name: "Supabase", category: "Database" },
-  { name: "Raycast", category: "Productivity" },
-  { name: "OpenAI", category: "AI Systems" },
-  { name: "Ramp", category: "Finance" },
-  { name: "Retool", category: "Developer Tools" },
-  { name: "Webflow", category: "Visual Dev" },
-  { name: "Loom", category: "Video Messaging" },
-  { name: "Notion", category: "Workspace" },
-  { name: "Framer", category: "Interactive Web" },
+const SERVICES_ROW_1 = [
+  "Webflow 3D Development",
+  "Headless Next.js 14",
+  "Brand Identity Design",
+  "Wix Studio Architecture",
+  "Data-Driven Technical SEO",
+  "High-ROAS Meta Ads",
+  "Google Ads & PMax",
+  "Custom Three.js Shaders",
+];
+
+const SERVICES_ROW_2 = [
+  "UI/UX Product Design",
+  "SaaS MVP Engineering",
+  "Interactive 3D Motion",
+  "Conversion Rate Optimization",
+  "Design Systems & Kits",
+  "Programmatic CMS Engines",
+  "Headless Shopify & E-commerce",
+  "Enterprise SLA Support",
 ];
 
 export default function Marquee() {
-  const fullLogos = CLIENT_LOGOS.concat(CLIENT_LOGOS).concat(CLIENT_LOGOS);
+  const row1Items = SERVICES_ROW_1.concat(SERVICES_ROW_1).concat(SERVICES_ROW_1);
+  const row2Items = SERVICES_ROW_2.concat(SERVICES_ROW_2).concat(SERVICES_ROW_2);
 
   return (
-    <section className="px-4 sm:px-6 lg:px-8 pb-10 bg-[#FAFAFA]">
-      {/* =========================================================================
-          SLIGHTLY ROUNDED FULL-WIDTH CLIENT LOGO MARQUEE CONTAINER
-          ========================================================================= */}
-      <div className="rounded-3xl bg-gray-200/50 max-w-[1366px] mx-auto mt-6 py-8 px-6 border border-gray-300/40 overflow-hidden shadow-sm select-none relative">
-        {/* Subtle Fade Edge Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-gray-200/90 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-gray-200/90 to-transparent z-10 pointer-events-none" />
+    <section className="w-full py-10 sm:py-14 bg-transparent overflow-hidden select-none relative">
+      {/* Side Fade Gradient Masks for Seamless Edge-to-Edge Floating Stream */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
-        {/* Header Label */}
-        <div className="text-center mb-6">
-          <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-zinc-500 flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00A870]" />
-            <span>Trusted By Venture-Backed Founders &amp; Global Leaders</span>
-          </span>
+      {/* Row 1: Forward Marquee Stream (Scrolling Left) */}
+      <div className="flex overflow-hidden mb-4 sm:mb-5">
+        <div className="flex shrink-0 items-center gap-4 sm:gap-6 animate-marquee">
+          {row1Items.map((service, idx) => (
+            <div
+              key={`r1-${idx}`}
+              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-zinc-200/90 shadow-sm hover:border-[#00D28F] hover:shadow-md transition-all duration-300 group cursor-default"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#00D28F] shadow-[0_0_8px_#00D28F] group-hover:scale-125 transition-transform shrink-0" />
+              <span className="text-sm sm:text-base font-bold text-zinc-900 group-hover:text-[#00A870] font-sans tracking-tight whitespace-nowrap transition-colors">
+                {service}
+              </span>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Infinite Horizontal Marquee Stream */}
-        <div className="flex overflow-hidden">
-          <div className="flex shrink-0 items-center gap-8 sm:gap-12 animate-marquee">
-            {fullLogos.map((client, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/70 hover:bg-white border border-gray-200/80 shadow-xs transition-colors group cursor-default"
-              >
-                <div className="w-2 h-2 rounded-full bg-[#00D28F] group-hover:scale-125 transition-transform" />
-                <span className="text-sm sm:text-base font-bold text-zinc-800 group-hover:text-[#0A0A0A] font-sans tracking-tight">
-                  {client.name}
-                </span>
-                <span className="text-[10px] font-mono text-zinc-400 uppercase font-medium bg-zinc-100 px-2 py-0.5 rounded-md">
-                  {client.category}
-                </span>
-              </div>
-            ))}
-          </div>
+      {/* Row 2: Reverse Marquee Stream (Scrolling Right) */}
+      <div className="flex overflow-hidden">
+        <div className="flex shrink-0 items-center gap-4 sm:gap-6 animate-marquee-reverse">
+          {row2Items.map((service, idx) => (
+            <div
+              key={`r2-${idx}`}
+              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-zinc-200/90 shadow-sm hover:border-[#00D28F] hover:shadow-md transition-all duration-300 group cursor-default"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#00B87D] shadow-[0_0_8px_#00B87D] group-hover:scale-125 transition-transform shrink-0" />
+              <span className="text-sm sm:text-base font-bold text-zinc-900 group-hover:text-[#00A870] font-sans tracking-tight whitespace-nowrap transition-colors">
+                {service}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
