@@ -149,81 +149,87 @@ export default function PortfolioPage() {
       <CustomCursor />
       <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
-      {/* Hero */}
-      <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D28F]/10 rounded-full blur-[190px] pointer-events-none -z-10" />
+      {/* Main Content Curtain Layer */}
+      <div className="relative z-10 bg-[#FAFAFA] shadow-[0_45px_100px_rgba(0,0,0,0.55)]">
+        {/* Hero */}
+        <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D28F]/10 rounded-full blur-[190px] pointer-events-none -z-10" />
 
-        <div className="max-w-[1366px] mx-auto text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-bold uppercase tracking-wider text-[#00D28F] mb-6">
-            <Layers className="w-3.5 h-3.5" />
-            <span>30+ Curated Digital Flagships</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
-            Crafted For{" "}
-            <span className="font-serif italic font-normal text-[#00D28F]">
-              Category Dominance.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
-            A comprehensive archive of our high-conversion Webflow platforms, headless Next.js architectures,
-            programmatic SEO engines, and scaling Meta &amp; Google ad campaigns.
-          </p>
-
-          {/* Search Bar */}
-          <div className="w-full max-w-md relative">
-            <Search className="absolute left-4 top-3.5 w-4 h-4 text-zinc-400" />
-            <input
-              type="text"
-              placeholder="Search by client, technology, or tag..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-full bg-white/[0.08] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#00D28F] placeholder:text-zinc-500 backdrop-blur-md"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Tabs & Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1366px] mx-auto">
-          {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-12 pb-6 border-b border-zinc-200">
-            <div className="flex flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar gap-2 bg-zinc-100 p-1.5 rounded-full border border-zinc-200 max-w-full">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveFilter(cat)}
-                  className={cn(
-                    "px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 shrink-0 cursor-pointer",
-                    activeFilter === cat
-                      ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25"
-                      : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
+          <div className="max-w-[1366px] mx-auto text-center flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-bold uppercase tracking-wider text-[#00D28F] mb-6">
+              <Layers className="w-3.5 h-3.5" />
+              <span>30+ Curated Digital Flagships</span>
             </div>
 
-            <span className="text-xs font-mono font-bold text-zinc-500">
-              Showing {filteredProjects.length} of {PORTFOLIO_PROJECTS.length} Projects
-            </span>
-          </div>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
+              Crafted For{" "}
+              <span className="font-serif italic font-normal text-[#00D28F]">
+                Category Dominance.
+              </span>
+            </h1>
 
-          {/* 30+ Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <PortfolioCard
-                key={project.id}
-                project={project}
-                onSelect={() => setSelectedProject(project)}
+            <p className="text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
+              A comprehensive archive of our high-conversion Webflow platforms, headless Next.js architectures,
+              programmatic SEO engines, and scaling Meta &amp; Google ad campaigns.
+            </p>
+
+            {/* Search Bar */}
+            <div className="w-full max-w-md relative">
+              <Search className="absolute left-4 top-3.5 w-4 h-4 text-zinc-400" />
+              <input
+                type="text"
+                placeholder="Search by client, technology, or tag..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-11 pr-4 py-3 rounded-full bg-white/[0.08] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#00D28F] placeholder:text-zinc-500 backdrop-blur-md"
               />
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Filter Tabs & Grid */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1366px] mx-auto">
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-12 pb-6 border-b border-zinc-200">
+              <div className="flex flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar gap-2 bg-zinc-100 p-1.5 rounded-full border border-zinc-200 max-w-full">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={cn(
+                      "px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 shrink-0 cursor-pointer",
+                      activeFilter === cat
+                        ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25"
+                        : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
+                    )}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              <span className="text-xs font-mono font-bold text-zinc-500">
+                Showing {filteredProjects.length} of {PORTFOLIO_PROJECTS.length} Projects
+              </span>
+            </div>
+
+            {/* 30+ Projects Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project) => (
+                <PortfolioCard
+                  key={project.id}
+                  project={project}
+                  onSelect={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Universal Global CTA Banner (Light Mode) */}
+        <GlobalCTA onOpenBooking={() => setIsBookingOpen(true)} />
+      </div>
 
       {/* Project Quick View Modal */}
       <AnimatePresence>
@@ -321,9 +327,6 @@ export default function PortfolioPage() {
           </div>
         )}
       </AnimatePresence>
-
-      {/* Universal Global CTA Banner */}
-      <GlobalCTA onOpenBooking={() => setIsBookingOpen(true)} />
 
       <MegaFooter onOpenBooking={() => setIsBookingOpen(true)} />
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />

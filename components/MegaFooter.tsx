@@ -33,11 +33,11 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
   };
 
   return (
-    <div className="relative z-0">
-      {/* Sticky Bottom Container for the Underneath Parallax Curtain Reveal */}
+    <div className="relative z-0 overflow-hidden">
+      {/* Sticky Bottom Container for the Underneath Parallax Curtain Reveal on Scroll */}
       <footer className="bg-[#0A0A0A] text-[#FAFAFA] pt-20 pb-0 border-t border-white/10 relative overflow-hidden">
         {/* Ambient Mint Radial Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-[#00D28F]/10 rounded-full blur-[200px] pointer-events-none -z-10" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-[#00D28F]/12 rounded-full blur-[200px] pointer-events-none -z-10" />
 
         <div className="max-w-[1366px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Status Bar: 'All Systems Operational Worldwide' */}

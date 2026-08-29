@@ -31,47 +31,52 @@ export default function HomePage() {
       {/* Precision Custom Cursor */}
       <CustomCursor />
 
-      {/* Floating Modern Header with Whiteframe.agency-Style Mega Menu */}
+      {/* Floating Modern Header with Clean Minimal Menu */}
       <Navbar onOpenBooking={handleOpenBooking} />
 
-      {/* 1. Cinematic 2-Sided Hero (Dark Mode + Dual Vertical Reviews) */}
-      <Hero onOpenBooking={handleOpenBooking} />
+      {/* =========================================================================
+          MAIN PAGE CONTENT (Curtain Layer: z-10 over Parallax Footer)
+          ========================================================================= */}
+      <div className="relative z-10 bg-[#FAFAFA] shadow-[0_45px_100px_rgba(0,0,0,0.55)]">
+        {/* 1. Cinematic Hero */}
+        <Hero onOpenBooking={handleOpenBooking} />
 
-      {/* 2. Partner Social Proof Badges & Kinetic Infinite Tag Marquee */}
-      <Marquee />
+        {/* 2. Partner Social Proof Badges & Kinetic Infinite Tag Marquee */}
+        <Marquee />
 
-      {/* 3. Depth of Vision: 3-Layer Spatial Parallax Experience */}
-      <DepthOfVision onOpenBooking={handleOpenBooking} />
+        {/* 3. Depth of Vision: 3-Layer Spatial Parallax Experience */}
+        <DepthOfVision onOpenBooking={handleOpenBooking} />
 
-      {/* 4. The "Unfair Advantage" Sticky Scrollytelling Typography (Dark Mode) */}
-      <UnfairAdvantage />
+        {/* 4. The "Unfair Advantage" Sticky Scrollytelling Typography */}
+        <UnfairAdvantage />
 
-      {/* 5. 5-Card Stacked Website Template Portfolio with Layering Effect */}
-      <StackedPortfolio onOpenBooking={handleOpenBooking} />
+        {/* 5. 5-Card Stacked Website Template Portfolio with Layering Effect */}
+        <StackedPortfolio onOpenBooking={handleOpenBooking} />
 
-      {/* 6. Real Results: Left Column Pinned with Vertical Metric Cards */}
-      <ImpactPinSection onOpenBooking={handleOpenBooking} />
+        {/* 6. Real Results: Left Column Pinned with Vertical Metric Cards */}
+        <ImpactPinSection onOpenBooking={handleOpenBooking} />
 
-      {/* 7. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
-      <ServicesHorizontalScroll onOpenBooking={handleOpenBooking} />
+        {/* 7. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
+        <ServicesHorizontalScroll onOpenBooking={handleOpenBooking} />
 
-      {/* 8. Feature Checklists with Word-Scaling Typography */}
-      <FeatureChecklist />
+        {/* 8. Feature Checklists with Word-Scaling Typography */}
+        <FeatureChecklist />
 
-      {/* 9. Visual Excellence Showcase: Text Hover Image Follower */}
-      <InteractiveServicesHover onOpenBooking={handleOpenBooking} />
+        {/* 9. Visual Excellence Showcase: Text Hover Image Follower */}
+        <InteractiveServicesHover onOpenBooking={handleOpenBooking} />
 
-      {/* 10. Client Love: Dual Opposing Vertical Testimonial Marquees */}
-      <Testimonials />
+        {/* 10. Client Love: Dual Opposing Vertical Testimonial Marquees */}
+        <Testimonials />
 
-      {/* 11. The Creative Minds: Grayscale-to-Color Team Showcase (Featuring Founder Mahathir) */}
-      <TeamSection onOpenBooking={handleOpenBooking} />
+        {/* 11. The Creative Minds: Grayscale-to-Color Team Showcase */}
+        <TeamSection onOpenBooking={handleOpenBooking} />
 
-      {/* 12. 4-Step Process Timeline & Collapsible FAQ Accordion */}
-      <ProcessTimeline onOpenBooking={handleOpenBooking} />
+        {/* 12. 4-Step Process Timeline & Collapsible FAQ Accordion */}
+        <ProcessTimeline onOpenBooking={handleOpenBooking} />
 
-      {/* Universal Global High-Conversion CTA Banner */}
-      <GlobalCTA onOpenBooking={handleOpenBooking} />
+        {/* Universal Global High-Conversion CTA Banner (Light Mode) */}
+        <GlobalCTA onOpenBooking={handleOpenBooking} />
+      </div>
 
       {/* 13. Mega Footer with Underneath Parallax Reveal */}
       <MegaFooter onOpenBooking={handleOpenBooking} />

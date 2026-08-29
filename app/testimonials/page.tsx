@@ -71,99 +71,102 @@ export default function TestimonialsPage() {
       <CustomCursor />
       <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
-      {/* Hero */}
-      <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D28F]/15 rounded-full blur-[190px] pointer-events-none -z-10" />
+      {/* Main Content Curtain Layer */}
+      <div className="relative z-10 bg-[#FAFAFA] shadow-[0_45px_100px_rgba(0,0,0,0.55)]">
+        {/* Hero */}
+        <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D28F]/15 rounded-full blur-[190px] pointer-events-none -z-10" />
 
-        <div className="max-w-[1366px] mx-auto text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-bold uppercase tracking-wider text-[#00D28F] mb-6">
-            <Star className="w-3.5 h-3.5 fill-[#00D28F]" />
-            <span>Verified Founder Love</span>
-          </div>
+          <div className="max-w-[1366px] mx-auto text-center flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-bold uppercase tracking-wider text-[#00D28F] mb-6">
+              <Star className="w-3.5 h-3.5 fill-[#00D28F]" />
+              <span>Verified Founder Love</span>
+            </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
-            Trusted By The World&apos;s Most{" "}
-            <span className="font-serif italic font-normal text-[#00D28F]">
-              Ambitious Founders.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
-            Read unfiltered feedback and quantifiable conversion metrics from CMOs, VCs, and tech
-            executives who scaled their digital presence with Startuplize.
-          </p>
-
-          {/* Aggregate Proof Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl">
-            {[
-              { label: "Clutch Rating", value: "4.9 / 5.0", sub: "Top Creative Agency" },
-              { label: "Awwwards Wins", value: "18 Honors", sub: "Site of the Day" },
-              { label: "Client Retainers", value: "94% Renewal", sub: "Long-Term Growth" },
-              { label: "Avg. ROI Lift", value: "+184% CRO", sub: "In First 90 Days" },
-            ].map((stat, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center"
-              >
-                <div className="text-xl sm:text-2xl font-mono font-bold text-[#00D28F]">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-semibold text-white mt-1">
-                  {stat.label}
-                </div>
-                <div className="text-[10px] text-zinc-400 mt-0.5">
-                  {stat.sub}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Opposing Vertical Marquees Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1366px] mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
-              Endless Social Proof
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
-              Dual Opposing{" "}
-              <span className="font-serif italic font-normal text-[#00B87D]">
-                Vertical Feeds.
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
+              Trusted By The World&apos;s Most{" "}
+              <span className="font-serif italic font-normal text-[#00D28F]">
+                Ambitious Founders.
               </span>
-            </h2>
-            <p className="text-xs text-zinc-500 mt-2">
-              Hover over any card to pause scrolling
+            </h1>
+
+            <p className="text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
+              Read unfiltered feedback and quantifiable conversion metrics from CMOs, VCs, and tech
+              executives who scaled their digital presence with Startuplize.
             </p>
+
+            {/* Aggregate Proof Badges */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl">
+              {[
+                { label: "Clutch Rating", value: "4.9 / 5.0", sub: "Top Creative Agency" },
+                { label: "Awwwards Wins", value: "18 Honors", sub: "Site of the Day" },
+                { label: "Client Retainers", value: "94% Renewal", sub: "Long-Term Growth" },
+                { label: "Avg. ROI Lift", value: "+184% CRO", sub: "In First 90 Days" },
+              ].map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center"
+                >
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#00D28F]">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs font-semibold text-white mt-1">
+                    {stat.label}
+                  </div>
+                  <div className="text-[10px] text-zinc-400 mt-0.5">
+                    {stat.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div className="relative h-[850px] overflow-hidden">
-            {/* Top and Bottom Gradient Fade Masks */}
-            <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+        {/* Opposing Vertical Marquees Section */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1366px] mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
+                Endless Social Proof
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+                Dual Opposing{" "}
+                <span className="font-serif italic font-normal text-[#00B87D]">
+                  Vertical Feeds.
+                </span>
+              </h2>
+              <p className="text-xs text-zinc-500 mt-2">
+                Hover over any card to pause scrolling
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
-              {/* Left Column: Endlessly scrolling UP */}
-              <div className="flex flex-col animate-marquee-vertical-up hover:[animation-play-state:paused]">
-                {leftCol.map((review, idx) => (
-                  <ReviewCard key={`left-${idx}`} review={review} />
-                ))}
-              </div>
+            <div className="relative h-[850px] overflow-hidden">
+              {/* Top and Bottom Gradient Fade Masks */}
+              <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
-              {/* Right Column: Endlessly scrolling DOWN */}
-              <div className="flex flex-col animate-marquee-vertical-down hover:[animation-play-state:paused]">
-                {rightCol.map((review, idx) => (
-                  <ReviewCard key={`right-${idx}`} review={review} />
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
+                {/* Left Column: Endlessly scrolling UP */}
+                <div className="flex flex-col animate-marquee-vertical-up hover:[animation-play-state:paused]">
+                  {leftCol.map((review, idx) => (
+                    <ReviewCard key={`left-${idx}`} review={review} />
+                  ))}
+                </div>
+
+                {/* Right Column: Endlessly scrolling DOWN */}
+                <div className="flex flex-col animate-marquee-vertical-down hover:[animation-play-state:paused]">
+                  {rightCol.map((review, idx) => (
+                    <ReviewCard key={`right-${idx}`} review={review} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Universal Global CTA Banner */}
-      <GlobalCTA onOpenBooking={() => setIsBookingOpen(true)} />
+        {/* Universal Global CTA Banner (Light Mode) */}
+        <GlobalCTA onOpenBooking={() => setIsBookingOpen(true)} />
+      </div>
 
       <MegaFooter onOpenBooking={() => setIsBookingOpen(true)} />
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
