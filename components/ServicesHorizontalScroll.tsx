@@ -63,21 +63,21 @@ export default function ServicesHorizontalScroll({
   const getIcon = (id: string) => {
     switch (id) {
       case "webflow":
-        return <Code2 className="w-5 h-5 text-[#00D28F]" />;
+        return <Code2 className="w-4 h-4 text-[#00D28F]" />;
       case "wordpress":
-        return <Cpu className="w-5 h-5 text-[#00D28F]" />;
+        return <Cpu className="w-4 h-4 text-[#00D28F]" />;
       case "wix":
-        return <Boxes className="w-5 h-5 text-[#00D28F]" />;
+        return <Boxes className="w-4 h-4 text-[#00D28F]" />;
       case "seo":
-        return <Search className="w-5 h-5 text-[#00D28F]" />;
+        return <Search className="w-4 h-4 text-[#00D28F]" />;
       case "branding":
-        return <Palette className="w-5 h-5 text-[#00D28F]" />;
+        return <Palette className="w-4 h-4 text-[#00D28F]" />;
       case "meta-ads":
-        return <TrendingUp className="w-5 h-5 text-[#00D28F]" />;
+        return <TrendingUp className="w-4 h-4 text-[#00D28F]" />;
       case "google-ads":
-        return <Gauge className="w-5 h-5 text-[#00D28F]" />;
+        return <Gauge className="w-4 h-4 text-[#00D28F]" />;
       default:
-        return <Sparkles className="w-5 h-5 text-[#00D28F]" />;
+        return <Sparkles className="w-4 h-4 text-[#00D28F]" />;
     }
   };
 
@@ -105,7 +105,7 @@ export default function ServicesHorizontalScroll({
       mm.add("(min-width: 1024px)", () => {
         const scrollWidth = track.scrollWidth;
         const viewportWidth = window.innerWidth;
-        const distanceToScroll = scrollWidth - viewportWidth + 120;
+        const distanceToScroll = scrollWidth - viewportWidth + 140;
 
         const tween = gsap.to(track, {
           x: -distanceToScroll,
@@ -113,7 +113,7 @@ export default function ServicesHorizontalScroll({
           scrollTrigger: {
             trigger: trigger,
             start: "top top",
-            end: () => `+=${Math.max(distanceToScroll * 1.15, 1400)}`,
+            end: () => `+=${Math.max(distanceToScroll * 1.1, 1300)}`,
             pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
@@ -135,9 +135,9 @@ export default function ServicesHorizontalScroll({
       ref={triggerRef}
       className="relative bg-[#FAFAFA] text-[#1A1A1A] border-t border-zinc-200 overflow-hidden"
     >
-      {/* Centered Horizontal Viewport */}
-      <div className="h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="max-w-[1366px] w-full mx-auto mb-6">
+      {/* Centered Horizontal Viewport with Generous Breathing Space */}
+      <div className="h-screen w-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden py-10">
+        <div className="max-w-[1366px] w-full mx-auto mb-8">
           {/* Header & Filter Pills */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
@@ -145,7 +145,7 @@ export default function ServicesHorizontalScroll({
                 <Layers className="w-3.5 h-3.5 text-[#00B87D]" />
                 <span>Target Impact &amp; Capabilities</span>
               </div>
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
                 Specialized{" "}
                 <span className="font-serif italic font-normal text-[#00B87D]">
                   Growth Disciplines.
@@ -153,14 +153,14 @@ export default function ServicesHorizontalScroll({
               </h2>
             </div>
 
-            {/* Filter Pills (Non-Wrapping) */}
+            {/* Filter Pills */}
             <div className="flex flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar gap-2 bg-zinc-100 p-1.5 rounded-full border border-zinc-200 self-start lg:self-auto max-w-full font-mono">
               {filterCategories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
                   className={cn(
-                    "px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 shrink-0 cursor-pointer",
+                    "px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 shrink-0 cursor-pointer",
                     activeFilter === cat
                       ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25"
                       : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
@@ -173,70 +173,67 @@ export default function ServicesHorizontalScroll({
           </div>
         </div>
 
-        {/* Horizontal Scrolling Track: 2 BIG CARDS PER VIEW */}
+        {/* Horizontal Scrolling Track: 3 CARDS PER VIEW WITH AIRY BREATHING ROOM */}
         <div className="w-full overflow-x-auto lg:overflow-x-visible no-scrollbar">
           <div
             ref={trackRef}
-            className="flex flex-col lg:flex-row gap-8 will-change-transform w-full lg:w-max pb-6 lg:pb-0 px-2 sm:px-4"
+            className="flex flex-col lg:flex-row gap-6 will-change-transform w-full lg:w-max pb-8 lg:pb-0 px-2 sm:px-4"
           >
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="w-full lg:w-[660px] xl:w-[700px] shrink-0 rounded-[2.2rem] bg-white border border-zinc-200/90 shadow-lg hover:border-[#00D28F] hover:shadow-2xl transition-all duration-500 flex flex-col overflow-hidden group"
+                className="w-full sm:w-[420px] lg:w-[430px] xl:w-[450px] shrink-0 rounded-[2rem] bg-white border border-zinc-200/90 shadow-md hover:border-[#00D28F] hover:shadow-2xl transition-all duration-500 flex flex-col overflow-hidden group"
               >
-                {/* 1. Large High-Impact Image Preview Container */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950">
+                {/* 1. Aspect Ratio Image Header */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
                   <Image
                     src={SERVICE_IMAGES[service.id] || SERVICE_IMAGES.webflow}
                     alt={service.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 700px"
+                    sizes="(max-width: 768px) 100vw, 450px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  {/* Cinematic Gradient Mask */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  {/* Subtle Dark Vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
-                  {/* Top Left Badges */}
-                  <div className="absolute top-5 left-5 z-10 flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                  {/* Top Floating Badges */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-black/65 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-md">
                       {getIcon(service.id)}
                     </div>
-                    <span className="px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-xs font-bold text-white uppercase tracking-wider font-mono">
+                    <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-bold text-white uppercase tracking-wider font-mono">
                       {service.category}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-[#00D28F] text-[#0A0A0A] text-xs font-bold uppercase tracking-wider font-mono shadow-md">
-                      {service.badge}
                     </span>
                   </div>
 
-                  {/* Top Right Verified Metric Pill */}
-                  <div className="absolute top-5 right-5 z-10">
-                    <div className="px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-xs font-mono font-bold flex items-center gap-1.5 shadow-xl">
-                      <Zap className="w-3.5 h-3.5 text-[#00D28F]" />
+                  {/* Top Right Verified Metric Chip */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-[11px] font-mono font-bold flex items-center gap-1 shadow-lg">
+                      <Zap className="w-3 h-3 text-[#00D28F]" />
                       <span>{service.metrics}</span>
                     </div>
                   </div>
 
-                  {/* Bottom Headline inside Image */}
-                  <div className="absolute bottom-5 left-6 right-6 z-10">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-sans group-hover:text-[#00D28F] transition-colors">
+                  {/* Title overlay inside Image */}
+                  <div className="absolute bottom-4 left-5 right-5 z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-sans group-hover:text-[#00D28F] transition-colors line-clamp-1">
                       {service.title}
                     </h3>
                   </div>
                 </div>
 
-                {/* 2. Structured Content Body */}
-                <div className="p-7 sm:p-8 flex flex-col justify-between flex-1 bg-white">
+                {/* 2. Body Details with Clean Spacing */}
+                <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 bg-white">
                   <div>
-                    <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed mb-5 line-clamp-2">
                       {service.description}
                     </p>
 
-                    {/* 3 Core Deliverables in Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80">
-                      {service.deliverables.slice(0, 4).map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-2.5 text-xs text-zinc-800 font-medium">
-                          <Check className="w-4 h-4 text-[#00A870] shrink-0" />
+                    {/* Key Deliverables */}
+                    <div className="space-y-2 mb-6 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200/70">
+                      {service.deliverables.slice(0, 3).map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-xs text-zinc-700 font-medium">
+                          <Check className="w-3.5 h-3.5 text-[#00A870] shrink-0" />
                           <span className="truncate">{item}</span>
                         </div>
                       ))}
@@ -244,32 +241,32 @@ export default function ServicesHorizontalScroll({
                   </div>
 
                   {/* 3. Bottom Action Bar */}
-                  <div className="pt-5 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="text-[11px] text-zinc-400 uppercase font-bold tracking-wider font-mono">
-                        Guaranteed Benchmark
+                      <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider font-mono">
+                        Target Impact
                       </span>
-                      <span className="text-sm sm:text-base font-bold text-[#00A870] font-mono">
+                      <span className="text-xs sm:text-sm font-bold text-[#00A870] font-mono">
                         {service.metrics}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <Link
                         href={`/services/${service.slug}`}
-                        className="px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider text-zinc-900 bg-zinc-100 hover:bg-zinc-200 transition-colors flex items-center gap-1.5"
+                        className="px-3.5 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider text-zinc-900 bg-zinc-100 hover:bg-zinc-200 transition-colors flex items-center gap-1"
                       >
-                        <span>Explore Scope</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
+                        <span>Scope</span>
+                        <ChevronRight className="w-3 h-3" />
                       </Link>
 
                       <button
                         onClick={onOpenBooking}
-                        className="px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-md shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="px-3.5 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-md shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-1 cursor-pointer"
                         title="Book Discovery Call"
                       >
-                        <span>Book Sprint</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <span>Book</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
