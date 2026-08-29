@@ -16,13 +16,12 @@ export default function HeroBackground() {
     let width = 0;
     let height = 0;
 
-    // Mouse coordinates with easing
+    // Mouse coordinates with smooth easing
     const mouse = {
-      x: -1000,
-      y: -1000,
-      targetX: -1000,
-      targetY: -1000,
-      radius: 260,
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
       active: false,
     };
 
@@ -43,204 +42,190 @@ export default function HeroBackground() {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.targetX = e.clientX - rect.left;
-      mouse.targetY = e.clientY - rect.top;
+      const clientX = e.clientX - rect.left;
+      const clientY = e.clientY - rect.top;
+      mouse.targetX = (clientX - width / 2) / (width / 2);
+      mouse.targetY = (clientY - height / 2) / (height / 2);
       mouse.active = true;
     };
 
     const handleMouseLeave = () => {
-      mouse.targetX = -1000;
-      mouse.targetY = -1000;
+      mouse.targetX = 0;
+      mouse.targetY = 0;
       mouse.active = false;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Particle Wave Grid Structure
-    const cols = 55;
-    const rows = 32;
     let time = 0;
 
-    // Floating energetic embers
-    const embers: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      alpha: number;
-      maxAlpha: number;
-      hue: string;
-    }> = [];
-
-    for (let i = 0; i < 40; i++) {
-      embers.push({
-        x: Math.random() * (width || 1200),
-        y: Math.random() * (height || 800),
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: -Math.random() * 0.9 - 0.3,
-        size: Math.random() * 2.5 + 1,
-        alpha: Math.random() * 0.6,
-        maxAlpha: Math.random() * 0.7 + 0.3,
-        hue: Math.random() > 0.3 ? "#00D28F" : "#33FFBA",
-      });
-    }
+    // Mathematical parameters for ONE Massive 3D Fluid Liquid Torus / Celestial Sphere
+    const sphereRings = 42;
+    const pointsPerRing = 58;
 
     const render = () => {
-      time += 0.022;
+      time += 0.018;
 
       // Smooth mouse follow
-      mouse.x += (mouse.targetX - mouse.x) * 0.08;
-      mouse.y += (mouse.targetY - mouse.y) * 0.08;
+      mouse.x += (mouse.targetX - mouse.x) * 0.05;
+      mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Deep Ambient Radial Aurora Glows
-      const auroraGradient = ctx.createRadialGradient(
-        width * 0.65 + Math.sin(time * 0.5) * 120,
-        height * 0.45 + Math.cos(time * 0.4) * 80,
-        40,
-        width * 0.6,
-        height * 0.4,
-        Math.max(width, height) * 0.75
-      );
-      auroraGradient.addColorStop(0, "rgba(0, 210, 143, 0.18)");
-      auroraGradient.addColorStop(0.35, "rgba(0, 120, 80, 0.09)");
-      auroraGradient.addColorStop(0.7, "rgba(5, 21, 17, 0.04)");
-      auroraGradient.addColorStop(1, "rgba(10, 10, 10, 0)");
+      // Center position of the ONE giant 3D element (balanced toward center-right)
+      const isMobile = width < 768;
+      const centerX = isMobile ? width * 0.5 : width * 0.68;
+      const centerY = isMobile ? height * 0.5 : height * 0.48;
+      const baseRadius = isMobile ? Math.min(width, height) * 0.38 : Math.min(width, height) * 0.42;
 
-      ctx.fillStyle = auroraGradient;
+      // 1. Ambient Volumetric Backlight Glow for the Big Element
+      const ambientGlow = ctx.createRadialGradient(
+        centerX,
+        centerY,
+        baseRadius * 0.2,
+        centerX,
+        centerY,
+        baseRadius * 1.7
+      );
+      ambientGlow.addColorStop(0, "rgba(0, 210, 143, 0.22)");
+      ambientGlow.addColorStop(0.4, "rgba(0, 150, 100, 0.1)");
+      ambientGlow.addColorStop(0.8, "rgba(5, 21, 17, 0.03)");
+      ambientGlow.addColorStop(1, "rgba(10, 10, 10, 0)");
+
+      ctx.fillStyle = ambientGlow;
       ctx.fillRect(0, 0, width, height);
 
-      // Interactive Cursor Spotlight Glow
-      if (mouse.active) {
-        const mouseGlow = ctx.createRadialGradient(
-          mouse.x,
-          mouse.y,
-          0,
-          mouse.x,
-          mouse.y,
-          mouse.radius * 1.5
-        );
-        mouseGlow.addColorStop(0, "rgba(0, 245, 160, 0.22)");
-        mouseGlow.addColorStop(0.5, "rgba(0, 210, 143, 0.08)");
-        mouseGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
-        ctx.fillStyle = mouseGlow;
-        ctx.fillRect(0, 0, width, height);
-      }
+      // 2. 3D Rotation Matrix with mouse parallax
+      const rotX = time * 0.35 + mouse.y * 0.6;
+      const rotY = time * 0.5 + mouse.x * 0.8;
+      const rotZ = Math.sin(time * 0.25) * 0.2;
 
-      // 2. 3D Mathematical Wave Grid Simulation
-      const spacingX = width / (cols - 1);
-      const spacingY = height / (rows - 1);
+      const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      const cosZ = Math.cos(rotZ), sinZ = Math.sin(rotZ);
 
-      const gridPoints: Array<Array<{ x: number; y: number; z: number; alpha: number }>> = [];
+      // 3. Generate and project 3D wireframe points of the ONE massive liquid sphere
+      const projectedRings: Array<Array<{ x: number; y: number; z: number; alpha: number }>> = [];
 
-      for (let r = 0; r < rows; r++) {
-        gridPoints[r] = [];
-        for (let c = 0; c < cols; c++) {
-          const baseX = c * spacingX;
-          const baseY = r * spacingY;
+      for (let i = 0; i < sphereRings; i++) {
+        const u = (i / (sphereRings - 1)) * Math.PI; // Latitude 0 to PI
+        projectedRings[i] = [];
 
-          // Harmonic 3D wave mathematics
-          const wave1 = Math.sin(c * 0.22 + time + r * 0.15) * 22;
-          const wave2 = Math.cos(r * 0.28 - time * 0.8 + c * 0.12) * 18;
-          const wave3 = Math.sin((c + r) * 0.18 + time * 1.2) * 12;
+        for (let j = 0; j < pointsPerRing; j++) {
+          const v = (j / pointsPerRing) * Math.PI * 2; // Longitude 0 to 2PI
 
-          let z = wave1 + wave2 + wave3;
-          let px = baseX;
-          let py = baseY + z;
+          // Organic harmonic liquid surface undulation
+          const noise =
+            Math.sin(u * 4 + time * 1.5 + v * 3) * 0.12 +
+            Math.cos(v * 5 - time * 1.2 + u * 2) * 0.09 +
+            Math.sin((u + v) * 3 + time * 2) * 0.06;
 
-          // Interactive Cursor Repulsion & Ripple Distortion
-          const dx = px - mouse.x;
-          const dy = py - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const r = baseRadius * (1 + noise);
 
-          let mouseInfluence = 0;
-          if (dist < mouse.radius) {
-            const force = (1 - dist / mouse.radius);
-            const angle = Math.atan2(dy, dx);
-            px += Math.cos(angle) * force * 55;
-            py += Math.sin(angle) * force * 55;
-            mouseInfluence = force;
-          }
+          // 3D Cartesian coordinates
+          let x0 = r * Math.sin(u) * Math.cos(v);
+          let y0 = r * Math.cos(u);
+          let z0 = r * Math.sin(u) * Math.sin(v);
 
-          // Depth-based luminosity
-          const normalizedZ = (z + 52) / 104;
-          const baseAlpha = 0.12 + normalizedZ * 0.35 + mouseInfluence * 0.55;
+          // Rotate Y
+          let x1 = x0 * cosY + z0 * sinY;
+          let y1 = y0;
+          let z1 = -x0 * sinY + z0 * cosY;
 
-          gridPoints[r][c] = {
+          // Rotate X
+          let x2 = x1;
+          let y2 = y1 * cosX - z1 * sinX;
+          let z2 = y1 * sinX + z1 * cosX;
+
+          // Rotate Z
+          let x3 = x2 * cosZ - y2 * sinZ;
+          let y3 = x2 * sinZ + y2 * cosZ;
+          let z3 = z2;
+
+          // Perspective Projection
+          const fov = 750;
+          const scale = fov / (fov + z3 + baseRadius);
+          const px = centerX + x3 * scale;
+          const py = centerY + y3 * scale;
+
+          // Depth-based luminosity & rim lighting
+          const depthNorm = (z3 + baseRadius) / (baseRadius * 2);
+          const alpha = Math.min(Math.max(0.08 + depthNorm * 0.7, 0.05), 0.95);
+
+          projectedRings[i].push({
             x: px,
             y: py,
-            z: z,
-            alpha: Math.min(Math.max(baseAlpha, 0.05), 0.95),
-          };
+            z: z3,
+            alpha: alpha,
+          });
         }
       }
 
-      // 3. Connect Grid Lines (Horizontal & Vertical Wave Ribbons)
-      ctx.lineWidth = 1;
+      // 4. Render Ring Ribbons (Latitude curves)
+      ctx.lineWidth = 1.2;
 
-      // Horizontal lines with neon pulse
-      for (let r = 0; r < rows; r++) {
+      for (let i = 1; i < sphereRings - 1; i += 2) {
         ctx.beginPath();
-        for (let c = 0; c < cols; c++) {
-          const pt = gridPoints[r][c];
-          if (c === 0) {
+        const ring = projectedRings[i];
+        for (let j = 0; j <= pointsPerRing; j++) {
+          const pt = ring[j % pointsPerRing];
+          if (j === 0) {
             ctx.moveTo(pt.x, pt.y);
           } else {
-            const prev = gridPoints[r][c - 1];
+            const prev = ring[(j - 1) % pointsPerRing];
             const midX = (prev.x + pt.x) / 2;
             const midY = (prev.y + pt.y) / 2;
             ctx.quadraticCurveTo(prev.x, prev.y, midX, midY);
           }
         }
-        const rowAlpha = (gridPoints[r][Math.floor(cols / 2)]?.alpha || 0.2) * 0.5;
-        ctx.strokeStyle = `rgba(0, 210, 143, ${Math.min(rowAlpha, 0.45)})`;
+        const samplePt = ring[0];
+        const ringAlpha = Math.min(samplePt.alpha * 0.7, 0.6);
+        ctx.strokeStyle = `rgba(0, 210, 143, ${ringAlpha})`;
         ctx.stroke();
       }
 
-      // 4. Render Glowing Particle Nodes
-      for (let r = 0; r < rows; r += 2) {
-        for (let c = 0; c < cols; c += 2) {
-          const pt = gridPoints[r][c];
-          const nodeRadius = 1.2 + (pt.z + 52) / 65;
-
-          // Glowing Mint Node
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, nodeRadius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(51, 255, 186, ${pt.alpha})`;
-          ctx.fill();
-
-          // Extra luminous glow on crests or near cursor
-          if (pt.alpha > 0.5) {
-            ctx.beginPath();
-            ctx.arc(pt.x, pt.y, nodeRadius * 2.8, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0, 210, 143, ${pt.alpha * 0.25})`;
-            ctx.fill();
+      // 5. Render Longitude Meridian Ribbons
+      for (let j = 0; j < pointsPerRing; j += 3) {
+        ctx.beginPath();
+        for (let i = 0; i < sphereRings; i++) {
+          const pt = projectedRings[i][j];
+          if (i === 0) {
+            ctx.moveTo(pt.x, pt.y);
+          } else {
+            const prev = projectedRings[i - 1][j];
+            const midX = (prev.x + pt.x) / 2;
+            const midY = (prev.y + pt.y) / 2;
+            ctx.quadraticCurveTo(prev.x, prev.y, midX, midY);
           }
         }
+        const midPt = projectedRings[Math.floor(sphereRings / 2)][j];
+        const meridianAlpha = Math.min(midPt.alpha * 0.55, 0.5);
+        ctx.strokeStyle = `rgba(51, 255, 186, ${meridianAlpha})`;
+        ctx.stroke();
       }
 
-      // 5. Floating Ambient Embers
-      for (let i = 0; i < embers.length; i++) {
-        const ember = embers[i];
-        ember.x += ember.vx + Math.sin(time + i) * 0.3;
-        ember.y += ember.vy;
+      // 6. Glowing Luminous Nodes on Crests & Rim
+      for (let i = 2; i < sphereRings - 2; i += 3) {
+        for (let j = 0; j < pointsPerRing; j += 4) {
+          const pt = projectedRings[i][j];
+          if (pt.z > 0) {
+            // Front facing nodes
+            const nodeSize = 1.2 + (pt.z / baseRadius) * 1.8;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, nodeSize, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(51, 255, 186, ${pt.alpha})`;
+            ctx.fill();
 
-        if (ember.y < -10) {
-          ember.y = height + 10;
-          ember.x = Math.random() * width;
+            // Luminous halo on closest nodes
+            if (pt.z > baseRadius * 0.4) {
+              ctx.beginPath();
+              ctx.arc(pt.x, pt.y, nodeSize * 2.8, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(0, 210, 143, ${pt.alpha * 0.28})`;
+              ctx.fill();
+            }
+          }
         }
-        if (ember.x < -10) ember.x = width + 10;
-        if (ember.x > width + 10) ember.x = -10;
-
-        ctx.beginPath();
-        ctx.arc(ember.x, ember.y, ember.size, 0, Math.PI * 2);
-        ctx.fillStyle = ember.hue;
-        ctx.globalAlpha = ember.alpha * (0.8 + Math.sin(time * 3 + i) * 0.2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -258,7 +243,7 @@ export default function HeroBackground() {
 
   return (
     <div className="absolute inset-0 z-0 w-full h-full overflow-hidden pointer-events-none select-none bg-[#0A0A0A]">
-      {/* High-Performance Interactive 3D Wave & Light Shader Canvas */}
+      {/* High-Performance Canvas Rendering ONE Massive 3D Liquid Sphere */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full block"
@@ -267,8 +252,8 @@ export default function HeroBackground() {
       {/* Cybernetic Ambient Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_45%,#000_65%,transparent_100%)] opacity-35" />
 
-      {/* Cinematic Radial Vignette (Preserving absolute text contrast & readability) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(10,10,10,0.4)_0%,rgba(10,10,10,0.8)_60%,rgba(10,10,10,0.95)_100%)]" />
+      {/* Cinematic Radial Vignette (Guarantees 100% crisp typography on the left) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(10,10,10,0.35)_0%,rgba(10,10,10,0.75)_60%,rgba(10,10,10,0.95)_100%)]" />
     </div>
   );
 }

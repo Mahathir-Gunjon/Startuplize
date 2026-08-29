@@ -143,9 +143,62 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
     () => {
       gsap.registerPlugin(ScrollTrigger);
 
+      // Section Header Scroll Animation
+      gsap.fromTo(
+        ".stacked-header-anim",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".stacked-header-anim",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
       const cards = gsap.utils.toArray<HTMLElement>(".stacked-card");
 
       cards.forEach((card, index) => {
+        // Image reveal animation on each stacked card image
+        const imgReveal = card.querySelector<HTMLElement>(".portfolio-image-reveal");
+        const imgElem = card.querySelector<HTMLElement>(".portfolio-image-elem");
+        if (imgReveal && imgElem) {
+          gsap.fromTo(
+            imgReveal,
+            { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" },
+            {
+              clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)",
+              duration: 1.1,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+          gsap.fromTo(
+            imgElem,
+            { scale: 1.2 },
+            {
+              scale: 1,
+              duration: 1.4,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+
+        // Stacking scale effect
         if (index < cards.length - 1) {
           ScrollTrigger.create({
             trigger: card,
@@ -176,8 +229,8 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
       <div className="max-w-[1366px] mx-auto">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="stacked-header-anim">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-4 font-mono">
               <Layers className="w-3.5 h-3.5 text-[#00B87D]" />
               <span>Stacked Digital Flagships</span>
             </div>
@@ -191,7 +244,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
 
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00B87D] hover:text-[#0A0A0A] transition-colors"
+            className="stacked-header-anim inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00B87D] hover:text-[#0A0A0A] transition-colors"
           >
             <span>Explore All 30+ Works</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -222,7 +275,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                         borderColor: `${template.accentColor}50`,
                         color: template.accentColor,
                       }}
-                      className="px-3.5 py-1 rounded-full border text-xs font-bold uppercase tracking-wider"
+                      className="px-3.5 py-1 rounded-full border text-xs font-bold uppercase tracking-wider font-mono"
                     >
                       {template.category}
                     </span>
@@ -251,7 +304,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
 
                   {/* Impact Benchmark */}
                   <div className="p-4 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-between">
-                    <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider font-mono">
                       Verified Result
                     </span>
                     <span
@@ -284,7 +337,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                       {template.tags.slice(0, 3).map((t) => (
                         <span
                           key={t}
-                          className="px-2.5 py-1 rounded-full bg-white/[0.08] text-[11px] font-medium text-zinc-300"
+                          className="px-2.5 py-1 rounded-full bg-white/[0.08] text-[11px] font-medium text-zinc-300 font-mono"
                         >
                           {t}
                         </span>
@@ -304,17 +357,19 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                   </div>
                 </div>
 
-                {/* Right Image / Mockup Preview */}
+                {/* Right Image / Mockup Preview with Image Reveal Animation */}
                 <div className="lg:col-span-7">
-                  <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-zinc-950 border border-white/15 shadow-2xl group">
-                    <Image
-                      src={template.image}
-                      alt={template.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="portfolio-image-reveal relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-zinc-950 border border-white/15 shadow-2xl group">
+                    <div className="portfolio-image-elem relative w-full h-full">
+                      <Image
+                        src={template.image}
+                        alt={template.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 55vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    </div>
 
                     {/* Top Device Bar Simulation */}
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between px-3 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10">
@@ -332,7 +387,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                     {/* Bottom Client Floating Badge */}
                     <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
                       <div>
-                        <span className="text-[10px] font-bold text-[#00D28F] uppercase tracking-wider block">
+                        <span className="text-[10px] font-bold text-[#00D28F] uppercase tracking-wider block font-mono">
                           Client Flagship
                         </span>
                         <span className="text-sm font-bold text-white">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { X, Send, Sparkles, CheckCheck } from "lucide-react";
 
@@ -12,6 +12,15 @@ export default function WhatsAppWidget() {
 
   // Direct WhatsApp Phone Number
   const phoneNumber = "15551234567";
+
+  // Automatically trigger popup after 3 seconds of page load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,10 +35,10 @@ export default function WhatsAppWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end select-none">
       {/* =========================================================================
-          1. INTERACTIVE CLOSABLE WHATSAPP POPUP CARD
+          1. INTERACTIVE CLOSABLE WHATSAPP POPUP CARD (Appears after 3s)
           ========================================================================= */}
       {isOpen && (
-        <div className="mb-4 w-[330px] sm:w-[370px] rounded-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)] border border-zinc-200/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200">
+        <div className="mb-4 w-[330px] sm:w-[370px] rounded-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)] border border-zinc-200/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-300">
           {/* Header */}
           <div className="bg-[#075E54] text-white p-4 sm:p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
