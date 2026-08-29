@@ -54,23 +54,20 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   );
 
   return (
-    <section className="px-4 sm:px-6 lg:px-8 pt-4 pb-2 bg-[#FAFAFA]">
-      {/* =========================================================================
-          MASSIVE ROUNDED-3XL HERO CARD CONTAINER (Confined Animated Canvas)
-          ========================================================================= */}
-      <div
-        ref={containerRef}
-        className="max-w-[1366px] mx-auto rounded-3xl overflow-hidden relative mt-20 sm:mt-22 p-8 sm:p-14 lg:p-20 bg-[#0A0A0A] text-white shadow-2xl min-h-[580px] lg:min-h-[640px] flex flex-col justify-center"
-      >
-        {/* Confined Heavy Animated Background */}
-        <HeroBackground />
+    <section
+      ref={containerRef}
+      className="w-full min-h-[92vh] lg:min-h-screen relative bg-[#0A0A0A] text-white flex flex-col justify-center pt-36 pb-20 overflow-hidden"
+    >
+      {/* 100% Full-Width Interactive 3D Canvas Animated Background */}
+      <HeroBackground />
 
-        {/* =========================================================================
-            STRICTLY LEFT-ALIGNED HERO FOREGROUND CONTENT
-            ========================================================================= */}
+      {/* =========================================================================
+          STRICTLY LEFT-ALIGNED HERO FOREGROUND CONTENT (Contained in Max Width)
+          ========================================================================= */}
+      <div className="max-w-[1366px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div
           ref={contentRef}
-          className="relative z-10 flex flex-col items-start text-left max-w-4xl"
+          className="flex flex-col items-start text-left max-w-4xl"
         >
           {/* Eyebrow Capsule Text Tag (Top Left) */}
           <div className="hero-stagger-item inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#00D28F]/15 border border-[#00D28F]/40 text-xs font-mono font-bold tracking-wider uppercase text-[#00D28F] mb-6 self-start backdrop-blur-md shadow-lg shadow-[#00D28F]/10">

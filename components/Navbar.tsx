@@ -40,9 +40,9 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 py-3.5",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 py-4",
         scrolled
-          ? "bg-[#FAFAFA]/90 backdrop-blur-xl border-b border-zinc-200/80 shadow-sm"
+          ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
           : "bg-transparent"
       )}
     >
@@ -54,11 +54,11 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           href="/"
           className="flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
-          <div className="w-8 h-8 rounded-xl bg-[#00D28F] flex items-center justify-center shadow-md shadow-[#00D28F]/25 group-hover:scale-105 transition-transform duration-300">
+          <div className="w-8 h-8 rounded-xl bg-[#00D28F] flex items-center justify-center shadow-lg shadow-[#00D28F]/30 group-hover:scale-105 transition-transform duration-300">
             <Sparkles className="w-4 h-4 text-[#0A0A0A] stroke-[2.5]" />
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="text-xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+            <span className="text-xl font-bold tracking-tight text-white font-sans">
               Startuplize
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#00D28F] inline-block animate-pulse" />
@@ -66,9 +66,9 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
         </Link>
 
         {/* =========================================================================
-            2. CENTER: LIGHT-GRAY PILL-SHAPED NAVIGATION LINKS
+            2. CENTER: LIGHT-GRAY / FROSTED PILL-SHAPED NAVIGATION LINKS
             ========================================================================= */}
-        <nav className="hidden md:flex items-center gap-1.5 rounded-full bg-gray-100/90 border border-gray-200/80 px-6 py-2 shadow-sm backdrop-blur-md">
+        <nav className="hidden md:flex items-center gap-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.12] border border-white/15 px-6 py-2 shadow-lg backdrop-blur-xl transition-colors">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -78,8 +78,8 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                 className={cn(
                   "px-3.5 py-1 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200",
                   isActive
-                    ? "bg-white text-[#0A0A0A] shadow-sm font-bold"
-                    : "text-zinc-600 hover:text-black hover:bg-white/60"
+                    ? "bg-white text-[#0A0A0A] shadow-md font-bold"
+                    : "text-zinc-300 hover:text-white hover:bg-white/10"
                 )}
               >
                 {link.name}
@@ -95,13 +95,13 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Solid Mint Green Pill with Avatar */}
           <button
             onClick={onOpenBooking}
-            className="group inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 bg-[#00D28F] hover:bg-[#00B87D] rounded-full shadow-md shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="group inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 bg-[#00D28F] hover:bg-[#00B87D] rounded-full shadow-lg shadow-[#00D28F]/30 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             {/* User Profile Avatar */}
-            <div className="relative w-7 h-7 rounded-full overflow-hidden ring-2 ring-white/80 bg-zinc-900 shrink-0">
+            <div className="relative w-7 h-7 rounded-full overflow-hidden ring-2 ring-[#0A0A0A]/30 bg-zinc-900 shrink-0">
               <Image
                 src="/images/founder.jpg"
-                alt="Mahathir Founder Avatar"
+                alt="Founder Avatar"
                 fill
                 sizes="28px"
                 className="object-cover"
@@ -118,17 +118,17 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-full bg-gray-100 border border-gray-200 text-zinc-800 md:hidden flex items-center justify-center cursor-pointer"
+            className="p-2 rounded-full bg-white/10 border border-white/15 text-white md:hidden flex items-center justify-center cursor-pointer"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4 text-white" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-3 max-w-[1366px] mx-auto bg-white/95 backdrop-blur-xl border border-zinc-200/90 rounded-3xl p-6 shadow-xl flex flex-col space-y-3">
+        <div className="md:hidden mt-3 max-w-[1366px] mx-auto bg-[#0A0A0A]/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-6 shadow-2xl flex flex-col space-y-3">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
@@ -136,8 +136,8 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
               className={cn(
                 "px-4 py-2.5 rounded-2xl text-sm font-semibold transition-colors",
                 pathname === link.href
-                  ? "bg-zinc-100 text-[#00A870] font-bold"
-                  : "text-zinc-700 hover:bg-zinc-50"
+                  ? "bg-white/15 text-[#00D28F] font-bold"
+                  : "text-zinc-300 hover:bg-white/5 hover:text-white"
               )}
             >
               {link.name}
