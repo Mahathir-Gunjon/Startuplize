@@ -2,6 +2,7 @@ import "./globals.css";
 import { Bricolage_Grotesque, Instrument_Serif } from "next/font/google";
 import type { Metadata } from "next";
 import { LenisProvider } from "@/hooks/useLenis";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const fontSans = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -104,7 +105,11 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#FAFAFA] text-[#1A1A1A] font-sans antialiased selection:bg-[#00D28F] selection:text-[#0A0A0A] overflow-x-hidden">
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          {children}
+          {/* Universal Fixed WhatsApp 64x64 Floating Button & Closable Contact Popup */}
+          <WhatsAppWidget />
+        </LenisProvider>
       </body>
     </html>
   );
