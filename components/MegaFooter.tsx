@@ -144,6 +144,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
               <ul className="space-y-3 text-[14px] md:text-[16px] text-zinc-400">
                 {[
                   { name: "Portfolio Archive", href: "/portfolio" },
+                  { name: "Pricing & Calculator", href: "/pricing" },
                   { name: "Client Testimonials", href: "/testimonials" },
                   { name: "About & Manifesto", href: "/about" },
                   { name: "Direct Contact", href: "/contact" },

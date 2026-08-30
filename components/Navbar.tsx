@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Works", href: "/portfolio" },
   { name: "Services", href: "/services" },
+  { name: "Pricing", href: "/pricing" },
   { name: "About", href: "/about" },
   { name: "Review", href: "/testimonials" },
 ];
@@ -73,7 +74,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
               2. RIGHT GROUP: NAVIGATION LINKS PILL + BOOK CALL BUTTON
               ========================================================================= */}
           <div className="flex items-center gap-4">
-            {/* Desktop Navigation Links Pill Container (Right-Aligned beside Book Call) */}
+            {/* Desktop Navigation Links Pill Container */}
             <nav className="hidden md:flex items-center gap-1 rounded-full bg-white/[0.08] hover:bg-white/[0.12] border border-white/15 px-4 py-2 shadow-lg backdrop-blur-xl transition-colors">
               {/* Home */}
               <Link
@@ -124,6 +125,19 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                   />
                 </button>
               </div>
+
+              {/* Pricing */}
+              <Link
+                href="/pricing"
+                className={cn(
+                  "px-3 py-1 text-[14px] md:text-[16px] font-semibold rounded-full transition-all duration-200",
+                  pathname.startsWith("/pricing")
+                    ? "bg-white text-[#0A0A0A] shadow-md font-bold"
+                    : "text-zinc-300 hover:text-white hover:bg-white/10"
+                )}
+              >
+                Pricing
+              </Link>
 
               {/* About */}
               <Link
@@ -187,7 +201,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mobile Drawer Menu (Sharper rounded-2xl container) */}
+        {/* Mobile Drawer Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 max-w-[1366px] mx-auto bg-[#0A0A0A]/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-6 shadow-2xl flex flex-col space-y-2">
             {NAV_LINKS.map((link) => (
