@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles, Calendar, Send, ShieldCheck, Clock, CheckCircle2 } from "lucide-react";
 import CalEmbed from "./CalEmbed";
@@ -8,17 +8,25 @@ import CalEmbed from "./CalEmbed";
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialMessage?: string;
 }
 
-export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
-  const [activeTab, setActiveTab] = useState<"cal" | "form">("cal");
+export default function BookingModal({ isOpen, onClose, initialMessage }: BookingModalProps) {
+  const [activeTab, setActiveTab] = useState<"cal" | "form">(initialMessage ? "form" : "cal");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "Webflow",
-    message: "",
+    service: "WordPress",
+    message: initialMessage || "",
   });
+
+  useEffect(() => {
+    if (initialMessage) {
+      setFormData((prev) => ({ ...prev, message: initialMessage }));
+      setActiveTab("form");
+    }
+  }, [initialMessage]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +35,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const handleReset = () => {
     setFormSubmitted(false);
-    setFormData({ name: "", email: "", service: "Webflow", message: "" });
+    setFormData({ name: "", email: "", service: "WordPress", message: "" });
     onClose();
   };
 
@@ -153,13 +161,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-sm focus:outline-none focus:border-[#00D28F]"
                   >
-                    <option value="Webflow">Webflow & 3D Interactive Web</option>
-                    <option value="WordPress">WordPress & Headless Next.js</option>
-                    <option value="Wix">Wix Studio Modern Setup</option>
-                    <option value="SEO">Technical SEO & Growth Ranking</option>
-                    <option value="Branding">Brand Identity & Visual Systems</option>
-                    <option value="Meta Ads">Meta Ads Performance Creative</option>
-                    <option value="Google Ads">Google Ads & Performance Max</option>
+                    <option value="WordPress">WordPress Site ($400/10 Pgs)</option>
+                    <option value="SEO">AI SEO & Local Search ($200/15 Pgs)</option>
+                    <option value="Webflow">Webflow Platform ($600/10 Pgs)</option>
+                    <option value="Meta Ads">Meta Ads & Paid Funnel ($250)</option>
+                    <option value="Google Ads">Google Ads & PMax ($250)</option>
+                    <option value="Next.js">Custom Next.js 14 ($800/10 Pgs)</option>
                   </select>
                 </div>
 
@@ -169,7 +176,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Describe your timeline, current metrics, and design requirements..."
+                    placeholder="Describe your industry, timeline, and requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-sm focus:outline-none focus:border-[#00D28F] resize-none"

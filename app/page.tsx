@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import TopServicesTriptych from "@/components/TopServicesTriptych";
 import Marquee from "@/components/Marquee";
 import DepthOfVision from "@/components/DepthOfVision";
+import WhoWeWorkWith from "@/components/WhoWeWorkWith";
 import UnfairAdvantage from "@/components/UnfairAdvantage";
 import StackedPortfolio from "@/components/StackedPortfolio";
 import ImpactPinSection from "@/components/ImpactPinSection";
@@ -22,8 +23,14 @@ import CustomCursor from "@/components/CustomCursor";
 
 export default function HomePage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
 
-  const handleOpenBooking = () => {
+  const handleOpenBooking = (industryName?: string) => {
+    if (industryName) {
+      setSelectedIndustry(`Industry Inquiry: ${industryName}`);
+    } else {
+      setSelectedIndustry(null);
+    }
     setIsBookingOpen(true);
   };
 
@@ -33,62 +40,66 @@ export default function HomePage() {
       <CustomCursor />
 
       {/* Floating Modern Header with Clean Minimal Menu */}
-      <Navbar onOpenBooking={handleOpenBooking} />
+      <Navbar onOpenBooking={() => handleOpenBooking()} />
 
       {/* =========================================================================
           MAIN PAGE CONTENT (Curtain Layer: z-10 over Parallax Footer)
           ========================================================================= */}
       <div className="relative z-10 bg-[#FAFAFA] shadow-[0_45px_100px_rgba(0,0,0,0.55)]">
         {/* 1. Cinematic Hero */}
-        <Hero onOpenBooking={handleOpenBooking} />
+        <Hero onOpenBooking={() => handleOpenBooking()} />
 
         {/* 2. Top 3 Flagship Services Triptych (Business Website, Custom Development, SEO) */}
-        <TopServicesTriptych onOpenBooking={handleOpenBooking} />
+        <TopServicesTriptych onOpenBooking={() => handleOpenBooking()} />
 
         {/* 3. Partner Social Proof Badges & Kinetic Infinite Tag Marquee */}
         <Marquee />
 
         {/* 4. Depth of Vision: 3-Layer Spatial Parallax Experience */}
-        <DepthOfVision onOpenBooking={handleOpenBooking} />
+        <DepthOfVision onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 5. The "Unfair Advantage" Sticky Scrollytelling Typography */}
+        {/* 5. Who We Work With (Local Booking, Listing Portals, E-Commerce) */}
+        <WhoWeWorkWith onOpenBooking={handleOpenBooking} />
+
+        {/* 6. The "Unfair Advantage" Sticky Scrollytelling Typography */}
         <UnfairAdvantage />
 
-        {/* 6. 5-Card Stacked Website Template Portfolio with Layering Effect */}
-        <StackedPortfolio onOpenBooking={handleOpenBooking} />
+        {/* 7. 5-Card Stacked Website Template Portfolio with Layering Effect */}
+        <StackedPortfolio onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 7. Real Results: Left Column Pinned with Vertical Metric Cards */}
-        <ImpactPinSection onOpenBooking={handleOpenBooking} />
+        {/* 8. Real Results: Left Column Pinned with Vertical Metric Cards */}
+        <ImpactPinSection onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 8. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
-        <ServicesHorizontalScroll onOpenBooking={handleOpenBooking} />
+        {/* 9. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
+        <ServicesHorizontalScroll onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 9. Feature Checklists with Word-Scaling Typography */}
+        {/* 10. Feature Checklists with Word-Scaling Typography */}
         <FeatureChecklist />
 
-        {/* 10. Visual Excellence Showcase: Text Hover Image Follower */}
-        <InteractiveServicesHover onOpenBooking={handleOpenBooking} />
+        {/* 11. Visual Excellence Showcase: Text Hover Image Follower */}
+        <InteractiveServicesHover onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 11. Client Love: Dual Opposing Vertical Testimonial Marquees */}
+        {/* 12. Client Love: Dual Opposing Vertical Testimonial Marquees */}
         <Testimonials />
 
-        {/* 12. The Creative Minds: Grayscale-to-Color Team Showcase */}
-        <TeamSection onOpenBooking={handleOpenBooking} />
+        {/* 13. The Creative Minds: Grayscale-to-Color Team Showcase */}
+        <TeamSection onOpenBooking={() => handleOpenBooking()} />
 
-        {/* 13. 4-Step Process Timeline & Collapsible FAQ Accordion */}
-        <ProcessTimeline onOpenBooking={handleOpenBooking} />
+        {/* 14. 4-Step Process Timeline & Collapsible FAQ Accordion */}
+        <ProcessTimeline onOpenBooking={() => handleOpenBooking()} />
 
         {/* Universal Global High-Conversion CTA Banner */}
-        <GlobalCTA onOpenBooking={handleOpenBooking} />
+        <GlobalCTA onOpenBooking={() => handleOpenBooking()} />
       </div>
 
-      {/* 14. Mega Footer with Underneath Parallax Reveal */}
-      <MegaFooter onOpenBooking={handleOpenBooking} />
+      {/* 15. Mega Footer with Underneath Parallax Reveal */}
+      <MegaFooter onOpenBooking={() => handleOpenBooking()} />
 
       {/* Interactive Cal.com Scheduling & Quick Brief Modal */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
+        initialMessage={selectedIndustry || undefined}
       />
     </main>
   );
