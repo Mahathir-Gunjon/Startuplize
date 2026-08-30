@@ -4,8 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ArrowUpRight, Sparkles, Eye } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 interface InteractiveServicesHoverProps {
   onOpenBooking: () => void;
@@ -101,12 +100,12 @@ export default function InteractiveServicesHover({
   }, []);
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative border-t border-zinc-200">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative border-t border-zinc-200">
       <div className="max-w-[1366px] mx-auto" ref={containerRef}>
-        {/* Floating Cursor-Following Image Preview Card */}
+        {/* Floating Cursor-Following Image Preview Card (Sharper rounded-xl) */}
         <div
           ref={previewRef}
-          className={`fixed top-0 left-0 w-80 h-48 rounded-3xl overflow-hidden pointer-events-none z-[990] -translate-x-1/2 -translate-y-1/2 shadow-2xl border-2 border-white/40 transition-opacity duration-300 ${
+          className={`fixed top-0 left-0 w-80 h-48 rounded-xl overflow-hidden pointer-events-none z-[990] -translate-x-1/2 -translate-y-1/2 shadow-2xl border-2 border-white/40 transition-opacity duration-300 ${
             activeImage ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
         >
@@ -127,11 +126,12 @@ export default function InteractiveServicesHover({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B87D]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+              <Sparkles className="w-4 h-4 text-[#00B87D]" />
               <span>Visual Excellence Showcase</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+            {/* Strictly H2 (text-3xl md:text-5xl) */}
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
               Precision Solutions For{" "}
               <span className="font-serif italic font-normal text-[#00B87D]">
                 Every Growth Phase.
@@ -139,12 +139,12 @@ export default function InteractiveServicesHover({
             </h2>
           </div>
 
-          <p className="text-sm sm:text-base text-zinc-600 max-w-sm font-normal">
+          <p className="text-[16px] md:text-[18px] text-zinc-600 max-w-sm font-normal">
             Hover over any discipline to preview its live output and benchmark deliverable.
           </p>
         </div>
 
-        {/* Oversized Service List with Text Hover Skew & Image Reveal */}
+        {/* Service List with Text Hover Skew */}
         <div className="divide-y divide-zinc-200 border-y border-zinc-200">
           {servicesList.map((service) => (
             <Link
@@ -152,28 +152,28 @@ export default function InteractiveServicesHover({
               href={service.slug}
               onMouseEnter={() => setActiveImage(service.image)}
               onMouseLeave={() => setActiveImage(null)}
-              className="group py-8 sm:py-10 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-zinc-100/70 px-4 sm:px-6 rounded-3xl transition-all duration-300"
+              className="group py-8 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-zinc-100/70 px-4 sm:px-6 rounded-xl transition-all duration-300"
             >
               <div className="flex items-baseline gap-6">
-                <span className="text-sm font-mono font-bold text-zinc-400 group-hover:text-[#00B87D] transition-colors">
+                <span className="text-[14px] font-mono font-bold text-zinc-400 group-hover:text-[#00B87D] transition-colors">
                   {service.number}
                 </span>
                 <div>
-                  {/* Slight skew effect on hover text */}
-                  <h3 className="text-2xl sm:text-4xl font-bold text-[#1A1A1A] group-hover:text-[#00A870] group-hover:translate-x-3 group-hover:-skew-x-3 transition-all duration-300 font-sans tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] group-hover:text-[#00A870] group-hover:translate-x-2 transition-all duration-300 font-sans tracking-tight">
                     {service.name}
                   </h3>
-                  <p className="text-sm text-zinc-500 font-normal mt-1">
+                  {/* Small Body Tier */}
+                  <p className="text-[14px] md:text-[16px] text-zinc-500 font-normal mt-1">
                     {service.tagline}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-6 self-start md:self-auto pl-12 md:pl-0">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#00D28F]/10 text-xs font-bold text-[#00A870] font-mono border border-[#00D28F]/30">
+                <span className="px-3 py-1.5 rounded-full bg-[#00D28F]/10 text-[12px] font-bold text-[#00A870] font-mono border border-[#00D28F]/30">
                   {service.metric}
                 </span>
-                <div className="w-11 h-11 rounded-full bg-white border border-zinc-200 flex items-center justify-center group-hover:bg-[#00D28F] group-hover:border-[#00D28F] transition-all shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center group-hover:bg-[#00D28F] group-hover:border-[#00D28F] group-hover:scale-105 active:scale-95 transition-all shadow-sm">
                   <ArrowUpRight className="w-4 h-4 text-[#1A1A1A] group-hover:text-[#0A0A0A] transition-colors" />
                 </div>
               </div>

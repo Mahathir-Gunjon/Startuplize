@@ -7,7 +7,7 @@ import { Star, ShieldCheck, MessageSquare } from "lucide-react";
 
 function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
   return (
-    <div className="rounded-3xl p-7 bg-white border border-zinc-200 shadow-sm hover:shadow-xl hover:border-[#00D28F] transition-all duration-300 flex flex-col justify-between select-none mb-6">
+    <div className="rounded-2xl p-6 bg-white border border-zinc-200 shadow-sm hover:shadow-xl hover:border-[#00D28F] transition-all duration-300 flex flex-col justify-between select-none mb-6">
       <div>
         {/* Rating & Verified Platform */}
         <div className="flex items-center justify-between gap-4 mb-4">
@@ -17,38 +17,38 @@ function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
             ))}
           </div>
 
-          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 flex items-center gap-1.5">
+          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-semibold text-zinc-700 flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#00B87D]" />
             <span>Verified Founder</span>
           </span>
         </div>
 
-        <div className="inline-block px-3 py-1 rounded-xl bg-[#00D28F]/10 border border-[#00D28F]/30 text-xs font-bold text-[#00A870] font-mono mb-4">
+        <div className="inline-block px-3 py-1 rounded-lg bg-[#00D28F]/10 border border-[#00D28F]/30 text-[12px] font-bold text-[#00A870] font-mono mb-4">
           {review.service}
         </div>
 
-        {/* Editorial Testimonial Text */}
-        <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed italic mb-6">
+        {/* Small Body Tier */}
+        <p className="text-[14px] md:text-[16px] text-zinc-700 font-normal leading-relaxed italic mb-6">
           &ldquo;{review.quote}&rdquo;
         </p>
       </div>
 
       {/* Author Info */}
-      <div className="flex items-center gap-3.5 pt-5 border-t border-zinc-100">
-        <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#00D28F]/40 shrink-0">
+      <div className="flex items-center gap-3 pt-4 border-t border-zinc-100">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#00D28F]/40 shrink-0">
           <Image
             src={review.avatar}
             alt={review.name}
             fill
-            sizes="44px"
+            sizes="40px"
             className="object-cover"
           />
         </div>
         <div className="flex flex-col">
-          <span className="text-sm font-bold text-[#1A1A1A]">
+          <span className="text-[14px] md:text-[16px] font-bold text-[#1A1A1A]">
             {review.name}
           </span>
-          <span className="text-xs text-zinc-500 font-normal">
+          <span className="text-[12px] text-zinc-500 font-normal">
             {review.role}, <span className="text-[#00B87D] font-semibold">{review.company}</span>
           </span>
         </div>
@@ -64,30 +64,32 @@ export default function Testimonials() {
   const col3 = TESTIMONIALS_EXPANDED.concat(TESTIMONIALS_EXPANDED);
 
   return (
-    <section id="reviews" className="py-32 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative overflow-hidden border-t border-zinc-200">
+    <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative overflow-hidden border-t border-zinc-200">
       <div className="max-w-[1366px] mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-4">
-            <Star className="w-3.5 h-3.5 fill-[#00D28F] text-[#00D28F]" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            <Star className="w-4 h-4 fill-[#00D28F] text-[#00D28F]" />
             <span>Verified Client Feedback</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#1A1A1A] font-sans max-w-3xl">
+          {/* Strictly H2 (text-3xl md:text-5xl) */}
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans max-w-3xl">
             Real Founders.{" "}
             <span className="font-serif italic font-normal text-[#00B87D]">
               Quantifiable Returns.
             </span>
           </h2>
 
-          <p className="text-base sm:text-xl text-zinc-600 max-w-2xl mt-4 font-normal leading-relaxed">
+          {/* Normal Body Tier */}
+          <p className="text-[16px] md:text-[18px] text-zinc-600 max-w-2xl mt-4 font-normal leading-relaxed">
             Here is what high-growth CMOs, SaaS founders, and enterprise teams say about
             collaborating with Startuplize.
           </p>
         </div>
 
         {/* Continuous Dual/Triple VERTICAL Marquee Container */}
-        <div className="relative h-[650px] overflow-hidden">
+        <div className="relative h-[620px] overflow-hidden">
           {/* Top and Bottom Gradient Masks */}
           <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
@@ -117,7 +119,7 @@ export default function Testimonials() {
         </div>
 
         {/* Hover Hint */}
-        <div className="flex items-center justify-center gap-2 text-xs text-zinc-500 mt-8">
+        <div className="flex items-center justify-center gap-2 text-[12px] font-mono text-zinc-500 mt-8">
           <MessageSquare className="w-3.5 h-3.5" />
           <span>Hover over any review card to pause vertical marquee</span>
         </div>

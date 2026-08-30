@@ -63,6 +63,7 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
 
       const mm = gsap.matchMedia();
 
+      // Desktop Only: Pin Left Column
       mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.create({
           trigger: section,
@@ -80,41 +81,44 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
     <section
       id="impact"
       ref={sectionRef}
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative border-t border-zinc-200"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] text-[#1A1A1A] relative border-t border-zinc-200"
     >
       <div className="max-w-[1366px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Pinned on Scroll */}
+        {/* 12-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column (5 Columns): Pinned on Desktop Scroll */}
           <div
             ref={pinColRef}
             className="lg:col-span-5 flex flex-col justify-between self-start pb-8"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-5">
-                <TrendingUp className="w-3.5 h-3.5 text-[#00B87D]" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-6 font-mono">
+                <TrendingUp className="w-4 h-4 text-[#00B87D]" />
                 <span>Our Track Record</span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A1A1A] font-sans leading-[1.08] mb-6">
+              {/* Strictly H2 (text-3xl md:text-5xl) */}
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans leading-[1.08] mb-6">
                 Real results for{" "}
                 <span className="font-serif italic font-normal text-[#00B87D]">
                   real companies.
                 </span>
               </h2>
 
-              <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed mb-8">
+              {/* Subtitle: Normal Body Tier */}
+              <p className="text-[16px] md:text-[18px] text-zinc-600 font-normal leading-relaxed mb-8">
                 We measure our craft by the compounding revenue, speed, and pipeline it unlocks for
                 our partners. No vanity design—only quantifiable business prestige.
               </p>
 
               {/* Guarantees List */}
-              <div className="space-y-3 mb-10">
+              <div className="space-y-4 mb-8">
                 {[
                   "Average 4.8x Meta & Google Ads ROAS",
                   "Sub-Second 99+ Core Web Vitals Guaranteed",
                   "Direct Senior Architect & Art Director Access",
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 text-sm text-zinc-700 font-medium">
+                  <div key={idx} className="flex items-center gap-2 text-[14px] md:text-[16px] text-zinc-700 font-medium">
                     <CheckCircle2 className="w-4 h-4 text-[#00B87D] shrink-0" />
                     <span>{item}</span>
                   </div>
@@ -124,40 +128,41 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
 
             <button
               onClick={onOpenBooking}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-lg shadow-[#00D28F]/25 transition-all self-start cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[14px] uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-lg shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all self-start cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
               <span>Get Free Growth Audit</span>
             </button>
           </div>
 
-          {/* Right Column: Outlined Metric Cards Scrolling Past Pinned Left */}
-          <div className="lg:col-span-7 space-y-8">
+          {/* Right Column (7 Columns): Metric Cards (Sharper rounded-2xl) */}
+          <div className="lg:col-span-7 space-y-6">
             {impactCards.map((card, idx) => (
               <div
                 key={idx}
-                className="group rounded-3xl p-8 sm:p-10 bg-white border border-zinc-200 shadow-sm hover:border-[#00D28F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-2xl p-6 sm:p-8 bg-white border border-zinc-200 shadow-sm hover:border-[#00D28F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                    <span className="px-3.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-700 uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-bold text-zinc-700 uppercase tracking-wider">
                       {card.category}
                     </span>
-                    <span className="text-xs font-mono font-semibold text-[#00B87D] flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5" />
+                    <span className="text-[14px] font-mono font-semibold text-[#00B87D] flex items-center gap-1">
+                      <ShieldCheck className="w-4 h-4" />
                       {card.client}
                     </span>
                   </div>
 
                   {/* Metric Value */}
-                  <div className="text-5xl sm:text-7xl font-mono font-bold tracking-tight text-[#00B87D] mb-2">
+                  <div className="text-5xl sm:text-6xl font-mono font-bold tracking-tight text-[#00B87D] mb-2">
                     {card.metric}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A1A] tracking-tight mb-4 font-sans">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] tracking-tight mb-4 font-sans">
                     {card.label}
                   </h3>
 
-                  <p className="text-base text-zinc-600 font-normal leading-relaxed mb-6">
+                  {/* Small Body Tier */}
+                  <p className="text-[14px] md:text-[16px] text-zinc-600 font-normal leading-relaxed mb-6">
                     {card.description}
                   </p>
                 </div>
@@ -167,7 +172,7 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
                     {card.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full bg-zinc-50 text-xs font-medium text-zinc-600 border border-zinc-200"
+                        className="px-3 py-1 rounded-full bg-zinc-50 text-[12px] font-mono text-zinc-600 border border-zinc-200"
                       >
                         {tag}
                       </span>
@@ -176,10 +181,10 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
 
                   <button
                     onClick={onOpenBooking}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#00B87D] hover:text-[#0A0A0A] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 text-[14px] font-bold text-[#00B87D] hover:text-[#0A0A0A] hover:scale-105 active:scale-95 transition-all cursor-pointer"
                   >
                     <span>Request Similar Case</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>

@@ -10,10 +10,9 @@ export default function WhatsAppWidget() {
     "Hi Startuplize! I'd like to discuss a new design & development project."
   );
 
-  // Direct WhatsApp Phone Number
   const phoneNumber = "15551234567";
 
-  // Automatically trigger popup after 3 seconds of page load
+  // Trigger popup after 3 seconds on page load
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
@@ -35,31 +34,31 @@ export default function WhatsAppWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end select-none">
       {/* =========================================================================
-          1. INTERACTIVE CLOSABLE WHATSAPP POPUP CARD (Appears after 3s)
+          1. INTERACTIVE CLOSABLE WHATSAPP POPUP CARD (Sharper rounded-2xl)
           ========================================================================= */}
       {isOpen && (
-        <div className="mb-4 w-[330px] sm:w-[370px] rounded-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)] border border-zinc-200/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-300">
+        <div className="mb-4 w-[330px] sm:w-[360px] rounded-2xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)] border border-zinc-200/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-300">
           {/* Header */}
           <div className="bg-[#075E54] text-white p-4 sm:p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-[#25D366] bg-zinc-900 shrink-0">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-[#25D366] bg-zinc-900 shrink-0">
                 <Image
                   src="/images/founder.jpg"
                   alt="Startuplize Concierge"
-                  fill
-                  sizes="44px"
-                  className="object-cover"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
                 />
-                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#25D366] ring-2 ring-[#075E54]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#25D366] ring-2 ring-[#075E54]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-sm font-bold text-white font-sans leading-tight">
+                  <h4 className="text-[16px] font-bold text-white font-sans leading-tight">
                     Startuplize Team
                   </h4>
                   <Sparkles className="w-3.5 h-3.5 text-[#25D366]" />
                 </div>
-                <p className="text-[11px] text-emerald-100 font-medium mt-0.5">
+                <p className="text-[12px] text-emerald-100 font-medium font-mono mt-0.5">
                   Online • Typically replies in 5m
                 </p>
               </div>
@@ -76,15 +75,15 @@ export default function WhatsAppWidget() {
           </div>
 
           {/* WhatsApp Chat Body */}
-          <div className="bg-[#ECE5DD]/40 p-4 sm:p-5 space-y-3 min-h-[140px] flex flex-col justify-end">
-            <div className="bg-white p-4 rounded-2xl rounded-tl-sm shadow-sm border border-zinc-200/40 text-xs sm:text-sm text-zinc-800 leading-relaxed max-w-[90%] self-start">
+          <div className="bg-[#ECE5DD]/40 p-4 sm:p-5 space-y-3 min-h-[130px] flex flex-col justify-end">
+            <div className="bg-white p-4 rounded-xl rounded-tl-sm shadow-sm border border-zinc-200/40 text-[14px] text-zinc-800 leading-relaxed max-w-[92%] self-start">
               <p className="font-medium">
                 👋 Hey there! Welcome to Startuplize.
               </p>
               <p className="mt-1 text-zinc-600">
                 Looking to scale your product, build a custom Webflow/Next.js flagship, or discuss a sprint roadmap? Chat directly with us!
               </p>
-              <div className="flex items-center justify-end gap-1 mt-2 text-[10px] text-zinc-400 font-mono">
+              <div className="flex items-center justify-end gap-1 mt-2 text-[12px] text-zinc-400 font-mono">
                 <span>Just now</span>
                 <CheckCheck className="w-3.5 h-3.5 text-[#34B7F1]" />
               </div>
@@ -92,18 +91,18 @@ export default function WhatsAppWidget() {
           </div>
 
           {/* Action & Input Footer */}
-          <form onSubmit={handleSend} className="p-3.5 bg-white border-t border-zinc-100 flex flex-col gap-2.5">
-            <div className="flex items-center gap-2 bg-zinc-100 rounded-2xl px-3.5 py-2 border border-zinc-200 focus-within:border-[#25D366] focus-within:bg-white transition-colors">
+          <form onSubmit={handleSend} className="p-4 bg-white border-t border-zinc-100 flex flex-col gap-3">
+            <div className="flex items-center gap-2 bg-zinc-100 rounded-xl px-4 py-2 border border-zinc-200 focus-within:border-[#25D366] focus-within:bg-white transition-colors">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="w-full bg-transparent text-xs sm:text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
+                className="w-full bg-transparent text-[14px] text-zinc-900 outline-none placeholder:text-zinc-400"
               />
               <button
                 type="submit"
-                className="w-8 h-8 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#25D366]/30 transition-transform active:scale-95 cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shrink-0 shadow-md transition-transform active:scale-95 cursor-pointer"
                 title="Send via WhatsApp"
               >
                 <Send className="w-3.5 h-3.5 ml-0.5" />
@@ -112,7 +111,7 @@ export default function WhatsAppWidget() {
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-[#25D366]/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[14px] uppercase tracking-wider shadow-md shadow-[#25D366]/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Open WhatsApp Direct</span>
             </button>
@@ -126,13 +125,12 @@ export default function WhatsAppWidget() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open WhatsApp Chat"
-        className="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_10px_35px_rgba(37,211,102,0.45)] hover:shadow-[0_14px_45px_rgba(37,211,102,0.6)] hover:scale-108 active:scale-95 transition-all duration-300 relative group cursor-pointer border-[2.5px] border-white"
+        className="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_10px_35px_rgba(37,211,102,0.45)] hover:shadow-[0_14px_45px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 relative group cursor-pointer border-2 border-white"
       >
-        {/* Notification Ping Badge */}
         {!isOpen && (
           <span className="absolute top-0 right-0 flex h-4 w-4 -mt-0.5 -mr-0.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34B7F1] opacity-75" />
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#128C7E] text-[9px] font-bold text-white items-center justify-center ring-2 ring-white">
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#128C7E] text-[10px] font-bold text-white items-center justify-center ring-2 ring-white">
               1
             </span>
           </span>
@@ -141,7 +139,6 @@ export default function WhatsAppWidget() {
         {isOpen ? (
           <X className="w-7 h-7 text-white stroke-[2.5]" />
         ) : (
-          /* Official WhatsApp SVG Icon (34x34) */
           <svg
             viewBox="0 0 24 24"
             width="34"

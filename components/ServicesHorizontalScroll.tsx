@@ -102,10 +102,11 @@ export default function ServicesHorizontalScroll({
 
       const mm = gsap.matchMedia();
 
+      // Desktop Only: Horizontal Scrolling Track Pin
       mm.add("(min-width: 1024px)", () => {
         const scrollWidth = track.scrollWidth;
         const viewportWidth = window.innerWidth;
-        const distanceToScroll = scrollWidth - viewportWidth + 140;
+        const distanceToScroll = scrollWidth - viewportWidth + 120;
 
         const tween = gsap.to(track, {
           x: -distanceToScroll,
@@ -125,6 +126,11 @@ export default function ServicesHorizontalScroll({
           tween.kill();
         };
       });
+
+      // Mobile / Tablet: Standard Vertical Scroll Stack with Subtle Fade
+      mm.add("(max-width: 1023px)", () => {
+        gsap.set(track, { clearProps: "all" });
+      });
     },
     { dependencies: [activeFilter], scope: triggerRef }
   );
@@ -135,17 +141,18 @@ export default function ServicesHorizontalScroll({
       ref={triggerRef}
       className="relative bg-[#FAFAFA] text-[#1A1A1A] border-t border-zinc-200 overflow-hidden"
     >
-      {/* Centered Horizontal Viewport with Generous Breathing Space */}
-      <div className="h-screen w-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden py-10">
+      {/* Centered Horizontal Viewport with 8pt Spacing */}
+      <div className="lg:h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden py-16 lg:py-12">
         <div className="max-w-[1366px] w-full mx-auto mb-8">
           {/* Header & Filter Pills */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-2 font-mono">
-                <Layers className="w-3.5 h-3.5 text-[#00B87D]" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-2 font-mono">
+                <Layers className="w-4 h-4 text-[#00B87D]" />
                 <span>Target Impact &amp; Capabilities</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+              {/* Strictly H2 (text-3xl md:text-5xl) */}
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
                 Specialized{" "}
                 <span className="font-serif italic font-normal text-[#00B87D]">
                   Growth Disciplines.
@@ -160,7 +167,7 @@ export default function ServicesHorizontalScroll({
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
                   className={cn(
-                    "px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 shrink-0 cursor-pointer",
+                    "px-4 py-2 rounded-full text-[14px] font-semibold transition-all duration-200 shrink-0 cursor-pointer",
                     activeFilter === cat
                       ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25"
                       : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
@@ -173,7 +180,7 @@ export default function ServicesHorizontalScroll({
           </div>
         </div>
 
-        {/* Horizontal Scrolling Track: 3 CARDS PER VIEW WITH AIRY BREATHING ROOM */}
+        {/* Scrolling Track: Sharper rounded-2xl Cards */}
         <div className="w-full overflow-x-auto lg:overflow-x-visible no-scrollbar">
           <div
             ref={trackRef}
@@ -182,7 +189,7 @@ export default function ServicesHorizontalScroll({
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="w-full sm:w-[420px] lg:w-[430px] xl:w-[450px] shrink-0 rounded-[2rem] bg-white border border-zinc-200/90 shadow-md hover:border-[#00D28F] hover:shadow-2xl transition-all duration-500 flex flex-col overflow-hidden group"
+                className="w-full sm:w-[420px] lg:w-[430px] xl:w-[450px] shrink-0 rounded-2xl bg-white border border-zinc-200/90 shadow-md hover:border-[#00D28F] hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group"
               >
                 {/* 1. Aspect Ratio Image Header */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
@@ -198,42 +205,42 @@ export default function ServicesHorizontalScroll({
 
                   {/* Top Floating Badges */}
                   <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-black/65 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-md">
+                    <div className="w-8 h-8 rounded-lg bg-black/65 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-md">
                       {getIcon(service.id)}
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-bold text-white uppercase tracking-wider font-mono">
+                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[12px] font-bold text-white uppercase tracking-wider font-mono">
                       {service.category}
                     </span>
                   </div>
 
                   {/* Top Right Verified Metric Chip */}
                   <div className="absolute top-4 right-4 z-10">
-                    <div className="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-[11px] font-mono font-bold flex items-center gap-1 shadow-lg">
-                      <Zap className="w-3 h-3 text-[#00D28F]" />
+                    <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-[12px] font-mono font-bold flex items-center gap-1 shadow-lg">
+                      <Zap className="w-3.5 h-3.5 text-[#00D28F]" />
                       <span>{service.metrics}</span>
                     </div>
                   </div>
 
                   {/* Title overlay inside Image */}
-                  <div className="absolute bottom-4 left-5 right-5 z-10">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-sans group-hover:text-[#00D28F] transition-colors line-clamp-1">
+                  <div className="absolute bottom-4 left-4 right-4 z-10">
+                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight font-sans group-hover:text-[#00D28F] transition-colors line-clamp-1">
                       {service.title}
                     </h3>
                   </div>
                 </div>
 
-                {/* 2. Body Details with Clean Spacing */}
-                <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 bg-white">
+                {/* 2. Body Details with Strict Typography (Small Body Tier) */}
+                <div className="p-6 flex flex-col justify-between flex-1 bg-white">
                   <div>
-                    <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed mb-5 line-clamp-2">
+                    <p className="text-[14px] md:text-[16px] text-zinc-600 font-normal leading-relaxed mb-4 line-clamp-2">
                       {service.description}
                     </p>
 
                     {/* Key Deliverables */}
-                    <div className="space-y-2 mb-6 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200/70">
+                    <div className="space-y-2 mb-6 p-4 rounded-xl bg-zinc-50 border border-zinc-200/70">
                       {service.deliverables.slice(0, 3).map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs text-zinc-700 font-medium">
-                          <Check className="w-3.5 h-3.5 text-[#00A870] shrink-0" />
+                        <div key={idx} className="flex items-center gap-2 text-[14px] text-zinc-700 font-medium">
+                          <Check className="w-4 h-4 text-[#00A870] shrink-0" />
                           <span className="truncate">{item}</span>
                         </div>
                       ))}
@@ -243,10 +250,10 @@ export default function ServicesHorizontalScroll({
                   {/* 3. Bottom Action Bar */}
                   <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider font-mono">
+                      <span className="text-[12px] font-mono text-zinc-400 uppercase font-bold tracking-wider">
                         Target Impact
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-[#00A870] font-mono">
+                      <span className="text-[14px] md:text-[16px] font-bold text-[#00A870] font-mono">
                         {service.metrics}
                       </span>
                     </div>
@@ -254,15 +261,15 @@ export default function ServicesHorizontalScroll({
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/services/${service.slug}`}
-                        className="px-3.5 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider text-zinc-900 bg-zinc-100 hover:bg-zinc-200 transition-colors flex items-center gap-1"
+                        className="px-4 py-2 rounded-full font-bold text-[14px] uppercase tracking-wider text-zinc-900 bg-zinc-100 hover:bg-zinc-200 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
                       >
                         <span>Scope</span>
-                        <ChevronRight className="w-3 h-3" />
+                        <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
 
                       <button
                         onClick={onOpenBooking}
-                        className="px-3.5 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-md shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-1 cursor-pointer"
+                        className="px-4 py-2 rounded-full font-bold text-[14px] uppercase tracking-wider text-[#0A0A0A] bg-[#00D28F] hover:bg-[#00B87D] shadow-md shadow-[#00D28F]/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-1 cursor-pointer"
                         title="Book Discovery Call"
                       >
                         <span>Book</span>
