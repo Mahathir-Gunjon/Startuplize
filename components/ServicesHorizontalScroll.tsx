@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
@@ -22,7 +22,6 @@ import {
   Gauge,
   Zap,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface ServicesHorizontalScrollProps {
   onOpenBooking: () => void;
@@ -50,15 +49,6 @@ export default function ServicesHorizontalScroll({
 }: ServicesHorizontalScrollProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filterCategories = [
-    "All",
-    "Webflow & 3D",
-    "WordPress & Headless",
-    "Branding & Wix",
-    "SEO & Paid Growth",
-  ];
 
   const getIcon = (id: string) => {
     switch (id) {
@@ -81,17 +71,6 @@ export default function ServicesHorizontalScroll({
     }
   };
 
-  const filteredServices = SERVICES.filter((item) => {
-    if (activeFilter === "All") return true;
-    if (activeFilter === "Webflow & 3D") return item.id === "webflow";
-    if (activeFilter === "WordPress & Headless") return item.id === "wordpress";
-    if (activeFilter === "Branding & Wix") return item.id === "branding" || item.id === "wix";
-    if (activeFilter === "SEO & Paid Growth") {
-      return item.id === "seo" || item.id === "meta-ads" || item.id === "google-ads";
-    }
-    return true;
-  });
-
   useGSAP(
     () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -102,37 +81,41 @@ export default function ServicesHorizontalScroll({
 
       const mm = gsap.matchMedia();
 
-      // Desktop Only: Horizontal Scrolling Track Pin
+      // Desktop (>= 1024px): Pinned Horizontal Scrolling Track with dynamic calculations
       mm.add("(min-width: 1024px)", () => {
-        const scrollWidth = track.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        const distanceToScroll = scrollWidth - viewportWidth + 120;
+        const getDistance = () => {
+          if (!track) return 0;
+          return Math.max(0, track.scrollWidth - window.innerWidth + 160);
+        };
 
         const tween = gsap.to(track, {
-          x: -distanceToScroll,
+          x: () => -getDistance(),
           ease: "none",
           scrollTrigger: {
             trigger: trigger,
             start: "top top",
-            end: () => `+=${Math.max(distanceToScroll * 1.1, 1300)}`,
+            end: () => `+=${getDistance()}`,
             pin: true,
-            scrub: 1,
+            scrub: 0.8,
             invalidateOnRefresh: true,
             anticipatePin: 1,
           },
         });
+
+        // Trigger refresh once fonts/layout are stable
+        ScrollTrigger.refresh();
 
         return () => {
           tween.kill();
         };
       });
 
-      // Mobile / Tablet: Standard Vertical Scroll Stack with Subtle Fade
+      // Mobile / Tablet (< 1024px): Clean natural vertical stack without pin locking
       mm.add("(max-width: 1023px)", () => {
         gsap.set(track, { clearProps: "all" });
       });
     },
-    { dependencies: [activeFilter], scope: triggerRef }
+    { scope: triggerRef }
   );
 
   return (
@@ -141,11 +124,11 @@ export default function ServicesHorizontalScroll({
       ref={triggerRef}
       className="relative bg-[#FAFAFA] text-[#1A1A1A] border-t border-zinc-200 overflow-hidden"
     >
-      {/* Centered Horizontal Viewport with 8pt Spacing */}
-      <div className="lg:h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden py-16 lg:py-12">
-        <div className="max-w-[1366px] w-full mx-auto mb-8">
-          {/* Header & Filter Pills */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      {/* Viewport Container: Centered on desktop when pinned, natural padding on mobile */}
+      <div className="lg:h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden py-16 lg:py-8">
+        <div className="max-w-[1366px] w-full mx-auto mb-6 sm:mb-8">
+          {/* Header Row without filter tabs */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-2">
@@ -161,36 +144,28 @@ export default function ServicesHorizontalScroll({
               </h2>
             </div>
 
-            {/* Filter Pills */}
-            <div className="flex flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar gap-2 bg-zinc-100 p-1.5 rounded-full border border-zinc-200 self-start lg:self-auto max-w-full font-mono">
-              {filterCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveFilter(cat)}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-[14px] font-normal transition-all duration-200 shrink-0 cursor-pointer",
-                    activeFilter === cat
-                      ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25 font-semibold"
-                      : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
+            {/* Right Meta Info Badge */}
+            <div className="flex items-center gap-3 text-zinc-500 font-mono text-[14px] font-normal self-start sm:self-auto bg-zinc-100/80 px-4 py-2 rounded-full border border-zinc-200">
+              <span className="flex items-center gap-1.5 text-[#00A870]">
+                <Sparkles className="w-4 h-4" />
+                <span>{SERVICES.length} Core Disciplines</span>
+              </span>
+              <span>•</span>
+              <span className="hidden sm:inline text-zinc-600">Scroll to Explore</span>
             </div>
           </div>
         </div>
 
-        {/* Scrolling Track: Sharper rounded-2xl Cards */}
-        <div className="w-full overflow-x-auto lg:overflow-x-visible no-scrollbar">
+        {/* Scrolling Track Container: Smooth Horizontal Flow with 8pt Spacing */}
+        <div className="w-full overflow-x-auto lg:overflow-visible no-scrollbar">
           <div
             ref={trackRef}
-            className="flex flex-col lg:flex-row gap-6 will-change-transform w-full lg:w-max pb-8 lg:pb-0 px-2 sm:px-4"
+            className="flex flex-col lg:flex-row gap-8 will-change-transform w-full lg:w-max pb-8 lg:pb-0 px-2 sm:px-4"
           >
-            {filteredServices.map((service) => (
+            {SERVICES.map((service, idx) => (
               <div
                 key={service.id}
-                className="w-full sm:w-[420px] lg:w-[430px] xl:w-[450px] shrink-0 rounded-2xl bg-white border border-zinc-200/90 shadow-md hover:border-[#00D28F] hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group"
+                className="w-full sm:w-[440px] lg:w-[460px] xl:w-[480px] shrink-0 rounded-2xl bg-white border border-zinc-200/90 shadow-md hover:border-[#00D28F] hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group"
               >
                 {/* 1. Aspect Ratio Image Header */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
@@ -198,7 +173,7 @@ export default function ServicesHorizontalScroll({
                     src={SERVICE_IMAGES[service.id] || SERVICE_IMAGES.webflow}
                     alt={service.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 450px"
+                    sizes="(max-width: 768px) 100vw, 480px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle Dark Vignette */}
@@ -224,6 +199,9 @@ export default function ServicesHorizontalScroll({
 
                   {/* Title overlay inside Image */}
                   <div className="absolute bottom-4 left-4 right-4 z-10">
+                    <span className="text-[12px] font-mono text-zinc-300 block mb-1">
+                      0{idx + 1} • Architecture
+                    </span>
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight font-sans group-hover:text-[#00D28F] transition-colors line-clamp-1">
                       {service.title}
                     </h3>
@@ -239,8 +217,8 @@ export default function ServicesHorizontalScroll({
 
                     {/* Key Deliverables */}
                     <div className="space-y-2 mb-6 p-4 rounded-xl bg-zinc-50 border border-zinc-200/70">
-                      {service.deliverables.slice(0, 3).map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-[14px] text-zinc-700 font-normal">
+                      {service.deliverables.slice(0, 3).map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2 text-[14px] text-zinc-700 font-normal">
                           <Check className="w-4 h-4 text-[#00A870] shrink-0" />
                           <span className="truncate">{item}</span>
                         </div>
