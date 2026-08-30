@@ -147,7 +147,8 @@ export default function ServicesHorizontalScroll({
           {/* Header & Filter Pills */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-2 font-mono">
+              {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-2">
                 <Layers className="w-4 h-4 text-[#00B87D]" />
                 <span>Target Impact &amp; Capabilities</span>
               </div>
@@ -167,9 +168,9 @@ export default function ServicesHorizontalScroll({
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
                   className={cn(
-                    "px-4 py-2 rounded-full text-[14px] font-semibold transition-all duration-200 shrink-0 cursor-pointer",
+                    "px-4 py-2 rounded-full text-[14px] font-normal transition-all duration-200 shrink-0 cursor-pointer",
                     activeFilter === cat
-                      ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25"
+                      ? "bg-[#00D28F] text-[#0A0A0A] shadow-md shadow-[#00D28F]/25 font-semibold"
                       : "text-zinc-600 hover:text-[#1A1A1A] hover:bg-zinc-200/60"
                   )}
                 >
@@ -208,14 +209,14 @@ export default function ServicesHorizontalScroll({
                     <div className="w-8 h-8 rounded-lg bg-black/65 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-md">
                       {getIcon(service.id)}
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[12px] font-bold text-white uppercase tracking-wider font-mono">
+                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[12px] font-normal text-white font-mono">
                       {service.category}
                     </span>
                   </div>
 
                   {/* Top Right Verified Metric Chip */}
                   <div className="absolute top-4 right-4 z-10">
-                    <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-[12px] font-mono font-bold flex items-center gap-1 shadow-lg">
+                    <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00D28F]/40 text-[#00D28F] text-[12px] font-mono font-normal flex items-center gap-1 shadow-lg">
                       <Zap className="w-3.5 h-3.5 text-[#00D28F]" />
                       <span>{service.metrics}</span>
                     </div>
@@ -239,7 +240,7 @@ export default function ServicesHorizontalScroll({
                     {/* Key Deliverables */}
                     <div className="space-y-2 mb-6 p-4 rounded-xl bg-zinc-50 border border-zinc-200/70">
                       {service.deliverables.slice(0, 3).map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-[14px] text-zinc-700 font-medium">
+                        <div key={idx} className="flex items-center gap-2 text-[14px] text-zinc-700 font-normal">
                           <Check className="w-4 h-4 text-[#00A870] shrink-0" />
                           <span className="truncate">{item}</span>
                         </div>
@@ -250,7 +251,7 @@ export default function ServicesHorizontalScroll({
                   {/* 3. Bottom Action Bar */}
                   <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="text-[12px] font-mono text-zinc-400 uppercase font-bold tracking-wider">
+                      <span className="text-[12px] font-mono text-zinc-400 font-normal">
                         Target Impact
                       </span>
                       <span className="text-[14px] md:text-[16px] font-bold text-[#00A870] font-mono">

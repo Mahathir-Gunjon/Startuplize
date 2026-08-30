@@ -111,8 +111,8 @@ export default function UnfairAdvantage() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00D28F]/10 rounded-full blur-[180px] pointer-events-none -z-10" />
 
       <div className="max-w-[1366px] w-full mx-auto flex flex-col items-center text-center">
-        {/* Section Pill Badge (8pt Spacing) */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[14px] md:text-[16px] font-bold uppercase tracking-wider text-[#00D28F] mb-8 font-mono">
+        {/* Section Pill Badge: text-[14px], not uppercase, not bold */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[14px] font-normal text-[#00D28F] mb-8 font-mono">
           <Zap className="w-4 h-4" />
           <span>The Strategic Edge</span>
         </div>
@@ -146,7 +146,7 @@ export default function UnfairAdvantage() {
           ))}
         </div>
 
-        {/* Bottom Proof Metrics (8pt Spacing & Strict Typography Tiers) */}
+        {/* Bottom Proof Metrics */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-white/10 text-[14px] md:text-[16px] text-zinc-400">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#00D28F]" />

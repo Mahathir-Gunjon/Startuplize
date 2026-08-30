@@ -30,12 +30,13 @@ export default function GlobalCTA({ onOpenBooking }: GlobalCTAProps) {
 
           {/* Top Pill Status Row (8pt Spacing) */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D28F]/15 border border-[#00D28F]/40 text-[14px] font-bold text-[#008A5E] uppercase tracking-wider font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D28F]/15 border border-[#00D28F]/40 text-[14px] font-normal text-[#008A5E] font-mono">
               <span className="w-2 h-2 rounded-full bg-[#00D28F] animate-pulse" />
-              <span>Available For Q3/Q4 Sprints</span>
+              <span>Available for Q3/Q4 Sprints</span>
             </div>
 
-            <div className="flex items-center gap-2 text-[14px] font-mono text-zinc-500 font-medium">
+            <div className="flex items-center gap-2 text-[14px] font-mono text-zinc-500 font-normal">
               <Clock className="w-4 h-4 text-[#008A5E]" />
               <span>Avg. Response Time: Under 2 Hours</span>
             </div>
@@ -59,7 +60,7 @@ export default function GlobalCTA({ onOpenBooking }: GlobalCTAProps) {
               </p>
 
               {/* Guarantees Checklist */}
-              <div className="flex flex-wrap items-center gap-6 text-[14px] md:text-[16px] text-zinc-600 pt-2 font-medium">
+              <div className="flex flex-wrap items-center gap-6 text-[14px] md:text-[16px] text-zinc-600 pt-2 font-normal">
                 <span className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#008A5E]" />
                   <span>Strict Confidentiality NDA</span>
@@ -103,7 +104,7 @@ export default function GlobalCTA({ onOpenBooking }: GlobalCTAProps) {
                   href="https://wa.me/15551234567"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3 px-4 rounded-xl bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 text-[14px] font-semibold text-zinc-800 hover:text-black transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-3 px-4 rounded-xl bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 text-[14px] font-normal text-zinc-800 hover:text-black transition-all flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 text-[#008A5E]" />
                   <span>WhatsApp VIP</span>
@@ -112,7 +113,7 @@ export default function GlobalCTA({ onOpenBooking }: GlobalCTAProps) {
                   href="https://t.me/startuplize"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3 px-4 rounded-xl bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 text-[14px] font-semibold text-zinc-800 hover:text-black transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-3 px-4 rounded-xl bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 text-[14px] font-normal text-zinc-800 hover:text-black transition-all flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4 text-[#008A5E]" />
                   <span>Telegram VIP</span>

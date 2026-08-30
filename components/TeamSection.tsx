@@ -91,7 +91,8 @@ export default function TeamSection({ onOpenBooking }: TeamSectionProps) {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="team-header-anim">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
               <Users className="w-4 h-4 text-[#00B87D]" />
               <span>The Creative Minds</span>
             </div>
@@ -134,7 +135,7 @@ export default function TeamSection({ onOpenBooking }: TeamSectionProps) {
 
                 {/* Floating Role Pill */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[12px] font-mono font-bold text-[#00D28F] uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[12px] font-mono font-normal text-[#00D28F]">
                     {member.role}
                   </span>
                 </div>
@@ -153,7 +154,7 @@ export default function TeamSection({ onOpenBooking }: TeamSectionProps) {
 
               {/* Skills / Action Bar */}
               <div className="p-4 bg-white border-t border-zinc-100 flex items-center justify-between">
-                <span className="text-[12px] font-mono font-semibold text-zinc-500">
+                <span className="text-[12px] font-mono font-normal text-zinc-500">
                   0{idx + 1} • Specialist
                 </span>
 

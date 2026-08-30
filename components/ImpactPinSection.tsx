@@ -92,7 +92,8 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
             className="lg:col-span-5 flex flex-col justify-between self-start pb-8"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-6 font-mono">
+              {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-6">
                 <TrendingUp className="w-4 h-4 text-[#00B87D]" />
                 <span>Our Track Record</span>
               </div>
@@ -135,7 +136,7 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
             </button>
           </div>
 
-          {/* Right Column (7 Columns): Metric Cards (Sharper rounded-2xl) */}
+          {/* Right Column (7 Columns): Metric Cards */}
           <div className="lg:col-span-7 space-y-6">
             {impactCards.map((card, idx) => (
               <div
@@ -144,10 +145,10 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
               >
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                    <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-bold text-zinc-700 uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-normal text-zinc-700">
                       {card.category}
                     </span>
-                    <span className="text-[14px] font-mono font-semibold text-[#00B87D] flex items-center gap-1">
+                    <span className="text-[14px] font-mono font-normal text-[#00B87D] flex items-center gap-1">
                       <ShieldCheck className="w-4 h-4" />
                       {card.client}
                     </span>
@@ -172,7 +173,7 @@ export default function ImpactPinSection({ onOpenBooking }: ImpactPinSectionProp
                     {card.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full bg-zinc-50 text-[12px] font-mono text-zinc-600 border border-zinc-200"
+                        className="px-3 py-1 rounded-full bg-zinc-50 text-[12px] font-mono text-zinc-600 border border-zinc-200 font-normal"
                       >
                         {tag}
                       </span>

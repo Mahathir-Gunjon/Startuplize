@@ -17,13 +17,13 @@ function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
             ))}
           </div>
 
-          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-semibold text-zinc-700 flex items-center gap-1.5">
+          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-normal text-zinc-700 flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#00B87D]" />
             <span>Verified Founder</span>
           </span>
         </div>
 
-        <div className="inline-block px-3 py-1 rounded-lg bg-[#00D28F]/10 border border-[#00D28F]/30 text-[12px] font-bold text-[#00A870] font-mono mb-4">
+        <div className="inline-block px-3 py-1 rounded-lg bg-[#00D28F]/10 border border-[#00D28F]/30 text-[12px] font-normal text-[#00A870] font-mono mb-4">
           {review.service}
         </div>
 
@@ -68,7 +68,8 @@ export default function Testimonials() {
       <div className="max-w-[1366px] mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+          {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
             <Star className="w-4 h-4 fill-[#00D28F] text-[#00D28F]" />
             <span>Verified Client Feedback</span>
           </div>
@@ -119,7 +120,7 @@ export default function Testimonials() {
         </div>
 
         {/* Hover Hint */}
-        <div className="flex items-center justify-center gap-2 text-[12px] font-mono text-zinc-500 mt-8">
+        <div className="flex items-center justify-center gap-2 text-[12px] font-mono text-zinc-500 mt-8 font-normal">
           <MessageSquare className="w-3.5 h-3.5" />
           <span>Hover over any review card to pause vertical marquee</span>
         </div>

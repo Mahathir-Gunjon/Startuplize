@@ -126,7 +126,8 @@ export default function InteractiveServicesHover({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
               <Sparkles className="w-4 h-4 text-[#00B87D]" />
               <span>Visual Excellence Showcase</span>
             </div>
@@ -170,7 +171,7 @@ export default function InteractiveServicesHover({
               </div>
 
               <div className="flex items-center gap-6 self-start md:self-auto pl-12 md:pl-0">
-                <span className="px-3 py-1.5 rounded-full bg-[#00D28F]/10 text-[12px] font-bold text-[#00A870] font-mono border border-[#00D28F]/30">
+                <span className="px-3 py-1.5 rounded-full bg-[#00D28F]/10 text-[12px] font-normal text-[#00A870] font-mono border border-[#00D28F]/30">
                   {service.metric}
                 </span>
                 <div className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center group-hover:bg-[#00D28F] group-hover:border-[#00D28F] group-hover:scale-105 active:scale-95 transition-all shadow-sm">

@@ -83,7 +83,8 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
         <div className="mb-24">
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
               <span>Execution Framework</span>
             </div>
             {/* Strictly H2 (text-3xl md:text-5xl) */}
@@ -113,7 +114,7 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
               {processSteps.map((step) => (
                 <div key={step.number} className="relative flex items-start gap-6 sm:gap-8">
                   {/* Step Node */}
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white border-2 border-[#00D28F] shadow-md flex items-center justify-center shrink-0 z-10 font-mono font-bold text-[#00A870] text-[14px] sm:text-[16px]">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white border-2 border-[#00D28F] shadow-md flex items-center justify-center shrink-0 z-10 font-mono font-normal text-[#00A870] text-[14px] sm:text-[16px]">
                     {step.number}
                   </div>
 
@@ -123,7 +124,7 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
                       <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] font-sans tracking-tight">
                         {step.title}
                       </h3>
-                      <span className="px-3 py-1 rounded-full bg-[#00D28F]/15 text-[12px] font-mono font-bold text-[#00A870] uppercase tracking-wider border border-[#00D28F]/30">
+                      <span className="px-3 py-1 rounded-full bg-[#00D28F]/15 text-[12px] font-mono font-normal text-[#00A870] border border-[#00D28F]/30">
                         {step.duration}
                       </span>
                     </div>
@@ -135,7 +136,7 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-4 border-t border-zinc-200">
                       {step.points.map((pt, i) => (
-                        <div key={i} className="flex items-center gap-2 text-[14px] text-zinc-700 font-medium">
+                        <div key={i} className="flex items-center gap-2 text-[14px] text-zinc-700 font-normal">
                           <Check className="w-4 h-4 text-[#00B87D] shrink-0" />
                           <span>{pt}</span>
                         </div>
@@ -151,7 +152,8 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
         {/* Part 2: Frequently Asked Questions */}
         <div id="faq" className="max-w-4xl mx-auto pt-16 border-t border-zinc-200">
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
               <HelpCircle className="w-4 h-4 text-[#00B87D]" />
               <span>Inquiries &amp; Transparency</span>
             </div>
@@ -210,7 +212,7 @@ export default function ProcessTimeline({ onOpenBooking }: ProcessTimelineProps)
               </div>
               <div>
                 <h4 className="text-[16px] md:text-[18px] font-bold text-[#1A1A1A]">Have a unique requirement?</h4>
-                <p className="text-[14px] text-zinc-500">Speak directly with our technical leadership.</p>
+                <p className="text-[14px] text-zinc-500 font-normal">Speak directly with our technical leadership.</p>
               </div>
             </div>
             <button

@@ -38,14 +38,14 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-[#00D28F]/12 rounded-full blur-[200px] pointer-events-none -z-10" />
 
         <div className="max-w-[1366px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Status Bar: 'All Systems Operational Worldwide' */}
+          {/* Top Status Bar: 'All Systems Operational Worldwide' (text-14, font-normal, not uppercase, not bold) */}
           <div className="pb-12 mb-16 border-b border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D28F] opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00D28F]" />
               </span>
-              <span className="text-[14px] font-bold text-[#00D28F] uppercase tracking-wider font-mono">
+              <span className="text-[14px] font-normal text-[#00D28F] font-mono">
                 All Systems Operational Worldwide
               </span>
             </div>
@@ -81,7 +81,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
 
               {/* Newsletter Box */}
               <div className="w-full max-w-sm">
-                <span className="text-[12px] font-bold text-zinc-300 uppercase tracking-wider block mb-2 font-mono">
+                <span className="text-[12px] font-normal text-zinc-300 block mb-2 font-mono">
                   The Weekly Growth Brief
                 </span>
                 <form onSubmit={handleSubscribe} className="relative flex items-center">
@@ -95,13 +95,13 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
                   />
                   <button
                     type="submit"
-                    className="absolute right-1.5 px-4 py-2 rounded-full bg-[#00D28F] text-[#0A0A0A] text-[12px] font-bold uppercase tracking-wider hover:bg-[#00B87D] transition-colors cursor-pointer font-mono"
+                    className="absolute right-1.5 px-4 py-2 rounded-full bg-[#00D28F] text-[#0A0A0A] text-[12px] font-normal uppercase tracking-wider hover:bg-[#00B87D] transition-colors cursor-pointer font-mono"
                   >
                     {subscribed ? <Check className="w-3.5 h-3.5" /> : "Join"}
                   </button>
                 </form>
                 {subscribed && (
-                  <p className="text-[12px] text-[#00D28F] mt-1.5 font-medium font-mono">
+                  <p className="text-[12px] text-[#00D28F] mt-1.5 font-normal font-mono">
                     ✓ Welcome to the inner circle.
                   </p>
                 )}
@@ -110,7 +110,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
 
             {/* Column 2: Growth Disciplines (3 cols) */}
             <div className="lg:col-span-3">
-              <h4 className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 mb-6 font-mono">
+              <h4 className="text-[14px] font-normal text-zinc-400 mb-6 font-mono">
                 Growth Disciplines
               </h4>
               <ul className="space-y-3 text-[14px] md:text-[16px] text-zinc-400">
@@ -138,7 +138,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
 
             {/* Column 3: Navigation & Archive (2 cols) */}
             <div className="lg:col-span-2">
-              <h4 className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 mb-6 font-mono">
+              <h4 className="text-[14px] font-normal text-zinc-400 mb-6 font-mono">
                 Company
               </h4>
               <ul className="space-y-3 text-[14px] md:text-[16px] text-zinc-400">
@@ -164,7 +164,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
             {/* Column 4: Global Headquarters & Socials (3 cols) */}
             <div className="lg:col-span-3 space-y-6">
               <div>
-                <h4 className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 mb-3 font-mono">
+                <h4 className="text-[14px] font-normal text-zinc-400 mb-3 font-mono">
                   Headquarters
                 </h4>
                 <p className="text-[14px] md:text-[16px] text-zinc-300 flex items-start gap-2">
@@ -174,7 +174,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
               </div>
 
               <div>
-                <h4 className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 mb-2 font-mono">
+                <h4 className="text-[14px] font-normal text-zinc-400 mb-2 font-mono">
                   Direct Inquiries
                 </h4>
                 <a
@@ -193,7 +193,7 @@ export default function MegaFooter({ onOpenBooking }: MegaFooterProps) {
 
               {/* Social Channels */}
               <div className="pt-2">
-                <span className="text-[12px] font-bold text-zinc-400 uppercase tracking-wider block mb-3 font-mono">
+                <span className="text-[12px] font-normal text-zinc-400 block mb-3 font-mono">
                   Connect
                 </span>
                 <div className="flex items-center gap-2">

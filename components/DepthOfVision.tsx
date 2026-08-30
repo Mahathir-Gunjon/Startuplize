@@ -88,18 +88,18 @@ export default function DepthOfVision({ onOpenBooking }: DepthOfVisionProps) {
 
       <div className="max-w-[1366px] mx-auto w-full">
         {/* =========================================================================
-            12-COLUMN GRID: TEXT CONTENT (LEFT 6) + IMAGE REVEAL (RIGHT 6)
+            12-COLUMN GRID (items-stretch for 100% EQUAL HEIGHT IMAGE MATCH)
             ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* =====================================================================
-              PART 1: TEXT CONTENT (Strict Typography Tiers)
+              PART 1: TEXT CONTENT (LEFT 6 COLS)
               ===================================================================== */}
           <div
             ref={textContentRef}
-            className="lg:col-span-6 flex flex-col items-start text-left space-y-6"
+            className="lg:col-span-6 flex flex-col justify-between items-start text-left space-y-6"
           >
-            {/* Eyebrow Capsule (8pt Spacing) */}
-            <div className="dov-scroll-anim inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider font-mono">
+            {/* Eyebrow Capsule: text-14, font-normal, not uppercase, not bold */}
+            <div className="dov-scroll-anim inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono">
               <Compass className="w-4 h-4 text-[#00B87D]" />
               <span>Depth of Vision &amp; Architecture</span>
             </div>
@@ -113,7 +113,7 @@ export default function DepthOfVision({ onOpenBooking }: DepthOfVisionProps) {
               for tier-1 brands.
             </h2>
 
-            {/* Subtitle Paragraph (Normal Body Tier: text-[16px] md:text-[18px]) */}
+            {/* Subtitle Paragraph */}
             <p className="dov-scroll-anim text-[16px] md:text-[18px] text-zinc-600 font-normal leading-relaxed">
               Your website is your company&apos;s most valuable digital asset. When tier-1 investors,
               enterprise prospects, and elite talent land on your page, every millimeter of design
@@ -162,24 +162,24 @@ export default function DepthOfVision({ onOpenBooking }: DepthOfVisionProps) {
           </div>
 
           {/* =====================================================================
-              PART 2: HIGH-IMPACT FLAGSHIP IMAGE WITH "IMAGE REVEAL" ANIMATION
+              PART 2: EQUAL HEIGHT IMAGE (Matches 100% Full Height of Content)
               ===================================================================== */}
           <div
             ref={imageContainerRef}
-            className="lg:col-span-6 relative w-full flex justify-center lg:justify-end"
+            className="lg:col-span-6 relative w-full h-full min-h-[460px] lg:min-h-full flex flex-col justify-center"
           >
             {/* Outer Container with Ambient Glow */}
-            <div className="relative w-full max-w-lg lg:max-w-none">
+            <div className="relative w-full h-full flex flex-col">
               {/* Glowing Mint Ambient Backdrop Glow */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-[#00D28F]/25 via-emerald-200/30 to-transparent rounded-2xl blur-xl -z-10 opacity-70" />
 
-              {/* Image Reveal Wrapper with GSAP Clip-Path Wipe (Sharper rounded-2xl) */}
+              {/* Image Reveal Wrapper: full height match with rounded-2xl */}
               <div
                 ref={imageRevealRef}
-                className="relative aspect-[4/3] sm:aspect-[16/11] w-full rounded-2xl overflow-hidden bg-zinc-950 shadow-2xl border border-zinc-200/90 group"
+                className="relative w-full h-full min-h-[460px] rounded-2xl overflow-hidden bg-zinc-950 shadow-2xl border border-zinc-200/90 group flex flex-col justify-between"
               >
-                {/* Scaled Image Element */}
-                <div ref={imageElementRef} className="relative w-full h-full">
+                {/* Scaled Image Element filling 100% height */}
+                <div ref={imageElementRef} className="absolute inset-0 w-full h-full">
                   <Image
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
                     alt="Startuplize High-Impact Web Architecture Mockup"
@@ -188,29 +188,26 @@ export default function DepthOfVision({ onOpenBooking }: DepthOfVisionProps) {
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                 </div>
 
-                {/* Top Floating Glassmorphic Badge */}
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                  <span className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-mono font-bold text-[#00D28F] flex items-center gap-1.5 shadow-lg">
+                {/* Top Floating Badges */}
+                <div className="relative z-10 p-5 flex items-center justify-between w-full">
+                  <span className="px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-mono text-[#00D28F] flex items-center gap-1.5 shadow-lg">
                     <Shield className="w-3.5 h-3.5 text-[#00D28F]" />
                     <span>Awwwards Standard</span>
                   </span>
-                </div>
 
-                {/* Top Right 60FPS Performance Badge */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-mono font-bold text-white flex items-center gap-1.5 shadow-lg">
+                  <span className="px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-mono text-white flex items-center gap-1.5 shadow-lg">
                     <Zap className="w-3.5 h-3.5 text-[#33FFBA]" />
                     <span>60FPS Shaders</span>
                   </span>
                 </div>
 
                 {/* Bottom Floating Result Card */}
-                <div className="absolute bottom-4 left-4 right-4 z-10 p-4 rounded-xl bg-black/80 backdrop-blur-xl border border-white/15 text-white flex items-center justify-between shadow-2xl">
+                <div className="relative z-10 p-5 m-4 rounded-xl bg-black/80 backdrop-blur-xl border border-white/15 text-white flex items-center justify-between shadow-2xl">
                   <div>
-                    <span className="text-[12px] font-mono text-[#00D28F] font-bold uppercase tracking-wider block">
+                    <span className="text-[12px] font-mono text-[#00D28F] block">
                       Proven Impact
                     </span>
                     <h5 className="text-[16px] md:text-[18px] font-bold font-sans">

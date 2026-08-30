@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import {
   ArrowUpRight,
-  Sparkles,
   Star,
   Calendar,
   Award,
@@ -79,8 +78,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
               LEFT COLUMN: HERO HEADLINE, SUBHEADING & DUAL CTA BUTTONS
               ===================================================================== */}
           <div className="lg:col-span-8 flex flex-col items-start text-left">
-            {/* Eyebrow Capsule Text Tag (8pt Spacing) */}
-            <div className="hero-stagger-item inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D28F]/15 border border-[#00D28F]/40 text-[14px] md:text-[16px] font-mono font-bold tracking-wider uppercase text-[#00D28F] mb-6 self-start backdrop-blur-md shadow-lg shadow-[#00D28F]/10">
+            {/* Eyebrow Capsule Text Tag: text-[14px], not uppercase, not bold */}
+            <div className="hero-stagger-item inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D28F]/15 border border-[#00D28F]/40 text-[14px] font-normal font-mono text-[#00D28F] mb-6 self-start backdrop-blur-md shadow-lg shadow-[#00D28F]/10">
               <span className="w-2 h-2 rounded-full bg-[#00D28F] animate-ping" />
               <span>Creative Partner for Ambitious Brands</span>
             </div>
@@ -178,13 +177,13 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
               {/* Bottom Verified Metric Chips */}
               <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-white/10 text-[14px] font-mono text-zinc-300">
-                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[#00D28F] font-bold">
+                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[#00D28F] font-normal">
                   • 99.8% CSAT
                 </span>
-                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-white">
+                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-white font-normal">
                   • 100/100 LCP
                 </span>
-                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-white">
+                <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-white font-normal">
                   • 18 Awwwards
                 </span>
               </div>

@@ -8,11 +8,11 @@ import GlobalCTA from "@/components/GlobalCTA";
 import BookingModal from "@/components/BookingModal";
 import CustomCursor from "@/components/CustomCursor";
 import { TESTIMONIALS_EXPANDED } from "@/lib/data";
-import { Star, ShieldCheck, MessageSquare, Award, Sparkles, CheckCircle2 } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
 
 function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
   return (
-    <div className="rounded-3xl p-8 bg-white border border-zinc-200 shadow-sm hover:shadow-xl hover:border-[#00D28F] transition-all duration-300 flex flex-col justify-between select-none mb-6">
+    <div className="rounded-2xl p-6 sm:p-8 bg-white border border-zinc-200 shadow-sm hover:shadow-xl hover:border-[#00D28F] transition-all duration-300 flex flex-col justify-between select-none mb-6">
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-1 text-[#00B87D]">
@@ -21,17 +21,18 @@ function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
             ))}
           </div>
 
-          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-700 flex items-center gap-1.5">
+          <span className="px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-mono font-normal text-zinc-700 flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#00B87D]" />
             <span>Verified Founder</span>
           </span>
         </div>
 
-        <div className="inline-block px-3 py-1 rounded-xl bg-[#00D28F]/15 border border-[#00D28F]/40 text-xs font-bold text-[#00A870] font-mono mb-4">
+        <div className="inline-block px-3 py-1 rounded-lg bg-[#00D28F]/15 border border-[#00D28F]/40 text-[12px] font-normal text-[#00A870] font-mono mb-4">
           {review.service}
         </div>
 
-        <p className="text-base text-zinc-700 font-normal leading-relaxed italic mb-6">
+        {/* Small Body Tier */}
+        <p className="text-[14px] md:text-[16px] text-zinc-700 font-normal leading-relaxed italic mb-6">
           &ldquo;{review.quote}&rdquo;
         </p>
       </div>
@@ -47,10 +48,10 @@ function ReviewCard({ review }: { review: (typeof TESTIMONIALS_EXPANDED)[0] }) {
           />
         </div>
         <div className="flex flex-col">
-          <span className="text-base font-bold text-[#1A1A1A]">
+          <span className="text-[16px] font-bold text-[#1A1A1A]">
             {review.name}
           </span>
-          <span className="text-xs text-zinc-500 font-normal">
+          <span className="text-[12px] text-zinc-500 font-normal">
             {review.role}, <span className="text-[#00B87D] font-semibold">{review.company}</span>
           </span>
         </div>
@@ -74,23 +75,26 @@ export default function TestimonialsPage() {
       {/* Main Content Curtain Layer */}
       <div className="relative z-10 bg-[#FAFAFA] shadow-[0_45px_100px_rgba(0,0,0,0.55)]">
         {/* Hero */}
-        <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
+        <section className="pt-36 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] text-white relative overflow-hidden">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D28F]/15 rounded-full blur-[190px] pointer-events-none -z-10" />
 
           <div className="max-w-[1366px] mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-bold uppercase tracking-wider text-[#00D28F] mb-6">
-              <Star className="w-3.5 h-3.5 fill-[#00D28F]" />
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[14px] font-normal text-[#00D28F] mb-6 font-mono">
+              <Star className="w-4 h-4 fill-[#00D28F]" />
               <span>Verified Founder Love</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
+            {/* Strictly H1 (5xl md:7xl) */}
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white font-sans max-w-4xl mb-6">
               Trusted By The World&apos;s Most{" "}
               <span className="font-serif italic font-normal text-[#00D28F]">
                 Ambitious Founders.
               </span>
             </h1>
 
-            <p className="text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
+            {/* Large Body Tier */}
+            <p className="text-[20px] md:text-[24px] text-zinc-300 max-w-2xl font-normal leading-relaxed mb-10">
               Read unfiltered feedback and quantifiable conversion metrics from CMOs, VCs, and tech
               executives who scaled their digital presence with Startuplize.
             </p>
@@ -105,15 +109,15 @@ export default function TestimonialsPage() {
               ].map((stat, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center"
+                  className="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center"
                 >
                   <div className="text-xl sm:text-2xl font-mono font-bold text-[#00D28F]">
                     {stat.value}
                   </div>
-                  <div className="text-xs font-semibold text-white mt-1">
+                  <div className="text-[14px] font-semibold text-white mt-1">
                     {stat.label}
                   </div>
-                  <div className="text-[10px] text-zinc-400 mt-0.5">
+                  <div className="text-[12px] text-zinc-400 mt-0.5 font-mono">
                     {stat.sub}
                   </div>
                 </div>
@@ -123,19 +127,20 @@ export default function TestimonialsPage() {
         </section>
 
         {/* Opposing Vertical Marquees Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-[1366px] mx-auto">
             <div className="text-center mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
+              <span className="text-[14px] font-normal text-zinc-400 font-mono block mb-2">
                 Endless Social Proof
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
+              {/* Strictly H2 (text-3xl md:text-5xl) */}
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] font-sans">
                 Dual Opposing{" "}
                 <span className="font-serif italic font-normal text-[#00B87D]">
                   Vertical Feeds.
                 </span>
               </h2>
-              <p className="text-xs text-zinc-500 mt-2">
+              <p className="text-[12px] text-zinc-500 mt-2 font-mono">
                 Hover over any card to pause scrolling
               </p>
             </div>
@@ -164,7 +169,7 @@ export default function TestimonialsPage() {
           </div>
         </section>
 
-        {/* Universal Global CTA Banner (Light Mode) */}
+        {/* Universal Global CTA Banner */}
         <GlobalCTA onOpenBooking={() => setIsBookingOpen(true)} />
       </div>
 

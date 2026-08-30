@@ -250,7 +250,8 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
           <div className="stacked-header-anim">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] md:text-[16px] font-bold uppercase tracking-wider mb-4 font-mono">
+            {/* Section Capsule: text-[14px], font-normal, not uppercase, not bold */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-[14px] font-normal font-mono mb-4">
               <Layers className="w-4 h-4 text-[#00B87D]" />
               <span>Stacked Digital Flagships</span>
             </div>
@@ -273,7 +274,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
         </div>
 
         {/* =========================================================================
-            STACKED CARDS CONTAINER: Sharper rounded-2xl Container
+            STACKED CARDS CONTAINER: Sharper rounded-2xl Container with Equal Height Image
             ========================================================================= */}
         <div className="space-y-12 lg:space-y-16 relative pb-16">
           {TEMPLATES.map((template, idx) => (
@@ -285,9 +286,9 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
               }}
               className={`stacked-card lg:sticky rounded-2xl bg-gradient-to-br ${template.bgGradient} text-white border ${template.borderColor} p-6 sm:p-8 lg:p-12 shadow-2xl overflow-hidden backdrop-blur-2xl transition-all duration-300`}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
                 {/* Left Info Column (5 Columns) */}
-                <div className="lg:col-span-5 space-y-6">
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
                   {/* Category & Year */}
                   <div className="flex items-center justify-between gap-4">
                     <span
@@ -296,13 +297,13 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                         borderColor: `${template.accentColor}50`,
                         color: template.accentColor,
                       }}
-                      className="px-3 py-1 rounded-full border text-[12px] font-mono font-bold uppercase tracking-wider"
+                      className="px-3 py-1 rounded-full border text-[12px] font-mono font-normal"
                     >
                       {template.category}
                     </span>
 
-                    <span className="text-[12px] font-mono font-semibold text-zinc-400">
-                      CASE 0{idx + 1} • {template.year}
+                    <span className="text-[12px] font-mono font-normal text-zinc-400">
+                      Case 0{idx + 1} • {template.year}
                     </span>
                   </div>
 
@@ -326,7 +327,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
 
                   {/* Impact Benchmark */}
                   <div className="p-4 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-between">
-                    <span className="text-[12px] font-mono font-bold text-zinc-400 uppercase tracking-wider">
+                    <span className="text-[12px] font-mono font-normal text-zinc-400">
                       Verified Result
                     </span>
                     <span
@@ -379,10 +380,10 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                   </div>
                 </div>
 
-                {/* Right Image / Mockup Preview with Image Reveal Animation (7 Columns) */}
-                <div className="lg:col-span-7">
-                  <div className="portfolio-image-reveal relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-zinc-950 border border-white/15 shadow-2xl group">
-                    <div className="portfolio-image-elem relative w-full h-full">
+                {/* Right Image (7 Columns): Equal Height Image Container */}
+                <div className="lg:col-span-7 h-full flex flex-col">
+                  <div className="portfolio-image-reveal relative aspect-[16/10] lg:aspect-auto w-full h-full min-h-[360px] lg:min-h-full rounded-xl overflow-hidden bg-zinc-950 border border-white/15 shadow-2xl group flex flex-col justify-between">
+                    <div className="portfolio-image-elem absolute inset-0 w-full h-full">
                       <Image
                         src={template.image}
                         alt={template.title}
@@ -394,7 +395,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                     </div>
 
                     {/* Top Device Bar Simulation */}
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between px-3 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-white/10">
+                    <div className="relative z-10 m-4 flex items-center justify-between px-3 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-white/10">
                       <div className="flex items-center gap-1">
                         <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
@@ -407,9 +408,9 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                     </div>
 
                     {/* Bottom Client Floating Badge */}
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                    <div className="relative z-10 m-4 flex items-center justify-between">
                       <div>
-                        <span className="text-[12px] font-mono font-bold text-[#00D28F] uppercase tracking-wider block">
+                        <span className="text-[12px] font-mono font-normal text-[#00D28F] block">
                           Client Flagship
                         </span>
                         <span className="text-[16px] font-bold text-white">
@@ -417,7 +418,7 @@ export default function StackedPortfolio({ onOpenBooking }: StackedPortfolioProp
                         </span>
                       </div>
 
-                      <div className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-semibold text-white flex items-center gap-2">
+                      <div className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[14px] font-normal text-white flex items-center gap-2">
                         <span>Live Architecture</span>
                         <ExternalLink className="w-3.5 h-3.5 text-[#00D28F]" />
                       </div>
