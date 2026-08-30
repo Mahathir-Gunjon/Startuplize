@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TopServicesTriptych from "@/components/TopServicesTriptych";
 import Marquee from "@/components/Marquee";
 import DepthOfVision from "@/components/DepthOfVision";
 import UnfairAdvantage from "@/components/UnfairAdvantage";
@@ -41,44 +42,47 @@ export default function HomePage() {
         {/* 1. Cinematic Hero */}
         <Hero onOpenBooking={handleOpenBooking} />
 
-        {/* 2. Partner Social Proof Badges & Kinetic Infinite Tag Marquee */}
+        {/* 2. Top 3 Flagship Services Triptych (Business Website, Custom Development, SEO) */}
+        <TopServicesTriptych onOpenBooking={handleOpenBooking} />
+
+        {/* 3. Partner Social Proof Badges & Kinetic Infinite Tag Marquee */}
         <Marquee />
 
-        {/* 3. Depth of Vision: 3-Layer Spatial Parallax Experience */}
+        {/* 4. Depth of Vision: 3-Layer Spatial Parallax Experience */}
         <DepthOfVision onOpenBooking={handleOpenBooking} />
 
-        {/* 4. The "Unfair Advantage" Sticky Scrollytelling Typography */}
+        {/* 5. The "Unfair Advantage" Sticky Scrollytelling Typography */}
         <UnfairAdvantage />
 
-        {/* 5. 5-Card Stacked Website Template Portfolio with Layering Effect */}
+        {/* 6. 5-Card Stacked Website Template Portfolio with Layering Effect */}
         <StackedPortfolio onOpenBooking={handleOpenBooking} />
 
-        {/* 6. Real Results: Left Column Pinned with Vertical Metric Cards */}
+        {/* 7. Real Results: Left Column Pinned with Vertical Metric Cards */}
         <ImpactPinSection onOpenBooking={handleOpenBooking} />
 
-        {/* 7. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
+        {/* 8. Specialized Growth Disciplines: Centered Horizontal Wheel Pin */}
         <ServicesHorizontalScroll onOpenBooking={handleOpenBooking} />
 
-        {/* 8. Feature Checklists with Word-Scaling Typography */}
+        {/* 9. Feature Checklists with Word-Scaling Typography */}
         <FeatureChecklist />
 
-        {/* 9. Visual Excellence Showcase: Text Hover Image Follower */}
+        {/* 10. Visual Excellence Showcase: Text Hover Image Follower */}
         <InteractiveServicesHover onOpenBooking={handleOpenBooking} />
 
-        {/* 10. Client Love: Dual Opposing Vertical Testimonial Marquees */}
+        {/* 11. Client Love: Dual Opposing Vertical Testimonial Marquees */}
         <Testimonials />
 
-        {/* 11. The Creative Minds: Grayscale-to-Color Team Showcase */}
+        {/* 12. The Creative Minds: Grayscale-to-Color Team Showcase */}
         <TeamSection onOpenBooking={handleOpenBooking} />
 
-        {/* 12. 4-Step Process Timeline & Collapsible FAQ Accordion */}
+        {/* 13. 4-Step Process Timeline & Collapsible FAQ Accordion */}
         <ProcessTimeline onOpenBooking={handleOpenBooking} />
 
-        {/* Universal Global High-Conversion CTA Banner (Light Mode) */}
+        {/* Universal Global High-Conversion CTA Banner */}
         <GlobalCTA onOpenBooking={handleOpenBooking} />
       </div>
 
-      {/* 13. Mega Footer with Underneath Parallax Reveal */}
+      {/* 14. Mega Footer with Underneath Parallax Reveal */}
       <MegaFooter onOpenBooking={handleOpenBooking} />
 
       {/* Interactive Cal.com Scheduling & Quick Brief Modal */}
