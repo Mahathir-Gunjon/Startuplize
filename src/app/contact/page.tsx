@@ -1,27 +1,16 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { 
-  Clock, 
-  Zap, 
-  ShieldCheck, 
   ArrowUpRight, 
-  CheckCircle2, 
-  Sparkles, 
   ChevronDown, 
-  Users, 
   Code2, 
-  Cpu, 
-  FileCheck2,
-  CalendarCheck,
+  Sparkles,
   Search,
-  MonitorPlay,
-  Rocket,
-  MessageCircle,
-  HelpCircle,
-  Layers,
-  ArrowRight
+  Users2,
+  Calendar,
+  MessageSquare
 } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { FooterApex } from '@/components/layout/FooterApex';
@@ -30,7 +19,7 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
-    // Cal.com inline embed initialization snippet
+    // Cal.com inline embed initialization
     (function (C: any, A: string, L: string) {
       const p = function (a: any, ar: any) {
         a.q.push(ar);
@@ -81,24 +70,24 @@ export default function ContactPage() {
     }
   }, []);
 
-  const diagnosticSteps = [
+  const capabilities = [
     {
-      step: '01',
-      title: 'Pre-Call Architecture Diagnostics',
-      desc: 'Before we join Google Meet, our senior engineering team runs comprehensive Lighthouse audits, evaluates server response times, checks schema, and tests database queries.',
-      icon: Search,
+      title: 'Custom Web Engineering',
+      desc: 'Bespoke WordPress & Webflow platforms built with zero bloat and sub-second speed.',
+      image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
+      tag: 'Web & CMS Architecture',
     },
     {
-      step: '02',
-      title: 'Live Technical Screen Share (15 Mins)',
-      desc: 'We walk you through real data: why your site loses mobile visitors, where plugin bloat is harming search rank, and whether custom WordPress ACF or Webflow CMS fits your goals.',
-      icon: MonitorPlay,
+      title: 'Organic & Local Search',
+      desc: 'Google Map 3-pack dominance and technical SEO designed to convert visitors into booked clients.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+      tag: 'Local 3-Pack & SEO',
     },
     {
-      step: '03',
-      title: 'Fixed-Scope Sprint Roadmap (15 Mins)',
-      desc: 'You receive an exact 2 to 4-week execution blueprint with guaranteed deliverables, direct Slack communication with builders, and flat transparent sprint pricing.',
-      icon: Rocket,
+      title: 'Direct Senior Collaboration',
+      desc: 'Zero account managers or junior buffers. Work directly with the senior developers building your site.',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+      tag: 'Senior Talent Only',
     },
   ];
 
@@ -153,140 +142,104 @@ export default function ContactPage() {
     },
   ];
 
-  const bookingFaqs = [
+  const quickFaqs = [
     {
-      q: 'What should I have prepared before our strategy call?',
-      a: 'Just your current website URL and any reference sites or Figma designs you love. If you don’t have a website yet, simply bring your core project objectives. We handle all technical discovery.',
+      q: 'How long is the call?',
+      a: 'As long as you need. There are no strict timers or rush — we take the time necessary to understand your project and goals.',
     },
     {
-      q: 'Is this call a sales pitch or an engineering consultation?',
-      a: 'Strictly technical. You speak directly with our senior developers and engineers — zero sales reps, zero pushy closes. Even if you don’t partner with us, you keep the entire audit.',
+      q: 'What should I have prepared?',
+      a: 'Just your vision, website URL, or project notes. We handle all technical discovery.',
     },
     {
-      q: 'Do you work on existing websites or only new custom builds?',
-      a: 'Both. We execute complete performance revamps for existing slow WordPress and Webflow platforms, as well as greenfield custom builds engineered from scratch.',
-    },
-    {
-      q: 'How fast can our project sprint start after the call?',
-      a: 'Because we operate on a dedicated sprint model with senior developers only, client sprints typically launch within 3 to 5 business days after scope finalization.',
-    },
-    {
-      q: 'What technologies do you engineer with?',
-      a: 'We specialize exclusively in custom ACF Pro WordPress themes, scalable Webflow CMS architectures, programmatic technical SEO, Google Map Local 3-Pack rank, and high-ROAS Meta ad creatives.',
+      q: 'Can I message you instead of scheduling a call?',
+      a: 'Yes! Reach out on WhatsApp or Instagram anytime for quick answers and quotes.',
     },
   ];
 
   return (
     <div className="min-h-screen bg-[#faf9f8] text-[#060612] flex flex-col justify-between selection:bg-[#ff6321] selection:text-white">
       
-      {/* 1. Global Standard Startuplize Unified Morphing Navbar */}
+      {/* 1. Global Startuplize Morphing Navbar */}
       <Header />
 
       {/* ========================================================================= */}
-      {/* SECTION 1: Strategic Hero & Engineering Highlights (Clean & Editorial) */}
+      {/* SECTION 1: Visual Hero — Flexible & Open (No Rigid Timers) */}
       {/* ========================================================================= */}
       <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 pt-36 sm:pt-48 pb-16 border-b border-[#e7e2dd]">
-        <div className="max-w-4xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono text-[#ff6321] font-semibold tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] animate-pulse" />
-            <span>DIRECT STRATEGY SPRINT // 1-ON-1 WITH SENIOR BUILDERS</span>
-          </div>
-
-          <h1 
-            style={{ color: '#060612' }}
-            className="font-heading font-medium text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08]"
-          >
-            Let&apos;s engineer your next digital platform.
-          </h1>
-
-          <p 
-            style={{ color: '#55545a' }}
-            className="text-lg sm:text-xl font-body leading-relaxed max-w-3xl"
-          >
-            Book a 30-minute high-impact consultation directly with our senior development team. We diagnose your bottlenecks, recommend the right stack, and map an exact fixed-scope sprint.
-          </p>
-
-          {/* 4 Clean Value Points with Icons (No heavy boxes) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#ff6321]/10 flex items-center justify-center text-[#ff6321] shrink-0 mt-0.5">
-                <Clock className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 style={{ color: '#060612' }} className="font-heading font-semibold text-sm">
-                  30-Min Diagnostic
-                </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-body mt-0.5">
-                  Live technical screen share
-                </p>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <div className="lg:col-span-7 space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono text-[#ff6321] font-semibold tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] animate-pulse" />
+              <span>DIRECT DISCOVERY SESSION // TAKE YOUR TIME</span>
             </div>
 
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#ff6321]/10 flex items-center justify-center text-[#ff6321] shrink-0 mt-0.5">
-                <Zap className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 style={{ color: '#060612' }} className="font-heading font-semibold text-sm">
-                  100% Core Web Vitals
-                </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-body mt-0.5">
-                  Sub-second mobile speed
-                </p>
-              </div>
-            </div>
+            <h1 
+              style={{ color: '#060612' }}
+              className="font-heading font-medium text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08]"
+            >
+              Let&apos;s talk about your next big project.
+            </h1>
 
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#ff6321]/10 flex items-center justify-center text-[#ff6321] shrink-0 mt-0.5">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 style={{ color: '#060612' }} className="font-heading font-semibold text-sm">
-                  Fixed Sprint Scope
-                </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-body mt-0.5">
-                  No hourly billing creep
-                </p>
-              </div>
-            </div>
+            <p 
+              style={{ color: '#55545a' }}
+              className="text-lg sm:text-xl font-body leading-relaxed max-w-2xl"
+            >
+              Whether you have a fully formed brief or just an early concept, we are here to listen. No strict clocks, no pressure — speak directly with our senior team.
+            </p>
 
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#ff6321]/10 flex items-center justify-center text-[#ff6321] shrink-0 mt-0.5">
-                <Users className="w-4 h-4" />
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-xs sm:text-sm font-mono text-[#060612]">
+                <Sparkles className="w-4 h-4 text-[#ff6321]" />
+                <span>Flexible Session</span>
               </div>
-              <div>
-                <h4 style={{ color: '#060612' }} className="font-heading font-semibold text-sm">
-                  Direct Senior Talent
-                </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-body mt-0.5">
-                  Zero junior hand-offs
-                </p>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-xs sm:text-sm font-mono text-[#060612]">
+                <Users2 className="w-4 h-4 text-[#ff6321]" />
+                <span>Direct with Senior Builders</span>
               </div>
             </div>
           </div>
+
+          {/* Hero Visual Image Card */}
+          <div className="lg:col-span-5 relative aspect-[16/11] rounded-3xl overflow-hidden bg-[#eeecea]">
+            <Image
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
+              alt="Startuplize Studio Workspace"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-mono flex items-center justify-between">
+              <span>STARTUPLIZE LABS</span>
+              <span className="text-[#ff7e47]">DIRECT COLLABORATION</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 2: Cal.com Live Interactive Calendar (Clean & Open) */}
+      {/* SECTION 2: Calendar Appointment (Cal.com Live Calendar) */}
       {/* ========================================================================= */}
       <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-10 space-y-3">
+        <div className="max-w-3xl mb-10 space-y-2">
           <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 01 // CALENDAR APPOINTMENT
+            • SECTION 01 // CALENDAR
           </span>
           <h2 
             style={{ color: '#060612' }}
             className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
           >
-            Select Date & Time.
+            Pick a time that works for you.
           </h2>
           <p style={{ color: '#55545a' }} className="text-base sm:text-lg font-body">
-            Choose a slot that works for you. Google Meet link is generated automatically upon booking confirmation.
+            Choose a date and slot. We generate an automatic Google Meet link upon booking.
           </p>
         </div>
 
-        {/* Clean Cal.com Embed Container (No heavy shadows, no chunky borders) */}
+        {/* Clean Cal.com Embed Container */}
         <div className="w-full bg-white rounded-3xl border border-[#e7e2dd] p-4 sm:p-8 overflow-hidden">
           <div
             id="my-cal-inline-website"
@@ -296,80 +249,75 @@ export default function ContactPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: The 30-Minute Sprint Diagnostic Protocol */}
+      {/* SECTION 3: Visual Showcase — How We Work (Image-First, Minimal Copy) */}
       {/* ========================================================================= */}
       <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-14 space-y-3">
+        <div className="max-w-3xl mb-12 space-y-2">
           <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 02 // THE DIAGNOSTIC PROTOCOL
+            • SECTION 02 // WHAT WE DELIVER
           </span>
           <h2 
             style={{ color: '#060612' }}
             className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
           >
-            What happens on this call.
+            Built for growth. Engineered for speed.
           </h2>
-          <p style={{ color: '#55545a' }} className="text-base sm:text-lg font-body">
-            Every minute is structured around tangible code audits, architecture decisions, and transparent pricing.
-          </p>
         </div>
 
-        {/* 3 Clean Horizontal Diagnostic Steps with Icons */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-          {diagnosticSteps.map((step) => {
-            const IconComp = step.icon;
-            return (
-              <div key={step.step} className="space-y-4">
-                <div className="flex items-center justify-between pb-4 border-b border-[#e7e2dd]">
-                  <span className="font-mono font-bold text-lg text-[#ff6321]">
-                    {step.step}
-                  </span>
-                  <div className="w-10 h-10 rounded-xl bg-[#f5f4f3] flex items-center justify-center text-[#060612]">
-                    <IconComp className="w-5 h-5 text-[#ff6321]" />
-                  </div>
-                </div>
+        {/* 3 Visual Image Showcase Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {capabilities.map((item) => (
+            <div key={item.title} className="space-y-4 group">
+              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-[#eeecea]">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
 
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-mono text-[#ff6321] uppercase tracking-wider font-semibold block">
+                  {item.tag}
+                </span>
                 <h3 
                   style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-xl sm:text-2xl"
+                  className="font-heading font-semibold text-xl sm:text-2xl group-hover:text-[#ff6321] transition-colors"
                 >
-                  {step.title}
+                  {item.title}
                 </h3>
-
-                <p 
-                  style={{ color: '#55545a' }}
-                  className="text-sm sm:text-base font-body leading-relaxed"
-                >
-                  {step.desc}
+                <p style={{ color: '#55545a' }} className="text-sm font-body leading-relaxed">
+                  {item.desc}
                 </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: Direct Instant Messaging Channels (With Full Icons) */}
+      {/* SECTION 4: Direct Instant Messaging (Icons + Fast Response) */}
       {/* ========================================================================= */}
       <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="space-y-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div className="space-y-2">
             <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-              • SECTION 03 // INSTANT CHANNELS
+              • SECTION 03 // INSTANT CHAT
             </span>
             <h2 
               style={{ color: '#060612' }}
               className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
             >
-              Prefer instant chat?
+              Prefer texting? We&apos;re online.
             </h2>
           </div>
-          <p style={{ color: '#69686e' }} className="text-sm font-mono max-w-md">
-            Reach our senior team directly on your preferred app. Average response time: &lt; 15 minutes.
+          <p style={{ color: '#69686e' }} className="text-sm font-mono">
+            Fastest reply via WhatsApp or Instagram.
           </p>
         </div>
 
-        {/* 4 Channel Grid with Full Branded SVG Icons (Clean & Border-Light) */}
+        {/* 4 Branded Channel Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialChannels.map((channel) => (
             <a
@@ -377,7 +325,7 @@ export default function ContactPage() {
               href={channel.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-6 rounded-2xl border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-44 ${channel.hoverColor}`}
+              className={`p-6 rounded-2xl border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-40 ${channel.hoverColor}`}
             >
               <div className="flex items-center justify-between">
                 <div className="w-12 h-12 rounded-xl bg-[#faf9f8] flex items-center justify-center">
@@ -395,13 +343,9 @@ export default function ContactPage() {
                 >
                   {channel.name}
                 </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-mono mt-1">
+                <p style={{ color: '#69686e' }} className="text-xs font-mono mt-0.5">
                   {channel.handle}
                 </p>
-                <span className="text-xs font-medium text-[#ff6321] inline-flex items-center gap-1 mt-2">
-                  <span>{channel.action}</span>
-                  <span>→</span>
-                </span>
               </div>
             </a>
           ))}
@@ -409,49 +353,41 @@ export default function ContactPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 5: Pre-Booking FAQ Protocol (Clean Editorial Lines, No Heavy Box) */}
+      {/* SECTION 5: Quick FAQ — Short & Clear */}
       {/* ========================================================================= */}
       <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20">
-        <div className="max-w-3xl mb-12 space-y-3">
+        <div className="max-w-3xl mb-10 space-y-2">
           <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 04 // COMMON QUESTIONS
+            • SECTION 04 // QUICK ANSWERS
           </span>
           <h2 
             style={{ color: '#060612' }}
             className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
           >
-            Before you schedule.
+            Quick answers.
           </h2>
-          <p style={{ color: '#55545a' }} className="text-base sm:text-lg font-body">
-            Everything you need to know about our engineering consultations and sprint engagement.
-          </p>
         </div>
 
-        {/* Clean Editorial Accordion List (No box-in-box, clean hairlines) */}
-        <div className="max-w-4xl divide-y divide-[#e7e2dd]">
-          {bookingFaqs.map((faq, idx) => (
+        {/* Minimal Accordion */}
+        <div className="max-w-3xl divide-y divide-[#e7e2dd]">
+          {quickFaqs.map((faq, idx) => (
             <div 
               key={idx} 
-              className="py-6 cursor-pointer group"
+              className="py-5 cursor-pointer group"
               onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
             >
               <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-lg bg-[#f5f4f3] text-[#ff6321] flex items-center justify-center font-mono font-bold text-xs shrink-0 group-hover:bg-[#ff6321] group-hover:text-white transition-colors">
-                    {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                  </div>
-                  <h3 
-                    style={{ color: '#060612' }}
-                    className="font-heading font-semibold text-lg sm:text-xl group-hover:text-[#ff6321] transition-colors"
-                  >
-                    {faq.q}
-                  </h3>
-                </div>
-                <ChevronDown className={`w-5 h-5 text-[#69686e] shrink-0 transition-transform duration-200 ${openFaq === idx ? 'rotate-180 text-[#ff6321]' : ''}`} />
+                <h3 
+                  style={{ color: '#060612' }}
+                  className="font-heading font-semibold text-lg group-hover:text-[#ff6321] transition-colors"
+                >
+                  {faq.q}
+                </h3>
+                <ChevronDown className={`w-4 h-4 text-[#69686e] shrink-0 transition-transform ${openFaq === idx ? 'rotate-180 text-[#ff6321]' : ''}`} />
               </div>
 
               {openFaq === idx && (
-                <div className="pl-12 pt-4 pr-6">
+                <div className="pt-2 pr-6">
                   <p 
                     style={{ color: '#55545a' }}
                     className="text-base font-body leading-relaxed"
@@ -465,7 +401,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 4. Global Full-Fidelity Footer */}
+      {/* Footer */}
       <FooterApex onOpenBooking={() => {}} />
 
     </div>
