@@ -18,8 +18,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '01',
       title: 'WordPress & Elementor Engineering',
       tagline: 'New Custom Builds · Full Website Revamps · Zero-Bloat Performance',
+      href: '#',
       deliverables: ['New Builds & Revamps', 'Sub-Second Speed', 'Custom ACF Blocks'],
-      cards: [
+      parts: [
         {
           tag: '01 // BUILDS & REVAMPS',
           title: 'New Builds & Total Revamps',
@@ -41,8 +42,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '02',
       title: 'Webflow CMS Architecture',
       tagline: 'Custom Webflow Flagships · Visual Systems · Dynamic CMS Collections',
+      href: '#',
       deliverables: ['60 FPS Navigation', 'Dynamic Collections', 'Visual Client Editor'],
-      cards: [
+      parts: [
         {
           tag: '01 // BESPOKE DESIGN',
           title: 'Custom Brand Flagships',
@@ -64,8 +66,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '03',
       title: 'Technical & On-Page SEO',
       tagline: 'Search Architecture · Core Web Vitals · Keyword Entity Dominance',
+      href: '#',
       deliverables: ['Local Schema Markup', 'Speed & Crawl Audit', '100% CWV Field Pass'],
-      cards: [
+      parts: [
         {
           tag: '01 // CRAWL & INDEX',
           title: 'Search Architecture Fixes',
@@ -87,8 +90,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '04',
       title: 'Local SEO & Google Business Profile',
       tagline: 'Google Map Pack · Local Directory Citations · Automated Review Funnels',
+      href: '#',
       deliverables: ['GBP 3-Pack Rankings', 'Automated 5★ Reviews', 'Inbound Call Funnels'],
-      cards: [
+      parts: [
         {
           tag: '01 // MAP 3-PACK',
           title: 'Google Maps Top 3 Rankings',
@@ -110,8 +114,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '05',
       title: 'Brand Design & Visual Identity',
       tagline: 'Complete Graphic Design · Bespoke Logo Suites · Marketing Collateral',
+      href: '#',
       deliverables: ['Complete Logo Suite', 'Brand Guidelines Book', 'Social & Print Assets'],
-      cards: [
+      parts: [
         {
           tag: '01 // LOGO SUITE',
           title: 'Bespoke Vector Logo Suites',
@@ -133,8 +138,9 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '06',
       title: 'Meta Ads & Paid Acquisition',
       tagline: 'Facebook & Instagram Ads · Direct-Response Creative · Lead Generation Funnels',
+      href: '#',
       deliverables: ['Creative Ad Production', 'Conversion API Setup', 'Daily ROAS Scaling'],
-      cards: [
+      parts: [
         {
           tag: '01 // CREATIVE ADS',
           title: 'Scroll-Stopping Ad Creatives',
@@ -191,14 +197,15 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                 delay={idx * 0.08 + 0.1}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                onClick={() => onOpenBooking(item.title)}
-                className={`border-t border-[#e7e2dd] transition-all duration-300 cursor-pointer group relative overflow-hidden py-7 sm:py-8 px-6 sm:px-8 rounded-2xl my-1 ${
+                className={`border-t border-[#e7e2dd] transition-all duration-300 group relative overflow-hidden py-7 sm:py-8 px-6 sm:px-8 rounded-2xl my-1 ${
                   isHovered ? 'bg-[#f5f4f3] shadow-xs' : 'bg-transparent'
                 }`}
               >
-                {/* Header Row (Number, Title, Deliverables, Arrow) */}
-                <div className="flex items-center justify-between gap-4 sm:gap-6 relative z-10 w-full">
-                  
+                {/* Header Row (Number, Title, Deliverables, Arrow) - Links to service page / # with NO click popup */}
+                <a
+                  href={item.href}
+                  className="flex items-center justify-between gap-4 sm:gap-6 relative z-10 w-full cursor-pointer no-underline"
+                >
                   {/* Left Number & Title */}
                   <div className="flex items-baseline gap-6 sm:gap-10 min-w-0">
                     <span className="font-mono text-body text-[#69686e] whitespace-nowrap shrink-0">
@@ -240,42 +247,46 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                     </div>
                   </div>
 
-                </div>
+                </a>
 
-                {/* Description Drawer - ONLY 3 Cards, no text headings or paragraphs */}
+                {/* Description Drawer - 3 Clean Parts, NO CARDS, perfectly aligned */}
                 <AnimatePresence>
                   {isHovered && (
                     <motion.div
                       key="desc"
                       initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 20 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
                       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden w-full relative z-20"
                     >
-                      <div className="pt-4 border-t border-[#e7e2dd]/80 w-full">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 w-full">
-                          {item.cards.map((card, cIdx) => (
+                      <div className="pt-6 border-t border-[#e7e2dd] w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#e7e2dd] w-full">
+                          {item.parts.map((part, pIdx) => (
                             <div
-                              key={cIdx}
-                              className="bg-white border border-[#e7e2dd] rounded-xl p-4 sm:p-5 shadow-2xs flex flex-col justify-between hover:border-[#ff6321]/50 transition-colors"
+                              key={pIdx}
+                              className={`${
+                                pIdx === 0
+                                  ? 'md:pr-8 lg:pr-10'
+                                  : pIdx === 1
+                                  ? 'pt-5 md:pt-0 md:px-8 lg:px-10'
+                                  : 'pt-5 md:pt-0 md:pl-8 lg:pl-10'
+                              } flex flex-col`}
                             >
-                              <div>
-                                <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
-                                  {card.tag}
-                                </span>
-                                <div
-                                  className="font-heading font-bold text-base sm:text-lg mt-1.5"
-                                  style={{ color: '#060612' }}
-                                >
-                                  {card.title}
-                                </div>
-                              </div>
+                              <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
+                                {part.tag}
+                              </span>
+                              <h4
+                                className="font-heading font-bold text-base sm:text-lg text-[#060612] mt-2 leading-snug"
+                                style={{ color: '#060612' }}
+                              >
+                                {part.title}
+                              </h4>
                               <p
-                                className="text-body-sm font-body mt-2.5 leading-relaxed"
+                                className="text-body-sm font-body mt-2 leading-relaxed text-[#444452]"
                                 style={{ color: '#444452' }}
                               >
-                                {card.desc}
+                                {part.desc}
                               </p>
                             </div>
                           ))}
