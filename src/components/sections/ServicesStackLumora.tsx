@@ -155,103 +155,103 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                 }`}
               >
                 {/* Header Row (Number, Title, Deliverables, Arrow) */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                <div className="flex items-center justify-between gap-4 sm:gap-6 relative z-10 w-full">
                   
                   {/* Left Number & Title */}
-                  <div className="flex items-baseline gap-6 sm:gap-10">
+                  <div className="flex items-baseline gap-6 sm:gap-10 min-w-0">
                     <span className="font-mono text-body text-[#69686e] whitespace-nowrap shrink-0">
                       {item.num}
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-heading font-medium text-2xl sm:text-3xl text-[#060612] group-hover:text-[#ff6321] transition-colors">
                         {item.title}
                       </h3>
-                      <div className="text-body-sm font-mono text-[#69686e] mt-1 whitespace-nowrap">
+                      <div className="text-body-sm font-mono text-[#69686e] mt-0.5 whitespace-nowrap truncate">
                         {item.tagline}
                       </div>
                     </div>
                   </div>
 
-                  {/* Middle Deliverables Tags (Strictly whitespace-nowrap) */}
-                  <div className="hidden xl:flex items-center gap-2 whitespace-nowrap shrink-0">
-                    {item.deliverables.map((del, dIdx) => (
-                      <span
-                        key={dIdx}
-                        className="px-3.5 py-1 rounded-full bg-white border border-[#e7e2dd] text-[11px] font-mono text-[#060612] shadow-2xs whitespace-nowrap shrink-0"
-                      >
-                        {del}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Right Deliverables Tags + Equal-Aligned Arrow Button */}
+                  <div className="flex items-center gap-3 sm:gap-5 shrink-0 ml-auto">
+                    {/* Middle Deliverables Tags (Strictly whitespace-nowrap) */}
+                    <div className="hidden xl:flex items-center gap-2 whitespace-nowrap">
+                      {item.deliverables.map((del, dIdx) => (
+                        <span
+                          key={dIdx}
+                          className="px-3.5 py-1 rounded-full bg-white border border-[#e7e2dd] text-[11px] font-mono text-[#060612] shadow-2xs whitespace-nowrap shrink-0"
+                        >
+                          {del}
+                        </span>
+                      ))}
+                    </div>
 
-                  {/* Right Arrow Badge */}
-                  <div className="flex items-center gap-4 whitespace-nowrap shrink-0">
-                    <span className="text-body-sm font-mono text-[#69686e] hidden sm:inline-block whitespace-nowrap">
-                      DISCOVER SPECS
-                    </span>
-                    <motion.div
-                      animate={isHovered ? { x: 5 } : { x: 0 }}
-                      transition={{ type: 'spring' as const, stiffness: 350, damping: 20 }}
-                      className="w-10 h-10 rounded-full bg-[#060612] text-white flex items-center justify-center shrink-0 group-hover:bg-[#ff6321] transition-colors shadow-xs"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.div>
+                    {/* Right Arrow Badge (Strictly equal alignment on all rows, no text) */}
+                    <div className="w-10 sm:w-11 flex items-center justify-end shrink-0">
+                      <motion.div
+                        animate={isHovered ? { x: 4 } : { x: 0 }}
+                        transition={{ type: 'spring' as const, stiffness: 350, damping: 20 }}
+                        className="w-10 h-10 rounded-full bg-[#060612] text-white flex items-center justify-center shrink-0 group-hover:bg-[#ff6321] transition-colors shadow-xs"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.div>
+                    </div>
                   </div>
 
                 </div>
 
-                {/* Description - Fades in and expands smoothly on hover with BIG, FULL-WIDTH text & transparent process */}
+                {/* Description - Fades in and expands smoothly on hover with BIG, FULL-WIDTH text & compact, gap-free process */}
                 <AnimatePresence>
                   {isHovered && (
                     <motion.div
                       key="desc"
                       initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden w-full relative z-20"
                     >
-                      <div className="pt-6 border-t border-[#e7e2dd]/80 w-full space-y-5">
+                      <div className="pt-4 border-t border-[#e7e2dd]/80 w-full">
                         
                         {/* Big Client-Focused Value Proposition */}
-                        <h4 className="font-heading font-medium text-xl sm:text-2xl text-[#060612] leading-snug">
+                        <h4 className="font-heading font-medium text-lg sm:text-xl md:text-[1.25rem] text-[#060612] leading-snug">
                           {item.valueProp}
                         </h4>
 
-                        {/* Full-width Big Detailed Client Narrative */}
+                        {/* Full-width Big Detailed Client Narrative - Tight gap with headline */}
                         <p
-                          className="text-base sm:text-lg md:text-[1.125rem] font-body leading-relaxed max-w-none font-normal"
+                          className="text-base sm:text-lg font-body leading-relaxed max-w-none font-normal mt-2"
                           style={{ color: '#060612' }}
                         >
                           {item.description}
                         </p>
 
-                        {/* Transparent 4-Step Process Section */}
-                        <div className="pt-5 border-t border-[#e7e2dd]/70 w-full">
-                          <div className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-widest mb-3.5 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[#ff6321] inline-block" />
+                        {/* Transparent 4-Step Process Section - Compact, gap-free divider */}
+                        <div className="mt-4 pt-3.5 border-t border-[#e7e2dd]/70 w-full">
+                          <div className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-widest mb-2.5 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] inline-block" />
                             <span>HOW WE DELIVER // THE TRANSPARENT PROCESS</span>
                           </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
                             {item.process.map((step, sIdx) => (
                               <div
                                 key={sIdx}
-                                className="bg-white border border-[#e7e2dd] rounded-xl p-4 shadow-2xs flex flex-col justify-between"
+                                className="bg-white border border-[#e7e2dd] rounded-xl p-3.5 shadow-2xs flex flex-col justify-between"
                               >
                                 <div>
                                   <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
                                     {step.step}
                                   </span>
                                   <div
-                                    className="font-heading font-bold text-sm sm:text-base mt-1"
+                                    className="font-heading font-bold text-sm sm:text-base mt-0.5"
                                     style={{ color: '#060612' }}
                                   >
                                     {step.name}
                                   </div>
                                 </div>
                                 <p
-                                  className="text-body-sm font-body mt-2 leading-relaxed"
+                                  className="text-body-sm font-body mt-1.5 leading-relaxed"
                                   style={{ color: '#444452' }}
                                 >
                                   {step.detail}
