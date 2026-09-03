@@ -18,97 +18,139 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       num: '01',
       title: 'WordPress & Elementor Engineering',
       tagline: 'New Custom Builds · Full Website Revamps · Zero-Bloat Performance',
-      valueProp: 'We build high-converting new websites from scratch and perform complete redesign revamps for outdated, slow platforms.',
-      description:
-        'Whether your business needs an entirely new digital presence or your existing WordPress website is clunky, slow, and outdated, we provide a complete engineering solution. We eliminate bloated themes and messy third-party plugins with clean, tailored Elementor Pro and ACF architectures—slashing mobile load times to under 1 second and giving you a modern, credible website that turns local visitors into qualified inquiries.',
-      process: [
-        { step: '01. AUDIT', name: 'Bottleneck & UX Audit', detail: 'We dissect your existing site speed, plugin bloat, and conversion drop-offs.' },
-        { step: '02. DESIGN', name: 'Custom High-Trust UI', detail: 'Bespoke layout design focused on client credibility and clear action funnels.' },
-        { step: '03. BUILD', name: 'Clean Code Engineering', detail: 'Zero-bloat Elementor build with sub-second LCP and responsive mobile layout.' },
-        { step: '04. LAUNCH', name: 'Safe Migration & Handover', detail: '1-to-1 301 URL redirect preservation, team training, and speed guarantee.' },
-      ],
       deliverables: ['New Builds & Revamps', 'Sub-Second Speed', 'Custom ACF Blocks'],
-      previewImg: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // BUILDS & REVAMPS',
+          title: 'New Builds & Total Revamps',
+          desc: 'We engineer high-converting new websites from scratch and completely revamp slow, outdated legacy WordPress sites into modern commercial assets.',
+        },
+        {
+          tag: '02 // ZERO-BLOAT SPEED',
+          title: 'Sub-Second Mobile Speed',
+          desc: 'Zero plugin bloat with clean Elementor Pro and custom ACF architecture, passing Google Core Web Vitals with sub-1s load times.',
+        },
+        {
+          tag: '03 // EASY CLIENT EDITING',
+          title: 'Effortless Content Handover',
+          desc: 'Intuitive backend your team can update in seconds, 100% full site ownership, and zero monthly developer dependency.',
+        },
+      ],
     },
     {
       num: '02',
       title: 'Webflow CMS Architecture',
       tagline: 'Custom Webflow Flagships · Visual Systems · Dynamic CMS Collections',
-      valueProp: 'Award-winning visual design with zero maintenance headaches and an intuitive visual editor for your team.',
-      description:
-        'Designed for ambitious brands that want seamless scroll animations, ultra-clean visual aesthetics, and total independence from developer bottlenecks. We build custom Webflow websites structured with clean class systems, dynamic CMS databases, and 60fps responsive micro-interactions. Your team can publish new case studies, blogs, and service updates in minutes without ever touching code.',
-      process: [
-        { step: '01. ARCHITECTURE', name: 'Content & CMS Modeling', detail: 'Mapping dynamic collections, service categories, and relational data fields.' },
-        { step: '02. CRAFT', name: 'Visual System & Motion', detail: 'Translating brand guidelines into fluid typography and interactive scroll motion.' },
-        { step: '03. DEVELOP', name: 'Clean Webflow Build', detail: 'Client-first class architecture, responsive breakpoints, and SEO optimization.' },
-        { step: '04. HANDOVER', name: 'Video Training & Launch', detail: 'Dedicated Loom editor training so your team can edit content with confidence.' },
-      ],
       deliverables: ['60 FPS Navigation', 'Dynamic Collections', 'Visual Client Editor'],
-      previewImg: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // BESPOKE DESIGN',
+          title: 'Custom Brand Flagships',
+          desc: 'Award-winning visual aesthetics with smooth 60fps micro-interactions tailored to make your business look like an established market leader.',
+        },
+        {
+          tag: '02 // SCALABLE CMS',
+          title: 'Dynamic Content Databases',
+          desc: 'Structured relational CMS collections for projects, services, and team profiles that scale effortlessly as your business expands.',
+        },
+        {
+          tag: '03 // CLIENT EDITOR',
+          title: 'Visual On-Page Editing',
+          desc: 'Publish case studies, services, and blogs in minutes with an intuitive visual editor that completely prevents broken layouts.',
+        },
+      ],
     },
     {
       num: '03',
       title: 'Technical & On-Page SEO',
       tagline: 'Search Architecture · Core Web Vitals · Keyword Entity Dominance',
-      valueProp: 'We engineer the underlying technical foundation so Google easily crawls, understands, and ranks your services.',
-      description:
-        'A beautiful website is wasted if search engines cannot interpret your content. We systematically resolve indexation bottlenecks, crawl errors, slow rendering speeds, and missing metadata. By deploying structured semantic JSON-LD schema graphs and optimizing Core Web Vitals to 100% green scores, we position your core service pages to outrank competitors on high-intent search queries.',
-      process: [
-        { step: '01. DIAGNOSIS', name: 'Deep Crawl Inspection', detail: 'Analyzing Google Search Console, index coverage, crawl traps, and redirect chains.' },
-        { step: '02. SCHEMA', name: 'Semantic Entity Graph', detail: 'Hard-coding JSON-LD LocalBusiness, Service, and FAQ rich snippet schema.' },
-        { step: '03. SPEED', name: 'Core Web Vitals Pass', detail: 'Optimizing LCP, INP, and zero layout shift for Google mobile ranking algorithms.' },
-        { step: '04. STRUCTURE', name: 'Content & URL Hierarchy', detail: 'Topical keyword mapping and internal linking silos for organic search authority.' },
-      ],
       deliverables: ['Local Schema Markup', 'Speed & Crawl Audit', '100% CWV Field Pass'],
-      previewImg: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // CRAWL & INDEX',
+          title: 'Search Architecture Fixes',
+          desc: 'Eliminating crawl traps, broken redirects, and slow rendering so search engines index every high-intent commercial page.',
+        },
+        {
+          tag: '02 // SCHEMA ENTITIES',
+          title: 'Semantic JSON-LD Graphs',
+          desc: 'Deploying rich structured schema for LocalBusiness, Services, and FAQs to earn high-visibility rich snippets on Google.',
+        },
+        {
+          tag: '03 // SPEED RANKINGS',
+          title: 'Core Web Vitals Pass',
+          desc: '100% green scores across Google LCP, INP, and CLS performance metrics to maximize your search rankings over slow competitors.',
+        },
+      ],
     },
     {
       num: '04',
       title: 'Local SEO & Google Business Profile',
       tagline: 'Google Map Pack · Local Directory Citations · Automated Review Funnels',
-      valueProp: 'Capture local customers right when they are ready to call with Google Maps and 5-star review automation.',
-      description:
-        'Specifically engineered for local and regional business owners who rely on phone calls, estimate requests, and booked appointments. We optimize your Google Business Profile (GBP) for maximum 3-pack visibility, clean up inconsistent directory citations across the web, and deploy an automated post-service review collection workflow that converts happy customers into authentic 5-star Google ratings.',
-      process: [
-        { step: '01. GBP AUDIT', name: 'Profile Verification & Fixes', detail: 'Category calibration, service menu setup, geo-tagged photos, and compliance audit.' },
-        { step: '02. CITATIONS', name: 'NAP Citation Network', detail: 'Synchronizing Name, Address, and Phone across top-tier business directories.' },
-        { step: '03. REVIEWS', name: 'Automated Review Engine', detail: 'Deploying SMS/email 1-click review requests to build consistent 5-star proof.' },
-        { step: '04. EXPANSION', name: 'Service-Area Landing Pages', detail: 'Targeted landing pages capturing high-intent searches across neighboring zip codes.' },
-      ],
       deliverables: ['GBP 3-Pack Rankings', 'Automated 5★ Reviews', 'Inbound Call Funnels'],
-      previewImg: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // MAP 3-PACK',
+          title: 'Google Maps Top 3 Rankings',
+          desc: 'Complete GBP optimization, category calibration, and geo-targeted service signals to dominate local search results.',
+        },
+        {
+          tag: '02 // CITATION MESH',
+          title: '50+ Verified Directory Citations',
+          desc: 'Synchronizing Name, Address, and Phone (NAP) across top business directories to build bulletproof local domain trust.',
+        },
+        {
+          tag: '03 // REPUTATION FUNNEL',
+          title: 'Automated 5★ Review Engine',
+          desc: 'Automated 1-click SMS and email workflows that consistently convert happy customers into 5-star Google reviews.',
+        },
+      ],
     },
     {
       num: '05',
       title: 'Brand Design & Visual Identity',
       tagline: 'Complete Graphic Design · Bespoke Logo Suites · Marketing Collateral',
-      valueProp: 'A complete graphic design solution that makes your business look like an established, premium market leader.',
-      description:
-        'Everything your brand needs to look credible, professional, and memorable across every touchpoint. We provide full-spectrum graphic design services—from custom primary and secondary logo suites, typography pairings, and curated color palettes to business cards, marketing brochures, pitch decks, vehicle wraps, and social media creative kits. We give your business the visual authority to command higher rates.',
-      process: [
-        { step: '01. STRATEGY', name: 'Brand Discovery & Moodboard', detail: 'Defining your brand voice, market positioning, and visual aesthetic direction.' },
-        { step: '02. LOGO SUITE', name: 'Concept & Vector Design', detail: 'Handcrafted primary, secondary, and sub-mark vector logos for web and print.' },
-        { step: '03. SYSTEM', name: 'Brand Guidelines Book', detail: 'Defining typography rules, color formulas (HEX/CMYK), and clear space standards.' },
-        { step: '04. ASSETS', name: 'Complete Collateral Suite', detail: 'Delivering print-ready files, presentation decks, social templates, and raw vectors.' },
-      ],
       deliverables: ['Complete Logo Suite', 'Brand Guidelines Book', 'Social & Print Assets'],
-      previewImg: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // LOGO SUITE',
+          title: 'Bespoke Vector Logo Suites',
+          desc: 'Distinctive primary, secondary, and sub-mark vector logos designed to look authoritative on screens and in print.',
+        },
+        {
+          tag: '02 // BRAND SYSTEM',
+          title: 'Color & Typography Standards',
+          desc: 'Comprehensive brand guidelines book with tailored fonts and curated color palettes that command higher pricing.',
+        },
+        {
+          tag: '03 // FULL COLLATERAL',
+          title: 'Decks, Social & Print Assets',
+          desc: 'Complete graphic design kits including business cards, pitch decks, social media templates, and marketing collateral.',
+        },
+      ],
     },
     {
       num: '06',
       title: 'Meta Ads & Paid Acquisition',
       tagline: 'Facebook & Instagram Ads · Direct-Response Creative · Lead Generation Funnels',
-      valueProp: 'Turn paid advertising into a predictable customer acquisition channel with high-converting ads and landing pages.',
-      description:
-        'Stop wasting budget on boosted posts that deliver vanity likes but zero paying customers. We engineer end-to-end Facebook and Instagram advertising campaigns designed for positive return on ad spend (ROAS). We produce scroll-stopping graphic and video ad creatives, write direct-response copy that speaks to customer pain points, configure bulletproof Meta Pixel & Conversions API (CAPI) tracking, and optimize high-speed landing pages that turn clicks into booked consultations.',
-      process: [
-        { step: '01. BLUEPRINT', name: 'Offer & Audience Strategy', detail: 'Crafting high-converting offers and building local radius and lookalike audience targets.' },
-        { step: '02. CREATIVE', name: 'Direct-Response Ad Sets', detail: 'Designing persuasive image and video creatives with compelling copy and hooks.' },
-        { step: '03. TRACKING', name: 'Pixel & CAPI Server Setup', detail: 'Server-side Conversions API integration to accurately track 100% of lead events.' },
-        { step: '04. SCALE', name: 'A/B Testing & Daily Scaling', detail: 'Aggressively cutting unprofitable ads, scaling winners, and delivering weekly reports.' },
-      ],
       deliverables: ['Creative Ad Production', 'Conversion API Setup', 'Daily ROAS Scaling'],
-      previewImg: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
+      cards: [
+        {
+          tag: '01 // CREATIVE ADS',
+          title: 'Scroll-Stopping Ad Creatives',
+          desc: 'High-converting video and image ad sets designed to capture attention, stop scrolling, and lower customer acquisition costs.',
+        },
+        {
+          tag: '02 // CONVERSION FUNNELS',
+          title: 'Direct-Response Copy & Pages',
+          desc: 'Persuasive ad copy and fast dedicated landing page funnels engineered to convert cold clicks into booked consultation calls.',
+        },
+        {
+          tag: '03 // CAPI TRACKING',
+          title: 'Server-Side Pixel & CAPI',
+          desc: 'Bulletproof Meta Conversions API tracking setup so you can measure exact ROI, eliminate ad waste, and scale winners profitably.',
+        },
+      ],
     },
   ];
 
@@ -139,7 +181,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
           </ScrollBlurFade>
         </div>
 
-        {/* 6 Interactive Service Rows with Staggered Slide Reveals & Identical Hover Effects */}
+        {/* 6 Interactive Service Rows with Staggered Slide Reveals */}
         <div className="border-b border-[#e7e2dd] relative">
           {services.map((item, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -200,7 +242,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
 
                 </div>
 
-                {/* Description - Fades in and expands smoothly on hover with BIG, FULL-WIDTH text & compact, gap-free process */}
+                {/* Description Drawer - ONLY 3 Cards, no text headings or paragraphs */}
                 <AnimatePresence>
                   {isHovered && (
                     <motion.div
@@ -208,59 +250,36 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                       initial={{ opacity: 0, height: 0, marginTop: 0 }}
                       animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden w-full relative z-20"
                     >
                       <div className="pt-4 border-t border-[#e7e2dd]/80 w-full">
-                        
-                        {/* Big Client-Focused Value Proposition */}
-                        <h4 className="font-heading font-medium text-lg sm:text-xl md:text-[1.25rem] text-[#060612] leading-snug">
-                          {item.valueProp}
-                        </h4>
-
-                        {/* Full-width Big Detailed Client Narrative - Tight gap with headline */}
-                        <p
-                          className="text-base sm:text-lg font-body leading-relaxed max-w-none font-normal mt-2"
-                          style={{ color: '#060612' }}
-                        >
-                          {item.description}
-                        </p>
-
-                        {/* Transparent 4-Step Process Section - Compact, gap-free divider */}
-                        <div className="mt-4 pt-3.5 border-t border-[#e7e2dd]/70 w-full">
-                          <div className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-widest mb-2.5 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] inline-block" />
-                            <span>HOW WE DELIVER // THE TRANSPARENT PROCESS</span>
-                          </div>
-
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
-                            {item.process.map((step, sIdx) => (
-                              <div
-                                key={sIdx}
-                                className="bg-white border border-[#e7e2dd] rounded-xl p-3.5 shadow-2xs flex flex-col justify-between"
-                              >
-                                <div>
-                                  <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
-                                    {step.step}
-                                  </span>
-                                  <div
-                                    className="font-heading font-bold text-sm sm:text-base mt-0.5"
-                                    style={{ color: '#060612' }}
-                                  >
-                                    {step.name}
-                                  </div>
-                                </div>
-                                <p
-                                  className="text-body-sm font-body mt-1.5 leading-relaxed"
-                                  style={{ color: '#444452' }}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 w-full">
+                          {item.cards.map((card, cIdx) => (
+                            <div
+                              key={cIdx}
+                              className="bg-white border border-[#e7e2dd] rounded-xl p-4 sm:p-5 shadow-2xs flex flex-col justify-between hover:border-[#ff6321]/50 transition-colors"
+                            >
+                              <div>
+                                <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
+                                  {card.tag}
+                                </span>
+                                <div
+                                  className="font-heading font-bold text-base sm:text-lg mt-1.5"
+                                  style={{ color: '#060612' }}
                                 >
-                                  {step.detail}
-                                </p>
+                                  {card.title}
+                                </div>
                               </div>
-                            ))}
-                          </div>
+                              <p
+                                className="text-body-sm font-body mt-2.5 leading-relaxed"
+                                style={{ color: '#444452' }}
+                              >
+                                {card.desc}
+                              </p>
+                            </div>
+                          ))}
                         </div>
-
                       </div>
                     </motion.div>
                   )}
