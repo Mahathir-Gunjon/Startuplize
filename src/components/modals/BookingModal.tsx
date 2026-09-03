@@ -29,10 +29,12 @@ export function BookingModal({ isOpen, onClose, defaultService }: BookingModalPr
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const servicesList = [
-    { id: 'wp', label: 'WordPress & Elementor Engineering', desc: 'Custom themes, Elementor Pro, sub-second speed & WooCommerce' },
+    { id: 'wp', label: 'WordPress & Elementor Engineering', desc: 'New builds & revamps, custom Elementor Pro, sub-second speed' },
     { id: 'wf', label: 'Webflow Architecture & Motion', desc: 'Clean visual CMS, responsive design & fast navigation' },
     { id: 'seo', label: 'Technical & On-Page SEO', desc: 'Local schema, crawl optimization & organic traffic growth' },
-    { id: 'local', label: 'Local SEO & Google Maps Optimization', desc: 'Google Business Profile setup, local citations & call funnels' },
+    { id: 'local', label: 'Local SEO & Google Business Profile', desc: 'Google Business Profile setup, local citations & call funnels' },
+    { id: 'brand', label: 'Brand Design & Visual Identity', desc: 'Complete graphic design, bespoke logo suites & marketing collateral' },
+    { id: 'ads', label: 'Meta Ads & Paid Acquisition', desc: 'High-converting Facebook & Instagram ad campaigns & lead funnels' },
   ];
 
   const budgetOptions = ['$5,000 – $10,000', '$10,000 – $25,000', '$25,000 – $50,000', '$50,000+'];
