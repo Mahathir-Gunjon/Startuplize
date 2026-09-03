@@ -35,7 +35,7 @@ export function FooterApex({ onOpenBooking }: FooterApexProps) {
             <PillButton
               variant="coral"
               size="lg"
-              onClick={onOpenBooking}
+              href="/contact"
               showArrow={true}
               className="shadow-2xl hover:scale-105 whitespace-nowrap shrink-0"
             >
@@ -50,9 +50,11 @@ export function FooterApex({ onOpenBooking }: FooterApexProps) {
           {/* Col 1: Brand Bio */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                <span className="text-[#ff6321] text-base leading-none">●</span>
-              </div>
+              <img
+                src="/startuplize-logo.png"
+                alt="Startuplize"
+                className="h-7 w-auto object-contain shrink-0"
+              />
               <span className="font-heading font-medium text-xl text-white">startuplize.</span>
             </div>
             <p className="text-body-sm text-[#69686e] leading-relaxed font-body">

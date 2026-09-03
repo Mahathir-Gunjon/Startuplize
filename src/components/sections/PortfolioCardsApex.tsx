@@ -13,52 +13,32 @@ export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
   const projects = [
     {
       id: 'nexus-health',
-      title: 'Nexus Health',
-      category: 'WordPress & Elementor',
-      year: '2026',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-      description:
-        'Rebuilt slow medical clinic portal with a clean custom WordPress architecture, dropping load time to 0.6s and driving a 320% patient consultation booking increase.',
-      tags: ['WordPress', 'Elementor Pro', 'Local SEO', 'Speed Optimization'],
-      badge: '0.6s Mobile Speed · +320% Bookings',
+      title: 'Nexus Health — Clinical Medical Portal',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80',
+      tech: ['WordPress', 'Elementor Pro', 'Custom ACF', 'Local SEO', 'Speed Optimization'],
     },
     {
       id: 'aura-living',
-      title: 'Aura Living',
-      category: 'Webflow / eCommerce',
-      year: '2025',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-      description:
-        'Rebuilt from slow commercial template to custom Webflow eCommerce platform, increasing checkout conversion rate by 42% on mobile devices.',
-      tags: ['Webflow', 'eCommerce', 'Responsive Design', 'Cart Flow'],
-      badge: '+42% Conversion Lift',
+      title: 'Aura Living — Direct-to-Consumer eCommerce',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80',
+      tech: ['Webflow CMS', 'eCommerce', 'Custom Interactions', 'Responsive Design'],
     },
     {
       id: 'vanguard-legal',
-      title: 'Vanguard Legal',
-      category: 'Local SEO & WordPress',
-      year: '2025',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
-      description:
-        'Optimized Google Business Profile and local citations across 3 key metropolitan zones, generating 380+ direct inbound qualified phone consultations monthly.',
-      tags: ['Google Maps', 'GBP Optimization', 'WordPress', 'Local Citations'],
-      badge: '+380 Inbound Calls/Mo',
+      title: 'Vanguard Legal — Corporate Firm & Local Authority',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80',
+      tech: ['WordPress', 'Google Map 3-Pack', 'GBP Optimization', 'Local Citations'],
     },
     {
       id: 'kore-capital',
-      title: 'Kore Capital',
-      category: 'Webflow / Financial Platform',
-      year: '2024',
-      image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80',
-      description:
-        'Clean high-trust layout with responsive interactive financial calculators, sub-second latency, and verified lead capture workflows.',
-      tags: ['Webflow', 'FinTech', 'Calculators', 'Lead Capture'],
-      badge: 'Sub-Second Latency',
+      title: 'Kore Capital — Institutional FinTech Platform',
+      image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1400&q=80',
+      tech: ['Webflow CMS', 'FinTech Architecture', 'Interactive Calculators', 'Lead Funnel'],
     },
   ];
 
   return (
-    <section id="works" className="py-24 sm:py-36 px-6 sm:px-12 bg-white select-none border-b border-[#e7e2dd]">
+    <section id="works" className="py-24 sm:py-36 px-6 sm:px-12 bg-transparent select-none">
       <div className="max-w-[84rem] mx-auto space-y-16">
         
         {/* Section Header with Word-by-Word Blur Reveal */}
@@ -84,68 +64,45 @@ export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
           </ScrollBlurFade>
         </div>
 
-        {/* 4 Deep-Black Ink Cards with Staggered Slide Reveals */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+        {/* Clean Editorial Portfolio Grid (No borders, no padding, no background) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-12 sm:gap-y-16">
           {projects.map((project, idx) => (
             <ScrollSlideCard
               key={project.id}
               delay={idx * 0.15 + 0.1}
               onClick={() => onOpenBooking(project.title)}
-              className="bg-[#060612] text-white rounded-[2.5rem] p-6 sm:p-10 flex flex-col justify-between shadow-2xl hover:border-[#ff6321]/50 border border-white/5 transition-all duration-300 group cursor-pointer"
+              className="group cursor-pointer flex flex-col space-y-4 sm:space-y-5"
             >
-              {/* Top Meta Row */}
-              <div className="flex items-center justify-between pb-6 border-b border-white/10">
-                <div>
-                  <span className="text-body-sm font-mono text-[#69686e] uppercase tracking-wider block whitespace-nowrap">
-                    {project.category}
-                  </span>
-                  <span className="text-body-sm font-mono text-white/50 whitespace-nowrap">
-                    RELEASE // {project.year}
-                  </span>
-                </div>
-
-                {/* Circular magnetic badge with ArrowUpRight */}
-                <div className="w-12 h-12 rounded-full bg-white text-[#060612] flex items-center justify-center group-hover:bg-[#ff6321] group-hover:text-white transition-colors duration-300 shadow-md shrink-0">
-                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300 stroke-[2.2]" />
-                </div>
-              </div>
-
-              {/* Center: High-Fidelity Image Mockup Frame */}
-              <div className="relative h-[280px] sm:h-[340px] w-full rounded-2xl overflow-hidden my-6 sm:my-8 bg-[#161922] border border-white/10">
+              {/* Clean Image Frame */}
+              <div className="relative aspect-[16/10] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[#eeecea]">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-104 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-                
-                {/* Floating Metric Badge */}
-                <div className="absolute bottom-4 left-4 px-4 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-body-sm font-mono text-[#ff7e47] font-bold whitespace-nowrap shrink-0">
-                  {project.badge}
+              </div>
+
+              {/* Heading Title about the Project */}
+              <div className="flex items-start justify-between gap-4 pt-1">
+                <h3 className="font-heading font-semibold text-2xl sm:text-3xl text-[#060612] group-hover:text-[#ff6321] transition-colors leading-snug">
+                  {project.title}
+                </h3>
+                <div className="w-9 h-9 rounded-full bg-black/5 text-[#060612] group-hover:bg-[#ff6321] group-hover:text-white transition-all flex items-center justify-center shrink-0 mt-0.5">
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
 
-              {/* Bottom: Project Name, 2-line performance metric description & TagChips */}
-              <div className="space-y-4">
-                <h3 className="font-heading font-medium text-2xl sm:text-3xl text-white group-hover:text-[#ff6321] transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-body text-[#69686e] leading-relaxed font-body">
-                  {project.description}
-                </p>
-
-                {/* Tag Chips with strict whitespace-nowrap shrink-0 */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full bg-white/10 text-body-sm font-mono text-white/90 border border-white/5 whitespace-nowrap shrink-0"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              {/* Tech Stack Capsules */}
+              <div className="flex flex-wrap gap-2 pt-0.5">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-medium bg-[#f5f4f3] text-[#060612] border border-[#e7e2dd] whitespace-nowrap shrink-0 group-hover:border-[#ff6321]/40 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </ScrollSlideCard>
           ))}

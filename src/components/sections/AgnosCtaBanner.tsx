@@ -44,11 +44,11 @@ export function AgnosCtaBanner({ onOpenBooking }: AgnosCtaBannerProps) {
             <PillButton
               variant="dark"
               size="lg"
-              onClick={onOpenBooking}
+              href="/contact"
               showArrow={true}
               className="shadow-2xl hover:scale-105 whitespace-nowrap shrink-0"
             >
-              Start your project
+              Start project
             </PillButton>
           </ScrollSlideCard>
         </div>

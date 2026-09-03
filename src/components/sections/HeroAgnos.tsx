@@ -482,7 +482,7 @@ export function HeroAgnos({ onOpenBooking }: HeroAgnosProps) {
           <PillButton
             variant="coral"
             size="lg"
-            onClick={onOpenBooking}
+            href="/contact"
             showArrow={true}
             className="shadow-lg whitespace-nowrap shrink-0"
           >

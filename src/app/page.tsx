@@ -17,30 +17,23 @@ import { CaseStudiesLumora } from '@/components/sections/CaseStudiesLumora';
 import { FaqApex } from '@/components/sections/FaqApex';
 import { AgnosCtaBanner } from '@/components/sections/AgnosCtaBanner';
 import { FooterApex } from '@/components/layout/FooterApex';
-import { RequestModalApex } from '@/components/modals/RequestModalApex';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   // Adaptive rem scaling
   useAdaptiveRem();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
+  const router = useRouter();
 
-  const handleOpenBooking = (service?: string) => {
-    setSelectedService(service);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseBooking = () => {
-    setIsModalOpen(false);
-    setSelectedService(undefined);
+  const handleOpenBooking = () => {
+    router.push('/contact');
   };
 
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-[#faf9f8] text-[#060612] overflow-x-hidden">
         {/* 2. Menu Navbar (Startuplize floating header, transparent sticky phase) */}
-        <Header onOpenBooking={() => handleOpenBooking()} />
+        <Header onOpenBooking={handleOpenBooking} />
 
         {/* 3. Hero Section (Agnos Concentric Radar & 50+ Systems Showcase Spread) */}
         <HeroAgnos onOpenBooking={() => handleOpenBooking()} />
@@ -74,13 +67,6 @@ export default function Home() {
 
         {/* 13. Agnos Footer (Startuplize Directory & Watermark) */}
         <FooterApex onOpenBooking={() => handleOpenBooking()} />
-
-        {/* 14. Interactive Strategy Consultation Modal */}
-        <RequestModalApex
-          isOpen={isModalOpen}
-          onClose={handleCloseBooking}
-          defaultService={selectedService}
-        />
       </div>
     </SmoothScrollProvider>
   );

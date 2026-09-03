@@ -138,7 +138,7 @@ export function AgnosOfferings({ onOpenBooking }: AgnosOfferingsProps) {
                 <PillButton
                   variant={card.btnVariant}
                   size="md"
-                  onClick={() => onOpenBooking(card.title)}
+                  href="/contact"
                   showArrow={true}
                   className="w-full justify-between shadow-md"
                 >

@@ -212,3 +212,15 @@ button {
 .animate-radar-pulse {
   animation: radar-pulse 8s ease-in-out infinite;
 }
+
+/* Hide Next.js dev indicator badge in bottom right */
+[data-nextjs-toast],
+nextjs-portal,
+#next-logo,
+[data-nextjs-dev-tools],
+div[class*="nextjs-toast"],
+div:has(> svg > path[d*="M2.5 2.5"]) {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

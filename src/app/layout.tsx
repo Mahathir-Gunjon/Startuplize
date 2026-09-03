@@ -44,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { FloatingContactWidget } from "@/components/ui/FloatingContactWidget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,8 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} ${manrope.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-hidden">
+      <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-hidden relative">
         {children}
+        <FloatingContactWidget />
       </body>
     </html>
   );
