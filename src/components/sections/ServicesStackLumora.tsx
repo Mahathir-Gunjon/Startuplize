@@ -21,7 +21,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       tagline: 'Custom Theme Builds · Elementor Pro · Fast WooCommerce',
       description:
         'Zero-bloat custom WordPress and Elementor Pro systems. We eliminate messy third-party plugin bloat with clean theme architectures, optimized database queries, and lightning-fast customer checkout experiences.',
-      deliverables: ['Sub-Second Mobile Speed', 'Custom Elementor & ACF Blocks', 'Fast WooCommerce Checkout'],
+      deliverables: ['Sub-Second Speed', 'Custom ACF Blocks', 'Fast WooCommerce'],
       previewImg: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     },
     {
@@ -30,7 +30,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       tagline: 'Visual Micro-Interactions · Clean CMS Structure',
       description:
         'Clean, scalable Webflow websites built with modern standards, responsive layouts, zero layout shifts, and an intuitive visual editor that allows your team to easily update content without breaking designs.',
-      deliverables: ['60 FPS Smooth Navigation', 'Dynamic CMS Collections', 'Simple Visual Content Editing'],
+      deliverables: ['60 FPS Navigation', 'Dynamic Collections', 'Visual Client Editor'],
       previewImg: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     },
     {
@@ -39,7 +39,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       tagline: 'Local Schema · Crawl Optimization · Content Hierarchy',
       description:
         'Search engines favor speed and clear information structure. We implement clean schema markup, logical URL structures, fast mobile rendering, and topical keyword mapping so search engines easily understand your services.',
-      deliverables: ['Rich Local Business Schema', 'Speed & Crawl Optimization', '100% CWV Field Data Pass'],
+      deliverables: ['Local Schema Markup', 'Speed & Crawl Audit', '100% CWV Field Pass'],
       previewImg: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
     },
     {
@@ -48,7 +48,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
       tagline: 'Google Business Profile · Map Pack Visibility · Lead Funnels',
       description:
         'Expanding your reach across local target service areas. We optimize your Google Business Profile (GBP), synchronize verified local directory citations, and establish automated review generation systems that drive real phone inquiries.',
-      deliverables: ['Google Business Profile Optimization', 'Automated 5★ Review Workflow', 'Consistent Inbound Phone Calls'],
+      deliverables: ['GBP Optimization', 'Automated 5★ Reviews', 'Inbound Call Funnels'],
       previewImg: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
     },
   ];
@@ -88,7 +88,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
           </ScrollBlurFade>
         </div>
 
-        {/* 4 Interactive Service Rows with Staggered Slide Reveals */}
+        {/* 4 Interactive Service Rows with Staggered Slide Reveals & Identical Hover Effects */}
         <div className="border-b border-[#e7e2dd] relative">
           {services.map((item, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -99,8 +99,8 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 onClick={() => onOpenBooking(item.title)}
-                className={`border-t border-[#e7e2dd] transition-all duration-300 cursor-pointer group relative overflow-hidden py-8 sm:py-10 ${
-                  isHovered ? 'bg-[#f5f4f3] px-6 sm:px-10 rounded-2xl my-2' : 'bg-white px-2 sm:px-4'
+                className={`border-t border-[#e7e2dd] transition-all duration-300 cursor-pointer group relative overflow-hidden py-7 sm:py-8 px-6 sm:px-8 rounded-2xl my-1 ${
+                  isHovered ? 'bg-[#f5f4f3] shadow-xs' : 'bg-transparent'
                 }`}
               >
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
@@ -148,10 +148,23 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
 
                 </div>
 
-                {/* Description */}
-                <div className="mt-4 pt-3 border-t border-[#e7e2dd]/60 text-body text-[#69686e] max-w-2xl leading-relaxed font-body">
-                  {item.description}
-                </div>
+                {/* Description - Fades in and expands smoothly on hover */}
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      key="desc"
+                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-3 border-t border-[#e7e2dd]/70 text-body text-[#69686e] max-w-2xl leading-relaxed font-body">
+                        {item.description}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </ScrollSlideCard>
             );
           })}
