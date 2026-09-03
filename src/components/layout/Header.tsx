@@ -6,7 +6,7 @@ import { Sparkles, LayoutGrid, ShieldCheck, Zap, HelpCircle, ArrowUpRight } from
 import { PillButton } from '@/components/ui/PillButton';
 
 interface HeaderProps {
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
 export function Header({ onOpenBooking }: HeaderProps) {
@@ -54,11 +54,11 @@ export function Header({ onOpenBooking }: HeaderProps) {
   };
 
   const navLinks = [
-    { label: 'Services', href: '#services', icon: Sparkles },
-    { label: 'Work', href: '#works', icon: LayoutGrid },
-    { label: 'Proof', href: '#proof', icon: ShieldCheck },
-    { label: 'Why Us', href: '#why-us', icon: Zap },
-    { label: 'FAQ', href: '#faq', icon: HelpCircle },
+    { label: 'Services', href: '/#services', icon: Sparkles },
+    { label: 'Work', href: '/#works', icon: LayoutGrid },
+    { label: 'Proof', href: '/#proof', icon: ShieldCheck },
+    { label: 'Why Us', href: '/#why-us', icon: Zap },
+    { label: 'FAQ', href: '/#faq', icon: HelpCircle },
   ];
 
   const servicesData = [
@@ -135,7 +135,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
         >
           {/* Left: Full Logo with Mark & Wordmark (Always visible in both normal & sticky) */}
           <a
-            href="#home"
+            href="/"
             className="flex items-center gap-2 sm:gap-2.5 group whitespace-nowrap shrink-0"
           >
             <img
