@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>startuplize — High-Performance Web & Digital Growth Engineering</title>
+  <meta name="description" content="We design platforms that move people. Custom WordPress, Webflow systems, programmatic SEO, and local search dominance for ambitious businesses." />
+  <meta name="theme-color" content="#060612" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="importmap">
+  { "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
+  </script>
+
+  <style>
+    /* Fixed Agnos Palette & Tokens */
+    :root {
+      --background: #faf9f8;
+      --foreground: #060612;
+      --ink: #060612;
+      --muted: #69686e;
+      --subtle: #a19fa8;
+      --line: #e7e2dd;
+      --surface: #f5f4f3;
+      --surface-2: #eeecea;
+      --accent: #ff6321;
+      --accent-from: #ff7e47;
+      --accent-to: #e54c0e;
+      --hero-bg: #faf9f8;
+      --radius-pill: 9999px;
+      --radius-card: 2rem;
+      --radius-card-sm: 1.25rem;
+      --radius-control: 0.875rem;
+      --container-shell: 84rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; font-family: 'Manrope', sans-serif; }
+    body { background: var(--background); color: var(--foreground); font-family: 'Manrope', sans-serif; font-size: 1.125rem; line-height: 1.6; overflow-x: hidden; }
+    
+    /* UI Stability: Never wrap button or capsule text into 2 lines */
+    .pill-btn, .badge-capsule, .chip-tag, button { white-space: nowrap !important; flex-shrink: 0 !important; }
+    
+    /* Strict Typography Scales: Bricolage Grotesque 500 */
+    h1, .font-h1 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 4rem; line-height: 1.02; letter-spacing: -0.03em; }
+    h2, .font-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 3rem; line-height: 1.1; letter-spacing: -0.025em; }
+    h3, .font-h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 2rem; line-height: 1.2; letter-spacing: -0.02em; }
+    h4, .font-h4 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 1.5rem; line-height: 1.3; letter-spacing: -0.015em; }
+
+    /* Strict Body Text Scales: Manrope */
+    .text-body-lg { font-family: 'Manrope', sans-serif; font-size: 1.25rem; line-height: 1.5; }
+    .text-body { font-family: 'Manrope', sans-serif; font-size: 1.125rem; line-height: 1.6; }
+    .text-body-sm { font-family: 'Manrope', sans-serif; font-size: 1rem; line-height: 1.6; }
+    
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Adaptive Grid Scaling */
+    @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
+    @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
+    @media (max-width: 1024px) { html { font-size: 1.5625vw; } }
+    @media (max-width: 640px)  { html { font-size: 4.444444vw; } }
+
+    /* PillButton Kinetic Physics */
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s, border 0.2s;
+      font-weight: 500;
+      white-space: nowrap;
+      gap: 1.5rem;
+    }
+    .pill-btn:hover {
+      transform: scale(1.04);
+    }
+    .pill-btn .badge-icon {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .pill-btn:hover .badge-icon {
+      transform: translate(3px, -3px);
+    }
+
+    .pill-btn.dark {
+      background: var(--ink);
+      color: #ffffff;
+      padding: 0.625rem 0.625rem 0.625rem 1.75rem;
+    }
+    .pill-btn.dark .badge-icon {
+      background: #ffffff;
+      color: var(--ink);
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+
+    .pill-btn.light {
+      background: var(--surface);
+      color: var(--foreground);
+      padding: 0.625rem 0.625rem 0.625rem 1.75rem;
+    }
+    .pill-btn.light:hover { background: var(--surface-2); }
+    .pill-btn.light .badge-icon {
+      background: var(--ink);
+      color: #ffffff;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+
+    .pill-btn.outline {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--foreground);
+      padding: 0.625rem 1.5rem;
+    }
+    .pill-btn.outline:hover { border-color: var(--ink); }
+
+    /* Clip-Mask Line Reveal */
+    .line-mask {
+      overflow: hidden;
+      display: block;
+      line-height: 0.98;
+    }
+    .line-mask > span {
+      display: block;
+      transform: translateY(115%);
+      opacity: 0;
+      transition: transform 0.9s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    .ready .line-mask > span {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    /* Marquee ticker */
+    @keyframes ticker-anim {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-anim 40s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* Page Loader Curtain */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: var(--ink);
+      color: #ffffff;
+      border-radius: 0 0 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 4rem;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+    }
+    #page-loader.exit {
+      transform: translateY(-100%);
+    }
+
+    /* Service Row Expansion */
+    .service-row {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 1.5rem;
+      transition: background 0.3s, padding 0.3s;
+      cursor: pointer;
+    }
+    .service-row:hover {
+      background: var(--surface);
+      padding: 2.5rem 2.5rem;
+      border-radius: var(--radius-card-sm);
+    }
+    .service-row:hover .srv-arrow {
+      transform: translateX(5px);
+    }
+
+    /* Modal Backdrop */
+    #request-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.4);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    #request-modal.open { display: flex; }
+
+    /* Nav Overlay */
+    #nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: var(--ink);
+      color: #ffffff;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 4rem;
+    }
+    #nav-overlay.open { display: flex; }
+
+    /* Pulse dot */
+    @keyframes pulse-anim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+    .pulse-dot { animation: pulse-anim 2s infinite ease-in-out; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. PageLoader -->
+  <div id="page-loader">
+    <div style="display:flex; justify-content:space-between; font-family:monospace; font-size:0.75rem; color:var(--muted);">
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span class="pulse-dot" style="width:0.375rem; height:0.375rem; border-radius:50%; background:var(--accent-from); display:inline-block;"></span>
+        <span>APEXSTUDIO // CORE ENGINES</span>
+      </div>
+      <div>EST. 2018 · WORLDWIDE</div>
+    </div>
+
+    <div style="margin:auto 0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem;">
+      <div style="color:var(--accent-from);">
+        <svg viewBox="0 0 48 48" fill="currentColor" style="width:2.75rem; height:2.75rem;">
+          <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
+        </svg>
+      </div>
+      <div>
+        <h1 style="font-size:2.25rem; font-weight:700; color:#ffffff;">ApexStudio</h1>
+        <p style="font-size:0.875rem; color:var(--muted); margin-top:0.25rem;">Engineering digital ecosystems & market dominance.</p>
+      </div>
+
+      <div style="width:min(22rem, 72vw); margin-top:1.5rem;">
+        <div style="width:100%; height:1px; background:rgba(255,255,255,0.1); overflow:hidden; position:relative;">
+          <div id="loader-bar" style="width:0%; height:100%; background:var(--accent-from); transition:width 0.05s linear;"></div>
+        </div>
+        <div id="loader-count" style="font-family:monospace; font-size:3rem; font-weight:700; margin-top:1rem; letter-spacing:-0.05em;">
+          000<span style="font-size:1.25rem; color:var(--accent-from); margin-left:0.25rem;">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; font-family:monospace; font-size:0.6875rem; color:var(--muted);">
+      <span>WORDPRESS · WEBFLOW · TECHNICAL SEO · LOCAL 3-PACK</span>
+      <span>STATUS: 200 OK</span>
+    </div>
+  </div>
+
+  <!-- 2. Header (Startuplize Floating Header) -->
+  <header id="site-header" style="position:fixed; inset:0 0 auto 0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:2rem 3rem; transition:all 0.3s ease;">
+    <a id="header-logo" href="#home" style="display:flex; align-items:center; gap:0.625rem; transition:all 0.3s ease; white-space:nowrap; flex-shrink:0; z-index:10;">
+      <div style="width:1.85rem; height:1.85rem; border-radius:0.5rem; background:#060612; display:flex; align-items:center; justify-content:center;">
+        <span style="color:#ff6321; font-size:1rem; line-height:1;">●</span>
+      </div>
+      <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.25rem; color:#060612;">startuplize<span style="color:#ff6321;">.</span></span>
+    </a>
+
+    <!-- Centered Nav with Icons -->
+    <nav id="header-nav" style="position:absolute; left:50%; transform:translateX(-50%); z-index:10; display:flex; align-items:center; gap:1.75rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); padding:0.65rem 2rem; border-radius:var(--radius-pill); border:1px solid var(--line); box-shadow:0 4px 16px rgba(0,0,0,0.04); transition:all 0.3s ease;">
+      <a href="#services" style="font-size:0.875rem; font-weight:500; display:flex; align-items:center; gap:0.45rem; color:#060612;">
+        <span style="color:#ff6321; font-size:0.85rem;">✦</span>
+        <span>Services</span>
+      </a>
+      <a href="#works" style="font-size:0.875rem; font-weight:500; display:flex; align-items:center; gap:0.45rem; color:#060612;">
+        <span style="color:#ff6321; font-size:0.85rem;">▦</span>
+        <span>Work</span>
+      </a>
+      <a href="#proof" style="font-size:0.875rem; font-weight:500; display:flex; align-items:center; gap:0.45rem; color:#060612;">
+        <span style="color:#ff6321; font-size:0.85rem;">✓</span>
+        <span>Proof</span>
+      </a>
+      <a href="#why-us" style="font-size:0.875rem; font-weight:500; display:flex; align-items:center; gap:0.45rem; color:#060612;">
+        <span style="color:#ff6321; font-size:0.85rem;">⚡</span>
+        <span>Why Us</span>
+      </a>
+      <a href="#faq" style="font-size:0.875rem; font-weight:500; display:flex; align-items:center; gap:0.45rem; color:#060612;">
+        <span style="color:#ff6321; font-size:0.85rem;">?</span>
+        <span>FAQ</span>
+      </a>
+    </nav>
+
+    <!-- Right: Big CTA Button -->
+    <div style="display:flex; align-items:center; margin-left:auto; pointer-events:auto; white-space:nowrap; flex-shrink:0; z-index:10;">
+      <button class="pill-btn coral open-modal-btn" style="font-size:0.95rem; padding:0.65rem 1.6rem; background:#ff6321; color:#ffffff; border-radius:var(--radius-pill); display:flex; align-items:center; gap:0.75rem; font-weight:600; box-shadow:0 6px 18px rgba(255,99,33,0.35); cursor:pointer;">
+        <span>Start project</span>
+        <span class="badge-icon" style="width:1.75rem; height:1.75rem; border-radius:50%; background:#ffffff; color:#ff6321; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:0.875rem; height:0.875rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 3. Hero Section (#home): Agnos Concentric Radar Hero -->
+  <section id="home" style="height:100vh; min-height:640px; background:var(--background); position:relative; z-index:30; display:flex; align-items:center; justify-content:center; padding:0 2rem;">
+    
+    <!-- Enlarged Concentric Radar Rings & Tech Logo Orbit System -->
+    <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:0;">
+      <div style="position:relative; width:1650px; height:1650px; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(6,6,18,0.04);"></div>
+        <div style="position:absolute; inset:120px; border-radius:50%; border:1px solid rgba(6,6,18,0.08); box-shadow:0 0 60px rgba(255,99,33,0.03);"></div>
+        <div style="position:absolute; inset:260px; border-radius:50%; border:1px dashed rgba(6,6,18,0.06);"></div>
+        <div style="position:absolute; inset:420px; border-radius:50%; border:1px solid rgba(255,99,33,0.15);"></div>
+
+        <!-- 1. Elementor Original Logo (Upper-Left Flank) -->
+        <div style="position:absolute; left:20%; top:22%; pointer-events:auto;" title="Elementor">
+          <div style="width:3.5rem; height:3.5rem; border-radius:50%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0.65rem;">
+            <img src="/logos/elementor.png" alt="Elementor" style="width:100%; height:100%; object-fit:contain;" />
+          </div>
+        </div>
+
+        <!-- 2. WordPress Original Logo (Mid-Left Flank) -->
+        <div style="position:absolute; left:16%; top:50%; pointer-events:auto;" title="WordPress">
+          <div style="width:3.75rem; height:3.75rem; border-radius:50%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0.5rem;">
+            <img src="/logos/wordpress.png" alt="WordPress" style="width:100%; height:100%; object-fit:contain;" />
+          </div>
+        </div>
+
+        <!-- 3. Webflow Original Logo (Upper-Right Flank) -->
+        <div style="position:absolute; right:20%; top:22%; pointer-events:auto;" title="Webflow">
+          <div style="width:3.5rem; height:3.5rem; border-radius:50%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0.75rem;">
+            <img src="/logos/webflow.png" alt="Webflow" style="width:100%; height:100%; object-fit:contain;" />
+          </div>
+        </div>
+
+        <!-- 4. Moz Local SEO (Mid-Right Flank) -->
+        <div style="position:absolute; right:16%; top:50%; pointer-events:auto;" title="Moz Local SEO">
+          <div style="width:3.75rem; height:3.75rem; border-radius:50%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0.75rem;">
+            <img src="/logos/moz.png" alt="Moz Local SEO" style="width:100%; height:100%; object-fit:contain;" />
+          </div>
+        </div>
+
+        <!-- 5. Growth Analytics Chart (Lower-Right Flank) -->
+        <div style="position:absolute; right:24%; top:72%; pointer-events:auto;" title="Local Growth Analytics">
+          <div style="width:3.25rem; height:3.25rem; border-radius:50%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0.65rem;">
+            <img src="/logos/growth-chart.png" alt="Growth Analytics" style="width:100%; height:100%; object-fit:contain;" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Centered Hero Copy & CTAs -->
+    <div style="max-width:76rem; margin:0 auto; text-align:center; position:relative; z-index:10; display:flex; flex-direction:column; gap:1.5rem; align-items:center; transform:translateY(-1rem);">
+      
+      <!-- Eyebrow Pill -->
+      <div style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 1rem; border-radius:9999px; background:#ffffff; border:1px solid var(--line); font-family:monospace; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#060612;">
+        <span style="width:0.5rem; height:0.5rem; border-radius:50%; background:#ff6321;"></span>
+        <span>DIGITAL GROWTH & WEB ENGINEERING</span>
+      </div>
+
+      <!-- Main Headline in Bricolage Grotesque 500 with Wide Pill Badges -->
+      <h1 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:2.95rem; color:#060612; line-height:1.22; letter-spacing:-0.03em; max-width:70rem; margin:0 auto;">
+        <span style="display:block; white-space:nowrap;">
+          A Better Website
+          <span style="display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; margin:0 0.6rem; width:6.2rem; height:3.4rem; border-radius:9999px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,0.14); border:2.5px solid #ffffff; background:#060612; flex-shrink:0; transform:translateY(-4px);">
+            <img src="/hero-badges/badge-developer.jpg" alt="Web Experience" style="width:100%; height:100%; object-fit:cover;" />
+          </span>
+          Changes
+        </span>
+        <span style="display:block; white-space:nowrap; margin-top:0.6rem;">
+          How People
+          <span id="hero-tracking-eye" style="display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; margin:0 0.6rem; gap:0.55rem; padding:0 0.85rem; height:3.4rem; border-radius:9999px; box-shadow:0 8px 22px rgba(0,0,0,0.14); border:2.5px solid #ffffff; background:rgba(255,255,255,0.95); flex-shrink:0; transform:translateY(-4px); position:relative; cursor:pointer;" title="👀 Looking right where your mouse goes!">
+            <!-- Left Eye -->
+            <span style="position:relative; width:2.35rem; height:2.35rem; border-radius:50%; background:linear-gradient(to bottom, #ffffff, #ede9e3); border:1px solid rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <span class="hero-eye-pupil" style="width:1.45rem; height:1.45rem; border-radius:50%; background:#060612; display:flex; align-items:flex-start; justify-content:flex-end; padding:0.18rem; pointer-events:none; transition:transform 0.05s ease-out;">
+                <span style="width:0.45rem; height:0.45rem; border-radius:50%; background:#ffffff;"></span>
+              </span>
+            </span>
+            <!-- Right Eye -->
+            <span style="position:relative; width:2.35rem; height:2.35rem; border-radius:50%; background:linear-gradient(to bottom, #ffffff, #ede9e3); border:1px solid rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <span class="hero-eye-pupil" style="width:1.45rem; height:1.45rem; border-radius:50%; background:#060612; display:flex; align-items:flex-start; justify-content:flex-end; padding:0.18rem; pointer-events:none; transition:transform 0.05s ease-out;">
+                <span style="width:0.45rem; height:0.45rem; border-radius:50%; background:#ffffff;"></span>
+              </span>
+            </span>
+          </span>
+          <span style="color:#ff6321;">Your Business.</span>
+        </span>
+      </h1>
+
+      <p style="font-size:1.15rem; color:var(--muted); max-width:48rem; line-height:1.65; font-family:'Manrope', sans-serif;">
+        We build premium digital experiences that make your brand more credible, your message clearer, and your customers more confident to take action.
+      </p>
+
+      <!-- Action Buttons -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:1rem; margin-top:0.5rem; white-space:nowrap;">
+        <button class="open-modal-btn" style="padding:0.75rem 1.75rem; border-radius:9999px; background:#ff6321; color:#ffffff; font-weight:600; font-size:0.9375rem; display:flex; align-items:center; gap:0.625rem; box-shadow:0 8px 20px rgba(255,99,33,0.3); cursor:pointer;">
+          <span>Book a call</span>
+          <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:#ffffff; color:#ff6321; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:0.75rem; height:0.75rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </button>
+        <a href="#works" style="padding:0.75rem 1.75rem; border-radius:9999px; background:#060612; color:#ffffff; font-weight:600; font-size:0.9375rem; display:flex; align-items:center; gap:0.625rem; cursor:pointer;">
+          <span>Our work</span>
+          <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:#ffffff; color:#060612; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:0.75rem; height:0.75rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Rating Bar -->
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-top:0.25rem;">
+        <div style="color:#ff6321; font-size:0.875rem; letter-spacing:0.1em;">★★★★★</div>
+        <span style="font-size:0.875rem; font-weight:600; color:#060612;">5.0 <span style="color:var(--muted); font-weight:400;">(from 140+ verified client deployments)</span></span>
+      </div>
+
+    </div>
+
+    <!-- Full-Width Intersecting Infinite Marquee Ribbons (Anchored at bottom, 60%-70% visible) -->
+    <div style="position:absolute; bottom:0; left:0; right:0; width:100%; overflow:hidden; z-index:15; pointer-events:none; transform:translateY(36%);">
+      <div style="position:relative; padding:3rem 0; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        
+        <!-- Black Ribbon: Angled diagonally upward-right (+2.6deg) -->
+        <div style="position:absolute; width:200vw; left:50%; transform:translateX(-50%) rotate(2.6deg); background:#060612; color:#ffffff; padding:1rem 0; box-shadow:0 15px 35px rgba(0,0,0,0.3); z-index:10; overflow:hidden;">
+          <div class="animate-ticker-right" style="display:flex; align-items:center; white-space:nowrap; width:max-content; animation:ticker-right 28s linear infinite;">
+            <div style="display:flex; align-items:center;">
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Senior Developers Only</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">100% Core Web Vitals Pass</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Over 140+ Deployments</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Sub-Second Mobile Speed</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Clean Zero-Bloat Code</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Zero Junior Hand-Offs</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Senior Developers Only</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">100% Core Web Vitals Pass</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Over 140+ Deployments</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Sub-Second Mobile Speed</span><span style="color:#ff6321; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orange Ribbon: Angled diagonally downward-right (-2.6deg), crossing black ribbon -->
+        <div style="position:relative; width:200vw; left:50%; transform:translateX(-50%) rotate(-2.6deg); background:#ff6321; color:#ffffff; padding:1rem 0; box-shadow:0 20px 40px rgba(255,99,33,0.35); z-index:20; overflow:hidden;">
+          <div class="animate-ticker-left" style="display:flex; align-items:center; white-space:nowrap; width:max-content; animation:ticker-left 25s linear infinite;">
+            <div style="display:flex; align-items:center;">
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">WordPress Engineering</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Webflow Systems</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Elementor Pro Systems</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Local SEO & GMB</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Custom ACF Pro Themes</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Sub-Second WooCommerce</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">WordPress Engineering</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Webflow Systems</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Elementor Pro Systems</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+              <span style="font-family:'Bricolage Grotesque', sans-serif; font-size:1.2rem; font-weight:500; text-transform:uppercase; margin:0 1.25rem;">Local SEO & GMB</span><span style="color:#060612; font-size:0.75rem; margin:0 0.5rem;">◆</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- 5. Agnos Offerings (Free Audit vs Full Engineering Sprint) -->
+  <section style="background:#faf9f8; padding:6rem 3rem; border-bottom:1px solid var(--line);">
+    <div style="max-width:84rem; margin:0 auto;">
+      <div style="text-align:center; max-width:52rem; margin:0 auto 4rem auto;">
+        <span style="font-family:monospace; font-size:0.875rem; text-transform:uppercase; font-weight:700; color:#ff6321; display:block; margin-bottom:0.75rem;">
+          • HOW WE COLLABORATE
+        </span>
+        <h2 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:3rem; line-height:1.2; letter-spacing:-0.025em; color:#060612;">
+          We are a studio of engineers dedicated to building platforms that <span style="color:#ff6321; font-style:italic;">convert.</span>
+        </h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(22rem, 1fr)); gap:2rem; max-width:68rem; margin:0 auto;">
+        <!-- Card 1: Free Audit -->
+        <div style="background:#ffffff; border-radius:2rem; padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,0.04);">
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+            <span style="align-self:flex-start; padding:0.35rem 0.85rem; border-radius:9999px; background:#f5f4f3; color:#ff6321; font-family:monospace; font-size:0.7rem; font-weight:700; border:1px solid var(--line);">
+              NO COMMITMENT REQUIRED
+            </span>
+            <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.75rem; color:#060612;">Free Engineering Audit</h3>
+            <p style="font-size:0.9375rem; color:var(--muted); line-height:1.6;">A comprehensive diagnostic uncovering frontend bottlenecks, render-blocking scripts, and local search deficits holding your brand back.</p>
+            <div style="display:flex; flex-direction:column; gap:0.625rem; border-top:1px solid var(--line); padding-top:1.25rem;">
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Sub-600ms Mobile LCP Analysis</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Google Business Profile Geo-Grid Audit</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Entity Schema & IndexNow Diagnostic</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> 48-Hour Architecture Action Video</div>
+            </div>
+          </div>
+          <div style="margin-top:2rem;">
+            <button class="open-modal-btn" style="width:100%; padding:0.875rem; border-radius:9999px; background:#060612; color:#ffffff; font-weight:600; font-size:0.9375rem; cursor:pointer;">
+              Request free audit ↗
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Full Engineering Sprint -->
+        <div style="background:#ff6321; color:#ffffff; border-radius:2rem; padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 20px 40px rgba(255,99,33,0.25);">
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+            <span style="align-self:flex-start; padding:0.35rem 0.85rem; border-radius:9999px; background:rgba(255,255,255,0.2); color:#ffffff; font-family:monospace; font-size:0.7rem; font-weight:700; border:1px solid rgba(255,255,255,0.3);">
+              DEDICATED 4-WEEK SPRINT
+            </span>
+            <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.75rem; color:#ffffff;">Full Engineering Sprint</h3>
+            <p style="font-size:0.9375rem; color:rgba(255,255,255,0.92); line-height:1.6;">Complete end-to-end production build. We architect custom headless WordPress or Webflow platforms designed mathematically to dominate your sector.</p>
+            <div style="display:flex; flex-direction:column; gap:0.625rem; border-top:1px solid rgba(255,255,255,0.2); padding-top:1.25rem;">
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Bespoke Headless Next.js or Webflow Platform</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> 100% Core Web Vitals Pass Guarantee</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Programmatic SEO Cluster Architecture</div>
+              <div style="font-size:0.875rem; display:flex; align-items:center; gap:0.5rem;"><b>✓</b> Direct Slack Access with Senior Engineers</div>
+            </div>
+          </div>
+          <div style="margin-top:2rem;">
+            <button class="open-modal-btn" style="width:100%; padding:0.875rem; border-radius:9999px; background:#ffffff; color:#ff6321; font-weight:700; font-size:0.9375rem; cursor:pointer;">
+              Book engineering sprint ↗
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Agnos Bento Grid (Why Startuplize) -->
+  <section id="why-us" style="background:#ffffff; padding:6rem 3rem; border-bottom:1px solid var(--line);">
+    <div style="max-width:84rem; margin:0 auto;">
+      <div style="text-align:center; max-width:52rem; margin:0 auto 4rem auto;">
+        <span style="font-family:monospace; font-size:0.875rem; text-transform:uppercase; font-weight:700; color:#ff6321; display:block; margin-bottom:0.75rem;">
+          • WHY STARTUPLIZE
+        </span>
+        <h2 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:3rem; line-height:1.2; letter-spacing:-0.025em; color:#060612;">
+          Engineered for founders who refuse to settle for <span style="color:#ff6321; font-style:italic;">average.</span>
+        </h2>
+      </div>
+
+      <!-- 4-Block Bento Grid -->
+      <div style="display:grid; grid-template-columns:repeat(12, 1fr); gap:2rem;">
+        <!-- Card 1 (Span 7) -->
+        <div style="grid-column:span 7; background:#f5f4f3; border-radius:2rem; padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between; min-height:24rem;">
+          <div>
+            <span style="font-family:monospace; font-size:0.8125rem; font-weight:700; color:#ff6321;">RAPID DEPLOYMENT</span>
+            <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.875rem; margin-top:0.25rem;">Agile Sprints with Zero Bloat</h3>
+            <p style="font-size:0.9375rem; color:var(--muted); margin-top:0.5rem; max-width:28rem;">We work in intense 2-to-4 week sprints. Direct communication, transparent GitHub commits, and no account-manager bureaucracy.</p>
+          </div>
+          <div style="height:11rem; border-radius:1rem; overflow:hidden; margin-top:1.5rem; border:1px solid var(--line);">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Team" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- Card 2 (Span 5) -->
+        <div style="grid-column:span 5; background:#ff6321; color:#ffffff; border-radius:2rem; padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; min-height:24rem;">
+          <div>
+            <span style="padding:0.25rem 0.75rem; border-radius:9999px; background:rgba(255,255,255,0.2); font-family:monospace; font-size:0.75rem; font-weight:700; border:1px solid rgba(255,255,255,0.3);">SENIOR TALENT ONLY</span>
+            <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.875rem; margin-top:1rem; color:#ffffff;">Direct Work with Seasoned Engineers</h3>
+            <p style="font-size:0.9375rem; color:rgba(255,255,255,0.9); margin-top:0.5rem; line-height:1.6;">Your project is built exclusively by senior architects with 8+ years of production experience in WordPress, Next.js, and technical SEO.</p>
+          </div>
+          <div style="padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.2); display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:monospace; font-size:0.875rem; font-weight:700;">100% IN-HOUSE</span>
+            <span style="font-family:monospace; font-size:0.875rem;">ZERO JUNIORS</span>
+          </div>
+        </div>
+
+        <!-- Card 3 (Span 8) -->
+        <div style="grid-column:span 8; background:#060612; color:#ffffff; border-radius:2rem; padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+            <div>
+              <span style="font-family:monospace; font-size:0.8125rem; font-weight:700; color:#ff6321;">VERIFIED FIELD STANDARDS</span>
+              <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.875rem; margin-top:0.25rem; color:#ffffff;">Speed As A Mathematical Weapon</h3>
+            </div>
+            <span style="font-family:monospace; font-size:0.8125rem; color:rgba(255,255,255,0.5);">AUDITED ON CRUX DATA</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; padding-top:2rem;">
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:1rem; padding:1.25rem;">
+              <div style="font-family:'Bricolage Grotesque', sans-serif; font-size:2.5rem; font-weight:500; color:#ff6321;">99.4%</div>
+              <div style="font-size:0.875rem; font-weight:600; color:#ffffff; margin-top:0.25rem;">Client Retention</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:1rem; padding:1.25rem;">
+              <div style="font-family:'Bricolage Grotesque', sans-serif; font-size:2.5rem; font-weight:500; color:#ffffff;">0.6s</div>
+              <div style="font-size:0.875rem; font-weight:600; color:#ffffff; margin-top:0.25rem;">Mobile LCP Speed</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:1rem; padding:1.25rem;">
+              <div style="font-family:'Bricolage Grotesque', sans-serif; font-size:2.5rem; font-weight:500; color:#ff6321;">100%</div>
+              <div style="font-size:0.875rem; font-weight:600; color:#ffffff; margin-top:0.25rem;">CWV Pass Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 (Span 4) -->
+        <div style="grid-column:span 4; background:#f5f4f3; border-radius:2rem; padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span style="font-family:monospace; font-size:0.8125rem; color:var(--muted);">CORE PHILOSOPHY</span>
+            <h3 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.625rem; margin-top:0.25rem; color:#060612;">Mathematical Precision & High Conversion</h3>
+            <p style="font-size:0.9375rem; color:var(--muted); margin-top:0.5rem; line-height:1.6;">Design that wins awards is good. Design that accelerates qualified inquiries and customer revenue is unbeatable.</p>
+          </div>
+          <div style="padding-top:1.5rem; border-top:1px solid var(--line); font-family:monospace; font-size:0.8125rem; display:flex; justify-content:space-between;">
+            <span>ZERO BLOAT THEMES</span>
+            <b style="color:#ff6321;">✓ GUARANTEED</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <span style="font-family:monospace; font-size:0.75rem; color:var(--muted);">HOVER CARDS TO PAUSE FEED</span>
+    </div>
+
+    <div class="marquee-track">
+      <!-- Card 1 -->
+      <div style="width:26rem; margin-right:1.5rem; border-radius:1rem; overflow:hidden; background:var(--surface); border:1px solid var(--line); flex-shrink:0;">
+        <div style="background:var(--surface-2); padding:0.625rem 1rem; display:flex; justify-content:space-between; font-family:monospace; font-size:0.6875rem; color:var(--muted); border-bottom:1px solid var(--line);">
+          <span>● ● ●</span>
+          <span>https://nexushealth.io</span>
+          <span style="color:var(--accent); font-weight:bold;">100/100 CWV</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Dashboard" style="height:15rem; width:100%; object-fit:cover;" />
+        <div style="padding:1rem; background:#ffffff; display:flex; justify-content:space-between; align-items:center;">
+          <div><h4 style="font-size:1rem; font-weight:700;">Nexus Health</h4><p style="font-size:0.75rem; color:var(--muted);">Headless WordPress & Next.js</p></div>
+          <span style="font-family:monospace; font-size:0.75rem; font-weight:700; background:var(--surface); padding:0.35rem 0.625rem; border-radius:9999px;">0.6s LCP</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div style="width:26rem; margin-right:1.5rem; border-radius:1rem; overflow:hidden; background:var(--surface); border:1px solid var(--line); flex-shrink:0;">
+        <div style="background:var(--surface-2); padding:0.625rem 1rem; display:flex; justify-content:space-between; font-family:monospace; font-size:0.6875rem; color:var(--muted); border-bottom:1px solid var(--line);">
+          <span>● ● ●</span>
+          <span>https://auraliving.com</span>
+          <span style="color:var(--accent); font-weight:bold;">+42% CVR</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="eCommerce" style="height:15rem; width:100%; object-fit:cover;" />
+        <div style="padding:1rem; background:#ffffff; display:flex; justify-content:space-between; align-items:center;">
+          <div><h4 style="font-size:1rem; font-weight:700;">Aura Living</h4><p style="font-size:0.75rem; color:var(--muted);">Webflow eCommerce & Motion</p></div>
+          <span style="font-family:monospace; font-size:0.75rem; font-weight:700; background:var(--surface); padding:0.35rem 0.625rem; border-radius:9999px;">60 FPS</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div style="width:26rem; margin-right:1.5rem; border-radius:1rem; overflow:hidden; background:var(--surface); border:1px solid var(--line); flex-shrink:0;">
+        <div style="background:var(--surface-2); padding:0.625rem 1rem; display:flex; justify-content:space-between; font-family:monospace; font-size:0.6875rem; color:var(--muted); border-bottom:1px solid var(--line);">
+          <span>● ● ●</span>
+          <span>https://vanguardlegal.com</span>
+          <span style="color:var(--accent); font-weight:bold;">#1 Map Pin</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" alt="Local SEO" style="height:15rem; width:100%; object-fit:cover;" />
+        <div style="padding:1rem; background:#ffffff; display:flex; justify-content:space-between; align-items:center;">
+          <div><h4 style="font-size:1rem; font-weight:700;">Vanguard Legal</h4><p style="font-size:0.75rem; color:var(--muted);">Local 3-Pack & GBP Domination</p></div>
+          <span style="font-family:monospace; font-size:0.75rem; font-weight:700; background:var(--surface); padding:0.35rem 0.625rem; border-radius:9999px;">380+ Calls/mo</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div style="width:26rem; margin-right:1.5rem; border-radius:1rem; overflow:hidden; background:var(--surface); border:1px solid var(--line); flex-shrink:0;">
+        <div style="background:var(--surface-2); padding:0.625rem 1rem; display:flex; justify-content:space-between; font-family:monospace; font-size:0.6875rem; color:var(--muted); border-bottom:1px solid var(--line);">
+          <span>● ● ●</span>
+          <span>https://korecapital.com</span>
+          <span style="color:var(--accent); font-weight:bold;">+340% Traffic</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80" alt="SEO Chart" style="height:15rem; width:100%; object-fit:cover;" />
+        <div style="padding:1rem; background:#ffffff; display:flex; justify-content:space-between; align-items:center;">
+          <div><h4 style="font-size:1rem; font-weight:700;">Kore Capital</h4><p style="font-size:0.75rem; color:var(--muted);">Programmatic & Technical SEO</p></div>
+          <span style="font-family:monospace; font-size:0.75rem; font-weight:700; background:var(--surface); padding:0.35rem 0.625rem; border-radius:9999px;">+$1.8M ARR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Services Matrix (#services) -->
+  <section id="services" style="max-width:var(--container-shell); margin:0 auto; padding:7rem 3rem;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem;">
+      <div>
+        <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">Core Capabilities</span>
+        <h2 style="font-size:3rem; font-weight:600; letter-spacing:-0.02em;">What we engineer best</h2>
+      </div>
+      <p style="font-size:1rem; color:var(--muted); max-w:24rem;">Bespoke engineering with zero plugin bloat and mathematically guaranteed performance.</p>
+    </div>
+
+    <div>
+      <!-- Row 01 -->
+      <div class="service-row open-modal-btn" data-service="WordPress">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:baseline; gap:2.5rem;">
+            <span style="font-family:monospace; color:var(--muted); font-size:1.125rem;">01</span>
+            <div>
+              <h3 style="font-size:2rem; font-weight:700;">WordPress Engineering</h3>
+              <p style="font-size:0.875rem; color:var(--muted); margin-top:0.25rem;">Headless WP, custom ACF architecture, WooCommerce scaling, sub-second load times.</p>
+            </div>
+          </div>
+          <div class="srv-arrow" style="width:2.5rem; height:2.5rem; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:transform 0.3s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1rem; height:1rem;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 02 -->
+      <div class="service-row open-modal-btn" data-service="Webflow">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:baseline; gap:2.5rem;">
+            <span style="font-family:monospace; color:var(--muted); font-size:1.125rem;">02</span>
+            <div>
+              <h3 style="font-size:2rem; font-weight:700;">Webflow CMS Systems</h3>
+              <p style="font-size:0.875rem; color:var(--muted); margin-top:0.25rem;">Fluid design systems, micro-interactions, clean exportable client workflows.</p>
+            </div>
+          </div>
+          <div class="srv-arrow" style="width:2.5rem; height:2.5rem; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:transform 0.3s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1rem; height:1rem;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 03 -->
+      <div class="service-row open-modal-btn" data-service="SEO">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:baseline; gap:2.5rem;">
+            <span style="font-family:monospace; color:var(--muted); font-size:1.125rem;">03</span>
+            <div>
+              <h3 style="font-size:2rem; font-weight:700;">Programmatic & Technical SEO</h3>
+              <p style="font-size:0.875rem; color:var(--muted); margin-top:0.25rem;">Semantic JSON-LD schema, indexation pipelines, keyword cluster dominance.</p>
+            </div>
+          </div>
+          <div class="srv-arrow" style="width:2.5rem; height:2.5rem; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:transform 0.3s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1rem; height:1rem;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 04 -->
+      <div class="service-row open-modal-btn" data-service="Local 3-Pack">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:baseline; gap:2.5rem;">
+            <span style="font-family:monospace; color:var(--muted); font-size:1.125rem;">04</span>
+            <div>
+              <h3 style="font-size:2rem; font-weight:700;">Local Business Hyper-Growth</h3>
+              <p style="font-size:0.875rem; color:var(--muted); margin-top:0.25rem;">Google Business Profile optimization, citation networks, automated review funnels, #1 map rankings.</p>
+            </div>
+          </div>
+          <div class="srv-arrow" style="width:2.5rem; height:2.5rem; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:transform 0.3s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1rem; height:1rem;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Kinetic Statement Band ("We / Build / → / Better") -->
+  <section style="max-width:var(--container-shell); margin:0 auto; padding:2rem 3rem 5rem 3rem;">
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem;">
+      <div style="height:7rem; border-radius:var(--radius-pill); background:var(--surface); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:2.5rem; font-weight:700;">
+        We
+      </div>
+      <div style="height:7rem; border-radius:var(--radius-pill); background:linear-gradient(to right, var(--accent-from), var(--accent-to)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:2.5rem; font-weight:700;">
+        Build
+      </div>
+      <div style="height:7rem; border-radius:var(--radius-pill); background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:2.5rem; height:2.5rem;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div style="height:7rem; border-radius:var(--radius-pill); background:rgba(241,240,238,0.6); border:1px solid var(--line); color:var(--muted); display:flex; align-items:center; justify-content:center; font-size:2.5rem; font-weight:700;">
+        Better
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Selected Work Grid (#works) -->
+  <section id="works" style="max-width:var(--container-shell); margin:0 auto; padding:5rem 3rem;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem;">
+      <div>
+        <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">Portfolio</span>
+        <h2 style="font-size:3rem; font-weight:600; letter-spacing:-0.02em;">Engineered Proof</h2>
+      </div>
+      <p style="font-size:1rem; color:var(--muted); max-width:24rem;">Real production deployments tested on field devices worldwide.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5rem;">
+      <!-- Card 1 -->
+      <div class="open-modal-btn" style="background:var(--ink); color:#fff; border-radius:var(--radius-card); padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+          <div>
+            <div style="font-family:monospace; font-size:0.75rem; color:var(--muted); text-transform:uppercase;">WordPress / Headless</div>
+            <div style="font-family:monospace; font-size:0.75rem; color:rgba(255,255,255,0.5);">RELEASE // 2026</div>
+          </div>
+          <div style="width:3rem; height:3rem; border-radius:50%; background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem; height:1.25rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </div>
+        </div>
+        <div style="margin:2rem 0; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Nexus Health" style="height:18rem; width:100%; object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-size:1.75rem; font-weight:700;">Nexus Health</h3>
+          <p style="font-size:0.875rem; color:var(--muted); margin:0.5rem 0 1rem 0;">Rebuilt legacy WordPress to headless architecture, dropping LCP to 0.6s and driving a 320% organic patient bookings increase.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Branding</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">WordPress</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Technical SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="open-modal-btn" style="background:var(--ink); color:#fff; border-radius:var(--radius-card); padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+          <div>
+            <div style="font-family:monospace; font-size:0.75rem; color:var(--muted); text-transform:uppercase;">Webflow / eCommerce</div>
+            <div style="font-family:monospace; font-size:0.75rem; color:rgba(255,255,255,0.5);">RELEASE // 2025</div>
+          </div>
+          <div style="width:3rem; height:3rem; border-radius:50%; background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem; height:1.25rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </div>
+        </div>
+        <div style="margin:2rem 0; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Aura Living" style="height:18rem; width:100%; object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-size:1.75rem; font-weight:700;">Aura Living</h3>
+          <p style="font-size:0.875rem; color:var(--muted); margin:0.5rem 0 1rem 0;">Rebuilt from Shopify, conversion rate increased by 42% across mobile channels with 60fps micro-interactions.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Webflow</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">eCommerce</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">GSAP Motion</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="open-modal-btn" style="background:var(--ink); color:#fff; border-radius:var(--radius-card); padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+          <div>
+            <div style="font-family:monospace; font-size:0.75rem; color:var(--muted); text-transform:uppercase;">Local SEO & WordPress</div>
+            <div style="font-family:monospace; font-size:0.75rem; color:rgba(255,255,255,0.5);">RELEASE // 2025</div>
+          </div>
+          <div style="width:3rem; height:3rem; border-radius:50%; background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem; height:1.25rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </div>
+        </div>
+        <div style="margin:2rem 0; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" alt="Vanguard Legal" style="height:18rem; width:100%; object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-size:1.75rem; font-weight:700;">Vanguard Legal</h3>
+          <p style="font-size:0.875rem; color:var(--muted); margin:0.5rem 0 1rem 0;">Ranked #1 in 3 competitive metropolitan areas on Google Maps within 90 days, generating 380+ direct inbound calls monthly.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Local 3-Pack</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">GBP Push</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">CallRail AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="open-modal-btn" style="background:var(--ink); color:#fff; border-radius:var(--radius-card); padding:2.5rem; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+          <div>
+            <div style="font-family:monospace; font-size:0.75rem; color:var(--muted); text-transform:uppercase;">Webflow / Financial Platform</div>
+            <div style="font-family:monospace; font-size:0.75rem; color:rgba(255,255,255,0.5);">RELEASE // 2024</div>
+          </div>
+          <div style="width:3rem; height:3rem; border-radius:50%; background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem; height:1.25rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </div>
+        </div>
+        <div style="margin:2rem 0; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80" alt="Kore Capital" style="height:18rem; width:100%; object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-size:1.75rem; font-weight:700;">Kore Capital</h3>
+          <p style="font-size:0.875rem; color:var(--muted); margin:0.5rem 0 1rem 0;">Institutional-grade security, flawless interactive financial calculators, and $1.8M incremental ARR inbound.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">FinTech</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Calculators</span>
+            <span style="background:rgba(255,255,255,0.1); padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.75rem; font-family:monospace;">Awwwards SOTD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Case Studies (Before vs. After Hard Proof) -->
+  <section id="case-studies" style="background:var(--surface); padding:7rem 3rem; border-top:1px solid var(--line);">
+    <div style="max-width:var(--container-shell); margin:0 auto;">
+      <div style="margin-bottom:4rem;">
+        <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">Hard Evidence Proof</span>
+        <h2 style="font-size:3rem; font-weight:600;">Before vs. After Transformation</h2>
+      </div>
+
+      <div style="background:#ffffff; border-radius:var(--radius-card); border:1px solid var(--line); padding:3rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+        <div>
+          <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); font-weight:700;">STUDY 01 // HIGH-TICKET RETAIL</span>
+          <h3 style="font-size:2.25rem; font-weight:700; margin:0.5rem 0 1rem 0;">Aegis Horology UK</h3>
+          <p style="font-size:0.875rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem;">
+            Legacy bloated website (32s load time, low rankings) replaced by an ultra-fast headless build. Result: +280% organic traffic, 100/100 Core Web Vitals, and 4.8x ROI in 6 months.
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-bottom:2rem;">
+            <div style="background:var(--surface); padding:1rem; border-radius:0.75rem;">
+              <div style="font-size:0.75rem; color:var(--muted);">Core Web Vitals</div>
+              <div style="font-size:1.125rem; font-weight:700; color:var(--accent); margin-top:0.25rem;">100/100</div>
+            </div>
+            <div style="background:var(--surface); padding:1rem; border-radius:0.75rem;">
+              <div style="font-size:0.75rem; color:var(--muted);">Traffic Spike</div>
+              <div style="font-size:1.125rem; font-weight:700; color:var(--foreground); margin-top:0.25rem;">+280%</div>
+            </div>
+            <div style="background:var(--surface); padding:1rem; border-radius:0.75rem;">
+              <div style="font-size:0.75rem; color:var(--muted);">ROI (6 Months)</div>
+              <div style="font-size:1.125rem; font-weight:700; color:var(--foreground); margin-top:0.25rem;">4.8x</div>
+            </div>
+          </div>
+
+          <button class="pill-btn dark open-modal-btn">Claim Similar Audit</button>
+        </div>
+
+        <!-- Before/After Drag Slider Mockup -->
+        <div style="position:relative; height:24rem; border-radius:1.5rem; overflow:hidden; border:1px solid var(--line);">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="After" style="width:100%; height:100%; object-fit:cover;" />
+          <div style="position:absolute; top:1rem; right:1rem; background:rgba(0,0,0,0.8); color:#fff; font-family:monospace; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:9999px;">
+            AFTER: 0.7s LCP (100/100)
+          </div>
+          <div style="position:absolute; bottom:1rem; left:1rem; background:#fff; color:var(--ink); font-family:monospace; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:9999px; border:1px solid var(--line);">
+            BEFORE: 32s SLOW THEME
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Stats Counter Panel -->
+  <section style="max-width:var(--container-shell); margin:0 auto; padding:5rem 3rem;">
+    <div style="background:var(--ink); color:#fff; border-radius:var(--radius-card); padding:4rem 3rem;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:2rem; margin-bottom:3rem;">
+        <div>
+          <span style="font-family:monospace; font-size:0.75rem; color:var(--accent-from); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">By the numbers</span>
+          <h2 style="font-size:2.5rem; font-weight:700;">Proof in the data, not empty promises.</h2>
+        </div>
+        <p style="font-size:0.875rem; color:var(--muted); max-width:20rem;">Measured metrics across 250+ delivered platforms since 2018.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem;">
+        <div style="border-left:1px solid rgba(255,255,255,0.15); padding-left:1.5rem;">
+          <div style="font-size:3.5rem; font-weight:700; letter-spacing:-0.03em;">250+</div>
+          <div style="font-size:1rem; font-weight:700; color:var(--accent-from); margin-top:0.25rem;">Systems Shipped</div>
+          <div style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Headless WP & Webflow</div>
+        </div>
+        <div style="border-left:1px solid rgba(255,255,255,0.15); padding-left:1.5rem;">
+          <div style="font-size:3.5rem; font-weight:700; letter-spacing:-0.03em;">99.4%</div>
+          <div style="font-size:1rem; font-weight:700; color:var(--accent-from); margin-top:0.25rem;">Client Retention</div>
+          <div style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Annual growth contracts</div>
+        </div>
+        <div style="border-left:1px solid rgba(255,255,255,0.15); padding-left:1.5rem;">
+          <div style="font-size:3.5rem; font-weight:700; letter-spacing:-0.03em;">100%</div>
+          <div style="font-size:1rem; font-weight:700; color:var(--accent-from); margin-top:0.25rem;">Core Web Vitals Pass</div>
+          <div style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Guaranteed field metrics</div>
+        </div>
+        <div style="border-left:1px solid rgba(255,255,255,0.15); padding-left:1.5rem;">
+          <div style="font-size:3.5rem; font-weight:700; letter-spacing:-0.03em;">$65M+</div>
+          <div style="font-size:1rem; font-weight:700; color:var(--accent-from); margin-top:0.25rem;">Direct Client Revenue</div>
+          <div style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Verified incremental lift</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Client Testimonials -->
+  <section id="proof" style="max-width:var(--container-shell); margin:0 auto; padding:5rem 3rem;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem;">
+      <div>
+        <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">Client Validation</span>
+        <h2 style="font-size:3rem; font-weight:600;">Executive Testimonials</h2>
+      </div>
+      <div style="background:var(--surface); padding:0.625rem 1.25rem; border-radius:var(--radius-pill); border:1px solid var(--line); font-size:0.875rem; font-family:monospace; font-weight:600;">
+        ★★★★★ 5.0 Google Verified (140+)
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem;">
+      <!-- Testimonial 1 -->
+      <div style="background:var(--surface); border-radius:var(--radius-card); padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="color:var(--accent); font-size:2.5rem; line-height:1;">“</div>
+          <p style="font-size:1rem; line-height:1.6; margin:1rem 0;">ApexStudio replaced our bloated WordPress site with a sub-second headless platform. Our inbound pipeline grew by $4.1M in just 60 days.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem; border-top:1px solid var(--line); padding-top:1.5rem;">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Alexander Vance" style="width:2.75rem; height:2.75rem; border-radius:50%; object-fit:cover;" />
+          <div>
+            <div style="font-weight:700; font-size:0.875rem;">Alexander Vance</div>
+            <div style="font-size:0.75rem; color:var(--muted);">CEO, Vance Capital</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div style="background:var(--surface); border-radius:var(--radius-card); padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="color:var(--accent); font-size:2.5rem; line-height:1;">“</div>
+          <p style="font-size:1rem; line-height:1.6; margin:1rem 0;">The Webflow cinema-motion system won Awwwards SOTD and immediately converted cold traffic into demo bookings at double our previous rate.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem; border-top:1px solid var(--line); padding-top:1.5rem;">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Elena Rostova" style="width:2.75rem; height:2.75rem; border-radius:50%; object-fit:cover;" />
+          <div>
+            <div style="font-weight:700; font-size:0.875rem;">Elena Rostova</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Head of Growth, Krypton AI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div style="background:var(--surface); border-radius:var(--radius-card); padding:2.5rem; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="color:var(--accent); font-size:2.5rem; line-height:1;">“</div>
+          <p style="font-size:1rem; line-height:1.6; margin:1rem 0;">Our clinics now dominate the Google Local 3-Pack across 8 metropolitan zip codes. Phone calls tripled while Google Ads spend dropped 40%.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem; border-top:1px solid var(--line); padding-top:1.5rem;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="David Chen" style="width:2.75rem; height:2.75rem; border-radius:50%; object-fit:cover;" />
+          <div>
+            <div style="font-weight:700; font-size:0.875rem;">David Chen</div>
+            <div style="font-size:0.75rem; color:var(--muted);">MD, Metropolitan Medical</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logo Marquee Strip (Positioned Cleanly in Lower Proof Area) -->
+  <div style="background:#ffffff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:2rem 0; overflow:hidden;">
+    <div class="marquee-track" style="display:flex; width:max-content; animation:marquee-left 35s linear infinite;">
+      <div style="display:flex; align-items:center; gap:3.5rem; padding-right:3.5rem;">
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◎ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">❖ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◐ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◬ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">✦ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">▤ Logoipsum</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:3.5rem; padding-right:3.5rem;">
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◎ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">❖ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◐ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">◬ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">✦ Logoipsum</span>
+        <span style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.125rem; opacity:0.4; display:flex; align-items:center; gap:0.5rem;">▤ Logoipsum</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. FAQ Accordion -->
+  <section id="faq" style="max-width:54rem; margin:0 auto; padding:5rem 2rem; border-top:1px solid var(--line);">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;">Answers</span>
+      <h2 style="font-size:2.5rem; font-weight:700;">Frequently Asked Questions</h2>
+    </div>
+
+    <div id="faq-container">
+      <div style="border-top:1px solid var(--line); padding:1.5rem 0;">
+        <button class="faq-toggle" style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; font-weight:700;">
+          <span>Why custom WordPress/Webflow over off-the-shelf page builders?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding-top:1rem; font-size:0.875rem; color:var(--muted); line-height:1.6;">
+          Off-the-shelf themes load 40+ third-party plugins, bloated CSS/JS, and unoptimized queries that kill Core Web Vitals. Our bespoke builds guarantee sub-600ms load times and clean code.
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--line); padding:1.5rem 0;">
+        <button class="faq-toggle" style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; font-weight:700;">
+          <span>How fast will my local business rank in the Google 3-Pack?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding-top:1rem; font-size:0.875rem; color:var(--muted); line-height:1.6;">
+          Initial profile optimization and category fixes show movement within 14–21 days. Full geo-grid dominance compounds between 45 and 90 days.
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--line); padding:1.5rem 0;">
+        <button class="faq-toggle" style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; font-weight:700;">
+          <span>What is your Core Web Vitals guarantee?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding-top:1rem; font-size:0.875rem; color:var(--muted); line-height:1.6;">
+          We guarantee all-green 100/100 scores for LCP, INP, and CLS on both mobile and desktop before final cutover.
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--line); padding:1.5rem 0;">
+        <button class="faq-toggle" style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; font-weight:700;">
+          <span>How does the migration process work without losing existing SEO rankings?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding-top:1rem; font-size:0.875rem; color:var(--muted); line-height:1.6;">
+          We perform complete 301 URL redirect mapping, schema preservation, and IndexNow pinging so you never experience rank drop during migration.
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:1.5rem 0;">
+        <button class="faq-toggle" style="width:100%; display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; font-weight:700;">
+          <span>What are your ongoing support and maintenance retainers?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding-top:1rem; font-size:0.875rem; color:var(--muted); line-height:1.6;">
+          We offer monthly growth retainers covering continuous technical audits, programmatic SEO scaling, review generation, and 24/7 uptime SLAs.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Client Recognition Marquee -->
+  <div style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:2.5rem 0; overflow:hidden;">
+    <div class="marquee-track" style="display:flex; gap:3rem; align-items:center; opacity:0.6;">
+      <span style="font-weight:700; font-size:1.25rem;">NORTHPEAK</span>
+      <span style="font-weight:700; font-size:1.25rem;">VELLUM STUDIO</span>
+      <span style="font-weight:700; font-size:1.25rem;">ORBIT FINTECH</span>
+      <span style="font-weight:700; font-size:1.25rem;">COBALT CLOUD</span>
+      <span style="font-weight:700; font-size:1.25rem;">AEGIS HOROLOGY</span>
+      <span style="font-weight:700; font-size:1.25rem;">METROPOLITAN</span>
+      <span style="font-weight:700; font-size:1.25rem;">KORE CAPITAL</span>
+    </div>
+  </div>
+
+  <!-- 13. Closing Footer (#contact) -->
+  <footer id="contact" style="background:#060612; color:#fff; border-radius:2.5rem 2.5rem 0 0; padding:6rem 3rem 3rem 3rem; position:relative; overflow:hidden;">
+    <!-- Giant Bottom Watermark -->
+    <div style="position:absolute; bottom:-1rem; left:50%; transform:translateX(-50%); font-size:13rem; font-weight:700; color:rgba(255,255,255,0.035); pointer-events:none; white-space:nowrap; font-family:'Bricolage Grotesque', sans-serif;">
+      STARTUPLIZE
+    </div>
+
+    <div style="max-width:var(--container-shell); margin:0 auto; position:relative; z-index:10;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:3rem; margin-bottom:4rem;">
+        <div>
+          <span style="font-family:monospace; font-size:0.75rem; color:#ff6321; text-transform:uppercase; font-weight:700; display:block; margin-bottom:0.5rem;">• NEXT SPRINT</span>
+          <h2 style="font-family:'Bricolage Grotesque', sans-serif; font-size:3rem; font-weight:500; max-width:34rem; line-height:1.15;">Have an ambitious project in mind? Let's engineer it.</h2>
+        </div>
+        <button class="pill-btn coral open-modal-btn" style="background:#ff6321; color:#fff; padding:0.6rem 1.5rem; border-radius:9999px; font-weight:600; display:flex; align-items:center; gap:0.5rem; box-shadow:0 8px 20px rgba(255,99,33,0.3);">
+          <span>Start a project</span>
+          <span class="badge-icon" style="width:1.5rem; height:1.5rem; border-radius:50%; background:#fff; color:#ff6321; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:0.75rem; height:0.75rem;"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem; margin-bottom:4rem; font-size:0.875rem;">
+        <div>
+          <div style="font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:1.25rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#ff6321;">●</span> startuplize.
+          </div>
+          <p style="color:var(--muted); line-height:1.6;">We engineer ultra-fast WordPress & Webflow platforms, programmatic SEO systems, and local search dominance.</p>
+        </div>
+        <div>
+          <div style="font-weight:700; margin-bottom:1rem; font-family:monospace; color:var(--muted); text-transform:uppercase;">Capabilities</div>
+          <ul style="display:flex; flex-direction:column; gap:0.5rem; color:rgba(255,255,255,0.85);">
+            <li>Headless WordPress</li>
+            <li>Custom ACF Themes</li>
+            <li>Webflow CMS Systems</li>
+            <li>Sub-second WooCommerce</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700; margin-bottom:1rem; font-family:monospace; color:var(--muted); text-transform:uppercase;">Growth Systems</div>
+          <ul style="display:flex; flex-direction:column; gap:0.5rem; color:rgba(255,255,255,0.85);">
+            <li>Programmatic SEO</li>
+            <li>Local 3-Pack Supremacy</li>
+            <li>GBP Suspension Recovery</li>
+            <li>Automated Review Funnels</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700; margin-bottom:1rem; font-family:monospace; color:var(--muted); text-transform:uppercase;">Direct Lines</div>
+          <ul style="display:flex; flex-direction:column; gap:0.5rem; color:rgba(255,255,255,0.85);">
+            <li>partner@startuplize.com</li>
+            <li>Schedule via Cal.com ↗</li>
+            <li>Direct WhatsApp Line ↗</li>
+            <li style="margin-top:0.5rem; font-family:monospace; font-size:0.75rem; color:var(--muted);">120 Court Lane, Suite 400</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; font-family:monospace; font-size:0.75rem; color:var(--muted);">
+        <div>© 2026 STARTUPLIZE DIGITAL ENGINEERING. ALL RIGHTS RESERVED.</div>
+        <div style="display:flex; gap:1.5rem;">
+          <span>120 Court Lane, Suite 400</span>
+          <a href="#" style="color:inherit;">Privacy</a>
+          <a href="#" style="color:inherit;">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 14. Portaled Request Modal -->
+  <div id="request-modal">
+    <div style="background:#ffffff; border-radius:var(--radius-card); padding:2.5rem; max-width:32rem; width:100%; border:1px solid var(--line); box-shadow:0 20px 50px rgba(0,0,0,0.2); position:relative;">
+      <button id="close-modal-btn" style="position:absolute; top:1.5rem; right:1.5rem; width:2rem; height:2rem; border-radius:50%; background:var(--surface); display:flex; align-items:center; justify-content:center;">✕</button>
+
+      <div id="modal-form-content">
+        <div style="margin-bottom:1.5rem;">
+          <span style="font-family:monospace; font-size:0.75rem; color:var(--accent); font-weight:600;">STRATEGIC DISCOVERY</span>
+          <h3 style="font-size:1.75rem; font-weight:700; margin-top:0.25rem;">Start Your Project</h3>
+        </div>
+
+        <form id="project-form" style="display:flex; flex-direction:column; gap:1rem;">
+          <div>
+            <label style="display:block; font-size:0.75rem; font-family:monospace; margin-bottom:0.25rem;">SELECT SERVICE</label>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+              <button type="button" class="srv-choice" style="padding:0.75rem; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:0.5rem; font-size:0.875rem; font-weight:600;">WordPress</button>
+              <button type="button" class="srv-choice" style="padding:0.75rem; border:1px solid var(--line); background:var(--surface); color:var(--foreground); border-radius:0.5rem; font-size:0.875rem; font-weight:600;">Webflow</button>
+              <button type="button" class="srv-choice" style="padding:0.75rem; border:1px solid var(--line); background:var(--surface); color:var(--foreground); border-radius:0.5rem; font-size:0.875rem; font-weight:600;">SEO</button>
+              <button type="button" class="srv-choice" style="padding:0.75rem; border:1px solid var(--line); background:var(--surface); color:var(--foreground); border-radius:0.5rem; font-size:0.875rem; font-weight:600;">Local 3-Pack</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.75rem; font-family:monospace; margin-bottom:0.25rem;">NAME *</label>
+            <input type="text" required placeholder="Alexander Vance" style="width:100%; padding:0.75rem; border-radius:0.5rem; border:1px solid var(--line); background:var(--surface); font-size:0.875rem;" />
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.75rem; font-family:monospace; margin-bottom:0.25rem;">EMAIL *</label>
+            <input type="email" required placeholder="alex@vancecapital.com" style="width:100%; padding:0.75rem; border-radius:0.5rem; border:1px solid var(--line); background:var(--surface); font-size:0.875rem;" />
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.75rem; font-family:monospace; margin-bottom:0.25rem;">BUDGET SELECTOR</label>
+            <select style="width:100%; padding:0.75rem; border-radius:0.5rem; border:1px solid var(--line); background:var(--surface); font-size:0.875rem;">
+              <option>$10,000 – $25,000</option>
+              <option>$25,000 – $50,000</option>
+              <option>$50,000+</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.75rem; font-family:monospace; margin-bottom:0.25rem;">PROJECT BRIEF</label>
+            <textarea rows="2" placeholder="Website URL, key bottlenecks, goals..." style="width:100%; padding:0.75rem; border-radius:0.5rem; border:1px solid var(--line); background:var(--surface); font-size:0.875rem; resize:none;"></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="pill-btn dark" style="justify-content:center; padding:0.875rem; font-weight:600; margin-top:0.5rem;">
+            Transmit Project Brief
+          </button>
+        </form>
+      </div>
+
+      <div id="modal-success-content" style="display:none; text-align:center; padding:2rem 0;">
+        <div style="width:3.5rem; height:3.5rem; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; margin:0 auto 1rem auto; color:var(--accent); font-size:1.5rem; font-weight:bold;">
+          ✓
+        </div>
+        <h3 style="font-size:1.5rem; font-weight:700;">Brief Received</h3>
+        <p style="font-size:0.875rem; color:var(--muted); margin:0.5rem 0 1.5rem 0;">Our Senior Growth Architect will deliver an actionable roadmap within 24 hours.</p>
+        <button id="close-success-btn" class="pill-btn outline">Close Window</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Runtime Scripts: Lenis, Adaptive Rem, Hero Liquid Reveal Canvas, & Interactivity -->
+  <script type="module">
+    import Lenis from 'lenis';
+
+    // 1. Lenis Smooth Scroll
+    window.scrollTo(0, 0);
+    const lenis = new Lenis({ smoothWheel: true });
+    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Central Scroll Lock
+    let scrollLocked = false;
+    export function stopScroll() {
+      scrollLocked = true;
+      lenis.stop();
+      document.documentElement.style.cssText = 'position:relative; overflow:hidden; height:100%';
+    }
+    export function startScroll() {
+      scrollLocked = false;
+      lenis.start();
+      document.documentElement.style.removeProperty('position');
+      document.documentElement.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('height');
+    }
+
+    // 2. Adaptive Rem Scaling Grid (Wider than 1920px Damping)
+    function applyAdaptiveGrid() {
+      const FONT_BASE = 16, baseWidth = 1920, coef = 0.6666;
+      const w = window.innerWidth;
+      const widthReduction = ((baseWidth - w) / baseWidth) * 100;
+      const size = FONT_BASE - (FONT_BASE * (widthReduction * coef)) / 100;
+      if (size > FONT_BASE) document.documentElement.style.fontSize = size + 'px';
+      else document.documentElement.style.removeProperty('font-size');
+    }
+    applyAdaptiveGrid();
+    window.addEventListener('resize', applyAdaptiveGrid);
+
+    // 3. Page Loader Execution
+    stopScroll();
+    const FILL_MS = 1300;
+    const startLoaderTime = performance.now();
+    const loaderBar = document.getElementById('loader-bar');
+    const loaderCount = document.getElementById('loader-count');
+    const loaderEl = document.getElementById('page-loader');
+
+    function updateLoader(t) {
+      const p = Math.min((t - startLoaderTime) / FILL_MS, 1);
+      const eased = p < 0.5 ? 4 * p * p * p : (p - 1) * (2 * p - 2) * (2 * p - 2) + 1;
+      const count = Math.floor(eased * 100);
+      loaderBar.style.width = count + '%';
+      loaderCount.innerHTML = count.toString().padStart(3, '0') + '<span style="font-size:1.25rem; color:var(--accent-from); margin-left:0.25rem;">%</span>';
+
+      if (p < 1) {
+        requestAnimationFrame(updateLoader);
+      } else {
+        setTimeout(() => {
+          loaderEl.classList.add('exit');
+          document.body.classList.add('ready');
+          startScroll();
+        }, 250);
+      }
+    }
+    requestAnimationFrame(updateLoader);
+
+    // 4. Ambient Gradient Loop Canvas (Video-type smooth loop, zero mouse listeners)
+    const canvas = document.getElementById('hero-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = canvas.parentElement.clientWidth;
+      let h = canvas.height = canvas.parentElement.clientHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = canvas.parentElement.clientWidth;
+        h = canvas.height = canvas.parentElement.clientHeight;
+      });
+
+      let time = 0;
+      function renderCanvas() {
+        time += 0.008;
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.fillStyle = '#f5f4f0';
+        ctx.fillRect(0, 0, w, h);
+
+        const cx1 = w * (0.68 + 0.12 * Math.sin(time * 0.7));
+        const cy1 = h * (0.35 + 0.15 * Math.cos(time * 0.9));
+        const r1 = Math.min(w, h) * 0.65;
+        const grad1 = ctx.createRadialGradient(cx1, cy1, 0, cx1, cy1, r1);
+        grad1.addColorStop(0, 'rgba(207, 128, 71, 0.28)');
+        grad1.addColorStop(0.5, 'rgba(177, 95, 44, 0.14)');
+        grad1.addColorStop(1, 'rgba(245, 244, 240, 0)');
+        ctx.fillStyle = grad1;
+        ctx.fillRect(0, 0, w, h);
+
+        const cx2 = w * (0.28 + 0.14 * Math.cos(time * 0.6));
+        const cy2 = h * (0.65 + 0.12 * Math.sin(time * 0.8));
+        const r2 = Math.min(w, h) * 0.55;
+        const grad2 = ctx.createRadialGradient(cx2, cy2, 0, cx2, cy2, r2);
+        grad2.addColorStop(0, 'rgba(232, 168, 124, 0.22)');
+        grad2.addColorStop(0.6, 'rgba(207, 128, 71, 0.08)');
+        grad2.addColorStop(1, 'rgba(245, 244, 240, 0)');
+        ctx.fillStyle = grad2;
+        ctx.fillRect(0, 0, w, h);
+
+        // Swiss Design Modular Grid Lines
+        ctx.save();
+        const colStep = w / 12;
+        ctx.strokeStyle = 'rgba(10, 10, 10, 0.035)';
+        ctx.lineWidth = 1;
+        for (let x = colStep; x < w; x += colStep) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+        for (let y = 96; y < h; y += 96) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
+        for (let x = colStep; x < w; x += colStep * 2) {
+          for (let y = 96; y < h; y += 192) {
+            ctx.fillRect(x - 3, y, 7, 1);
+            ctx.fillRect(x, y - 3, 1, 7);
+          }
+        }
+        ctx.restore();
+
+        requestAnimationFrame(renderCanvas);
+      }
+      renderCanvas();
+    }
+
+    // 5. Hero Carousel
+    const slides = [
+      { caption: 'Custom WordPress', title: 'Sub-second headless & zero-bloat builds.' },
+      { caption: 'Webflow Architecture', title: 'Precision micro-interactions & CMS.' },
+      { caption: 'Local Growth & SEO', title: 'Google Local 3-Pack rank #1 dominance.' }
+    ];
+    let curSlide = 0;
+    const cCaption = document.getElementById('hero-carousel-caption');
+    const cTitle = document.getElementById('hero-carousel-title');
+    const cDots = document.getElementById('carousel-dots');
+
+    function updateCarousel() {
+      cCaption.innerText = slides[curSlide].caption;
+      cTitle.innerText = slides[curSlide].title;
+      cDots.innerHTML = slides.map((_, i) => `
+        <span style="width:${i === curSlide ? '1.5rem' : '0.5rem'}; height:0.375rem; border-radius:9999px; background:${i === curSlide ? 'var(--accent)' : 'var(--subtle)'}; transition:all 0.3s;"></span>
+      `).join('');
+    }
+
+    document.getElementById('carousel-next')?.addEventListener('click', () => {
+      curSlide = (curSlide + 1) % slides.length;
+      updateCarousel();
+    });
+    document.getElementById('carousel-prev')?.addEventListener('click', () => {
+      curSlide = (curSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    // 6. FAQ Accordion
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const isOpen = body.style.display === 'block';
+        document.querySelectorAll('.faq-body').forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.faq-toggle span:last-child').forEach(s => s.innerText = '+');
+        if (!isOpen) {
+          body.style.display = 'block';
+          btn.querySelector('span:last-child').innerText = '−';
+        }
+      });
+    });
+
+    // 7. Modal Handlers
+    const modal = document.getElementById('request-modal');
+    const openBtns = document.querySelectorAll('.open-modal-btn');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const closeSuccessBtn = document.getElementById('close-success-btn');
+    const form = document.getElementById('project-form');
+    const formContent = document.getElementById('modal-form-content');
+    const successContent = document.getElementById('modal-success-content');
+    const submitBtn = document.getElementById('submit-btn');
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.classList.add('open');
+        stopScroll();
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      startScroll();
+      setTimeout(() => {
+        formContent.style.display = 'block';
+        successContent.style.display = 'none';
+        submitBtn.innerText = 'Transmit Project Brief';
+      }, 300);
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    closeSuccessBtn?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.innerText = 'Engineering request...';
+      setTimeout(() => {
+        formContent.style.display = 'none';
+        successContent.style.display = 'block';
+      }, 1000);
+    });
+
+    // Service choices toggle in modal
+    document.querySelectorAll('.srv-choice').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.srv-choice').forEach(x => {
+          x.style.background = 'var(--surface)';
+          x.style.color = 'var(--foreground)';
+          x.style.borderColor = 'var(--line)';
+        });
+        b.style.background = 'var(--ink)';
+        b.style.color = '#fff';
+        b.style.borderColor = 'var(--ink)';
+      });
+    });
+
+    // Sticky Header Scroll Handler (Transparent phase, no logo, no menus, only Menu + Start Project)
+    const siteHeader = document.getElementById('site-header');
+    const headerLogo = document.getElementById('header-logo');
+    const headerNav = document.getElementById('header-nav');
+
+    window.addEventListener('scroll', () => {
+      const isScrolled = (window.scrollY || document.documentElement.scrollTop) > 120;
+      if (isScrolled) {
+        if (siteHeader) {
+          siteHeader.style.background = 'transparent';
+          siteHeader.style.pointerEvents = 'none';
+          siteHeader.style.padding = '1rem 3rem';
+        }
+        if (headerLogo) {
+          headerLogo.style.opacity = '0';
+          headerLogo.style.transform = 'translateY(-1rem)';
+          headerLogo.style.pointerEvents = 'none';
+        }
+        if (headerNav) {
+          headerNav.style.opacity = '0';
+          headerNav.style.transform = 'translateY(-1rem)';
+          headerNav.style.pointerEvents = 'none';
+        }
+      } else {
+        if (siteHeader) {
+          siteHeader.style.background = 'transparent';
+          siteHeader.style.pointerEvents = 'auto';
+          siteHeader.style.padding = '2rem 3rem';
+        }
+        if (headerLogo) {
+          headerLogo.style.opacity = '1';
+          headerLogo.style.transform = 'translateY(0)';
+          headerLogo.style.pointerEvents = 'auto';
+        }
+        if (headerNav) {
+          headerNav.style.opacity = '1';
+          headerNav.style.transform = 'translateY(0)';
+          headerNav.style.pointerEvents = 'auto';
+      }
+    }, { passive: true });
+
+    // Hero Tracking Dual Eyes (👀 Emoji Style) Mouse Tracker
+    (function() {
+      const eye = document.getElementById('hero-tracking-eye');
+      const pupils = document.querySelectorAll('.hero-eye-pupil');
+      if (!eye || pupils.length === 0) return;
+
+      let curX = 0, curY = 0, tarX = 0, tarY = 0;
+      window.addEventListener('mousemove', function(e) {
+        const rect = eye.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const angle = Math.atan2(dy, dx);
+        const dist = Math.hypot(dx, dy);
+        const pull = Math.min(1, dist / 220);
+        tarX = Math.cos(angle) * 7.5 * pull;
+        tarY = Math.sin(angle) * 5.5 * pull;
+      });
+
+      function loop() {
+        curX += (tarX - curX) * 0.18;
+        curY += (tarY - curY) * 0.18;
+        pupils.forEach(function(p) {
+          p.style.transform = 'translate(' + curX + 'px, ' + curY + 'px)';
+        });
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // Blink interval
+      setInterval(function() {
+        eye.style.transform = 'translateY(-2px) scaleY(0.12)';
+        setTimeout(function() {
+          eye.style.transform = 'translateY(-2px) scaleY(1)';
+        }, 130);
+      }, 4200);
+    })();
+  </script>
+</body>
+</html>
