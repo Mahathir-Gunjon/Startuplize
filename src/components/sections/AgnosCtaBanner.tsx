@@ -49,7 +49,7 @@ export function AgnosCtaBanner({ onOpenBooking }: AgnosCtaBannerProps) {
               showArrow={true}
               className="w-fit self-center shadow-2xl hover:scale-105"
             >
-              Start project
+              Book a call
             </PillButton>
           </ScrollSlideCard>
         </div>

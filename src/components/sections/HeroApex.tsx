@@ -114,7 +114,7 @@ export function HeroApex({ onOpenBooking, isReady }: HeroApexProps) {
               onClick={onOpenBooking}
               showArrow={true}
             >
-              Start project
+              Book a call
             </PillButton>
 
             <PillButton

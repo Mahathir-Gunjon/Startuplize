@@ -47,7 +47,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
 
   const navLinks = [
     { label: 'Services', href: '/#services', icon: Sparkles },
-    { label: 'Work', href: '/#works', icon: LayoutGrid },
+    { label: 'Work', href: '/work', icon: LayoutGrid },
     { label: 'Why Us', href: '/#why-us', icon: Zap },
     { label: 'Reviews', href: '/#reviews', icon: Star },
     { label: 'FAQ', href: '/#faq', icon: HelpCircle },
@@ -165,7 +165,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
                 onClick={onOpenBooking}
                 className="hover:scale-105"
               >
-                Start project
+                Book a call
               </PillButton>
             </div>
 
@@ -179,7 +179,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
                 showArrow={true}
                 className="font-semibold whitespace-nowrap shadow-none"
               >
-                Start project
+                Book a call
               </PillButton>
 
               <button
@@ -320,7 +320,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full justify-center shadow-lg"
                 >
-                  Start project
+                  Book a call
                 </PillButton>
 
                 <div className="text-center pt-1">

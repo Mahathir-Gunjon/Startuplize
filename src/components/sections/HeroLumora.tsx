@@ -114,7 +114,7 @@ export function HeroLumora({ onOpenBooking, isReady }: HeroLumoraProps) {
               onClick={onOpenBooking}
               showArrow={true}
             >
-              Start a project
+              Book a call
             </PillButton>
 
             <PillButton

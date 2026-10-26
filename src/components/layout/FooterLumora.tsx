@@ -42,7 +42,7 @@ export function FooterLumora({ onOpenBooking }: FooterLumoraProps) {
               onClick={onOpenBooking}
               showArrow={true}
             >
-              Start a project
+              Book a call
             </PillButton>
           </div>
         </div>

@@ -152,6 +152,17 @@ export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
           ))}
         </div>
 
+        {/* Bottom Action: Link to Full /work page */}
+        <div className="flex justify-center pt-2 sm:pt-4">
+          <a
+            href="/work"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 bg-white hover:bg-[#ff6321] text-[#060612] hover:text-white transition-all duration-300 font-heading font-medium text-sm shadow-xs group"
+          >
+            <span>Explore All 10 Production Builds</span>
+            <span className="text-[#ff6321] group-hover:text-white transition-colors">↗</span>
+          </a>
+        </div>
+
       </div>
     </section>
   );

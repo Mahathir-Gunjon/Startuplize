@@ -1,23 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { 
-  ArrowUpRight, 
-  ChevronDown, 
-  Code2, 
-  Sparkles,
-  Search,
-  Users2,
-  Calendar,
-  MessageSquare
-} from 'lucide-react';
+import React, { useEffect } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { FooterApex } from '@/components/layout/FooterApex';
 
 export default function ContactPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-
   useEffect(() => {
     // Cal.com inline embed initialization
     (function (C: any, A: string, L: string) {
@@ -70,32 +58,10 @@ export default function ContactPage() {
     }
   }, []);
 
-  const capabilities = [
-    {
-      title: 'Custom Web Development',
-      desc: 'Bespoke WordPress & Webflow platforms built with zero bloat and sub-second speed.',
-      image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
-      tag: 'Web & CMS Architecture',
-    },
-    {
-      title: 'Organic & Local Search',
-      desc: 'Google Map 3-pack dominance and technical SEO designed to convert visitors into booked clients.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-      tag: 'Local 3-Pack & SEO',
-    },
-    {
-      title: 'Direct Senior Collaboration',
-      desc: 'Zero account managers or junior buffers. Work directly with the senior developers building your site.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
-      tag: 'Senior Talent Only',
-    },
-  ];
-
   const socialChannels = [
     {
       name: 'WhatsApp',
       handle: '01570211287',
-      action: 'Instant Chat',
       href: 'https://wa.me/8801570211287',
       hoverColor: 'hover:border-[#25D366] text-[#25D366]',
       icon: (
@@ -107,7 +73,6 @@ export default function ContactPage() {
     {
       name: 'Instagram',
       handle: '@startuplize',
-      action: 'Direct Message',
       href: 'https://www.instagram.com/startuplize',
       hoverColor: 'hover:border-[#E4405F] text-[#E4405F]',
       icon: (
@@ -119,7 +84,6 @@ export default function ContactPage() {
     {
       name: 'Messenger',
       handle: 'Startuplize on Facebook',
-      action: 'Send Message',
       href: 'https://www.facebook.com/profile.php?id=61558810646131',
       hoverColor: 'hover:border-[#0084FF] text-[#0084FF]',
       icon: (
@@ -131,7 +95,6 @@ export default function ContactPage() {
     {
       name: 'LinkedIn',
       handle: 'company/startuplize',
-      action: 'Connect',
       href: 'https://www.linkedin.com/company/startuplize/',
       hoverColor: 'hover:border-[#0A66C2] text-[#0A66C2]',
       icon: (
@@ -142,270 +105,79 @@ export default function ContactPage() {
     },
   ];
 
-  const quickFaqs = [
-    {
-      q: 'How long is the call?',
-      a: 'As long as you need. There are no strict timers or rush — we take the time necessary to understand your project and goals.',
-    },
-    {
-      q: 'What should I have prepared?',
-      a: 'Just your vision, website URL, or project notes. We handle all technical discovery.',
-    },
-    {
-      q: 'Can I message you instead of scheduling a call?',
-      a: 'Yes! Reach out on WhatsApp or Instagram anytime for quick answers and quotes.',
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-[#faf9f8] text-[#060612] flex flex-col justify-between selection:bg-[#ff6321] selection:text-white">
-      
-      {/* 1. Global Startuplize Morphing Navbar */}
+      {/* 1. Global Navigation Header */}
       <Header />
 
-      {/* ========================================================================= */}
-      {/* SECTION 1: Visual Hero — Flexible & Open (No Rigid Timers) */}
-      {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 pt-28 sm:pt-36 lg:pt-48 pb-10 sm:pb-16 border-b border-[#e7e2dd]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+      <main className="w-full flex-1 pt-28 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 lg:pb-20">
+        <div className="w-full max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-sm font-mono text-[#ff6321] font-semibold tracking-wider uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] animate-pulse" />
-              <span>DIRECT DISCOVERY SESSION // TAKE YOUR TIME</span>
-            </div>
-
-            <h1 
-              style={{ color: '#060612' }}
-              className="font-heading font-medium text-[3rem] sm:text-5xl lg:text-7xl tracking-tight leading-[1.12] sm:leading-[1.08]"
+          {/* Heading & Subheading Area */}
+          <div className="text-center pb-8 sm:pb-10 max-w-3xl mx-auto space-y-3 sm:space-y-4">
+            <h1
+              className="font-heading font-medium text-[2.25rem] sm:text-[3rem] text-[#060612] tracking-tight leading-[1.15] text-center"
+              style={{ fontSize: '3rem', lineHeight: 1.15, color: '#060612' }}
             >
-              Let&apos;s talk about your next big project.
+              Book a Discovery Call<span className="text-[#ff6321]">.</span>
             </h1>
-
-            <p 
-              className="text-base sm:text-xl font-body leading-relaxed max-w-2xl text-[#444452]"
+            <p
+              className="text-base sm:text-lg text-[#060612] font-body max-w-2xl mx-auto leading-relaxed text-center font-normal block"
+              style={{ color: '#060612', opacity: 1, display: 'block', visibility: 'visible' }}
             >
-              Whether you have a fully formed brief or just an early concept, we are here to listen. No strict clocks, no pressure — speak directly with our senior team.
+              Select a time on the calendar below. We will walk through your current website, analyze what your local search competitors are doing right, and determine the exact roadmap needed to turn your site into a reliable lead generator.
             </p>
-
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-sm font-mono text-[#060612]">
-                <Sparkles className="w-4 h-4 text-[#ff6321]" />
-                <span>Flexible Session</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-sm font-mono text-[#060612]">
-                <Users2 className="w-4 h-4 text-[#ff6321]" />
-                <span>Direct with Senior Builders</span>
-              </div>
-            </div>
           </div>
 
-          {/* Hero Visual Image Card */}
-          <div className="lg:col-span-5 relative aspect-[16/11] rounded-md sm:rounded-lg overflow-hidden bg-[#eeecea]">
-            <Image
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
-              alt="Startuplize Studio Workspace"
-              fill
-              className="object-cover"
-              priority
+          {/* Cal.com Embed - Pure & Clean: NO padding, NO border, NO border-radius */}
+          <div className="w-full">
+            <div
+              id="my-cal-inline-website"
+              className="w-full min-h-[640px] sm:min-h-[700px] overflow-auto"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-mono flex items-center justify-between">
-              <span>STARTUPLIZE LABS</span>
-              <span className="text-[#ff7e47]">DIRECT COLLABORATION</span>
+          </div>
+
+          {/* 4 Direct Contact Cards (Directly under calendar, NO heading, NO sub heading) */}
+          <div className="pt-8 sm:pt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {socialChannels.map((channel) => (
+                <a
+                  key={channel.name}
+                  href={channel.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-5 sm:p-6 rounded-md border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-36 sm:h-40 active:scale-[0.98] ${channel.hoverColor}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-md bg-[#faf9f8] flex items-center justify-center">
+                      {channel.icon}
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-[#faf9f8] group-hover:bg-[#ff6321] group-hover:text-white text-[#52525b] flex items-center justify-center transition-colors">
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4
+                      style={{ color: '#060612' }}
+                      className="font-heading font-semibold text-base sm:text-lg"
+                    >
+                      {channel.name}
+                    </h4>
+                    <p className="text-sm font-mono mt-0.5 text-[#52525b]">
+                      {channel.handle}
+                    </p>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
 
         </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 2: Calendar Appointment (Cal.com Live Calendar) */}
-      {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-8 sm:mb-10 space-y-2">
-          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 01 // CALENDAR
-          </span>
-          <h2 
-            style={{ color: '#060612' }}
-            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
-          >
-            Pick a time that works for you.
-          </h2>
-          <p className="text-sm sm:text-lg font-body text-[#444452]">
-            Choose a date and slot. We generate an automatic Google Meet link upon booking.
-          </p>
-        </div>
-
-        {/* Clean Cal.com Embed Container */}
-        <div className="w-full bg-white rounded-md sm:rounded-lg border border-[#e7e2dd] p-3 sm:p-8 overflow-hidden">
-          <div
-            id="my-cal-inline-website"
-            className="w-full min-h-[600px] sm:min-h-[720px] overflow-auto"
-          />
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 3: Visual Showcase — How We Work (Image-First, Minimal Copy) */}
-      {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-8 sm:mb-12 space-y-2">
-          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 02 // WHAT WE DELIVER
-          </span>
-          <h2 
-            style={{ color: '#060612' }}
-            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
-          >
-            Built for growth. Crafted for speed.
-          </h2>
-        </div>
-
-        {/* 3 Visual Image Showcase Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {capabilities.map((item) => (
-            <div key={item.title} className="space-y-4 group">
-              <div className="relative aspect-[16/10] w-full rounded-md overflow-hidden bg-[#eeecea]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-semibold block">
-                  {item.tag}
-                </span>
-                <h3 
-                  style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-xl sm:text-2xl group-hover:text-[#ff6321] transition-colors"
-                >
-                  {item.title}
-                </h3>
-                <p className="text-sm font-body leading-relaxed text-[#444452]">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 4: Direct Instant Messaging (Icons + Fast Response) */}
-      {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
-          <div className="space-y-2">
-            <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-              • SECTION 03 // INSTANT CHAT
-            </span>
-            <h2 
-              style={{ color: '#060612' }}
-              className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
-            >
-              Prefer texting? We&apos;re online.
-            </h2>
-          </div>
-          <p className="text-sm font-mono text-[#52525b]">
-            Fastest reply via WhatsApp or Instagram.
-          </p>
-        </div>
-
-        {/* 4 Branded Channel Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {socialChannels.map((channel) => (
-            <a
-              key={channel.name}
-              href={channel.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-5 sm:p-6 rounded-md border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-36 sm:h-40 active:scale-[0.98] ${channel.hoverColor}`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-md bg-[#faf9f8] flex items-center justify-center">
-                  {channel.icon}
-                </div>
-                <div className="w-8 h-8 rounded-full bg-[#faf9f8] group-hover:bg-[#ff6321] group-hover:text-white text-[#52525b] flex items-center justify-center transition-colors">
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
-              </div>
-
-              <div>
-                <h4 
-                  style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-base sm:text-lg"
-                >
-                  {channel.name}
-                </h4>
-                <p className="text-sm font-mono mt-0.5 text-[#52525b]">
-                  {channel.handle}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 5: Quick FAQ — Short & Clear */}
-      {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20">
-        <div className="max-w-3xl mb-6 sm:mb-10 space-y-2">
-          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
-            • SECTION 04 // QUICK ANSWERS
-          </span>
-          <h2 
-            style={{ color: '#060612' }}
-            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
-          >
-            Quick answers.
-          </h2>
-        </div>
-
-        {/* Minimal Accordion */}
-        <div className="max-w-3xl divide-y divide-[#e7e2dd]">
-          {quickFaqs.map((faq, idx) => (
-            <div 
-              key={idx} 
-              className="py-4 sm:py-5 cursor-pointer group"
-              onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-            >
-              <button 
-                type="button"
-                className="w-full flex items-center justify-between gap-4 text-left min-h-[44px] whitespace-normal bg-transparent p-0 border-none cursor-pointer"
-                aria-expanded={openFaq === idx}
-              >
-                <h3 
-                  style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-base sm:text-lg group-hover:text-[#ff6321] transition-colors"
-                >
-                  {faq.q}
-                </h3>
-                <ChevronDown className={`w-4 h-4 text-[#52525b] shrink-0 transition-transform ${openFaq === idx ? 'rotate-180 text-[#ff6321]' : ''}`} />
-              </button>
-
-              {openFaq === idx && (
-                <div className="pt-2 sm:pt-3 pr-4 sm:pr-6">
-                  <p 
-                    className="text-sm sm:text-base font-body leading-relaxed text-[#444452]"
-                  >
-                    {faq.a}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      </main>
 
       {/* Footer */}
       <FooterApex onOpenBooking={() => {}} />
-
     </div>
   );
 }
