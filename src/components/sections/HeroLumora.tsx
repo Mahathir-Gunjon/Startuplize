@@ -77,7 +77,7 @@ export function HeroLumora({ onOpenBooking, isReady }: HeroLumoraProps) {
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-[#b15f2c]" />
             <span className="text-xs sm:text-sm font-medium tracking-tight text-[#111111]">
-              Independent Engineering & Growth Studio
+              Independent Web & Growth Studio
             </span>
           </div>
 
@@ -88,7 +88,7 @@ export function HeroLumora({ onOpenBooking, isReady }: HeroLumoraProps) {
               delay={0.1}
               lines={[
                 'High-impact web,',
-                'engineered for',
+                'crafted for',
                 'market dominance.',
               ]}
             />

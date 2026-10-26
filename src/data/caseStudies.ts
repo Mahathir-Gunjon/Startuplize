@@ -44,7 +44,7 @@ export const caseStudiesData: CaseStudyItem[] = [
       }
     ],
     quote: {
-      text: 'Vanguard did not just redesign our website; they completely re-engineered our digital business. Our checkout speed went from painful to instantaneous, and our organic revenue skyrocketed by over 300%.',
+      text: 'Vanguard did not just redesign our website; they completely transformed our digital business. Our checkout speed went from painful to instantaneous, and our organic revenue skyrocketed by over 300%.',
       author: 'Marcus Sterling',
       role: 'Chief Commercial Officer, Aegis Horology'
     }
@@ -73,7 +73,7 @@ export const caseStudiesData: CaseStudyItem[] = [
       'Apex operated 6 regional dental clinics with fragmented Google Business Profiles, duplicate citation records, zero automated review collection, and a desktop-first website that lost 80% of mobile searchers looking for emergency dental appointments.',
     engineeringExecution: [
       'Resolved 2 suspended Google Business Profile listings and optimized categories, primary services, and geo-coordinates.',
-      'Engineered an automated post-appointment SMS loop that drove 420+ genuine 5-star Google reviews in 60 days.',
+      'Built an automated post-appointment SMS loop that drove 420+ genuine 5-star Google reviews in 60 days.',
       'Deployed a lightning-fast mobile emergency booking funnel with instant click-to-call and insurance verification.',
       'Built localized programmatic landing pages for 45 surrounding zip codes with verified doctor entity schema.'
     ],

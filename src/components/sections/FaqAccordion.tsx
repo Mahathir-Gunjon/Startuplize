@@ -26,7 +26,7 @@ export function FaqAccordion() {
             Frequently Asked Questions
           </h2>
           <p className="text-sm sm:text-base text-[#9CA3AF]">
-            Everything you need to know about our sub-second web engineering, local SEO 3-pack execution, and partnership models.
+            Everything you need to know about our sub-second web builds, local SEO 3-pack execution, and partnership models.
           </p>
         </div>
 

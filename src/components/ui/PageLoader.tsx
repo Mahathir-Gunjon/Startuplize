@@ -84,7 +84,7 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
             ApexStudio
           </h1>
           <p className="text-xs sm:text-sm text-[#8d8d8d] font-sans mt-1.5">
-            Engineering digital ecosystems & market dominance.
+            Building digital ecosystems & market dominance.
           </p>
         </div>
 

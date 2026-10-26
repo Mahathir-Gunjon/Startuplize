@@ -34,13 +34,13 @@ export const faqsData: FaqItem[] = [
     category: 'process',
     question: 'What does a typical project workflow and sprint timeline look like?',
     answer:
-      'Our projects run on 4 to 8-week agile sprints: Week 1 is Architectural Discovery & Technical Audit; Weeks 2-3 are Wireframing & High-Fidelity UI/UX Prototyping; Weeks 4-6 are Production Engineering & Custom Animation Coding; Week 7 is QA, Core Web Vitals Auditing & Staging; Week 8 is DNS Cutover, IndexNow push & Live Launch.'
+      'Our projects run on 4 to 8-week agile sprints: Week 1 is Architectural Discovery & Technical Audit; Weeks 2-3 are Wireframing & High-Fidelity UI/UX Prototyping; Weeks 4-6 are Production Development & Custom Animation Coding; Week 7 is QA, Core Web Vitals Auditing & Staging; Week 8 is DNS Cutover, IndexNow push & Live Launch.'
   },
   {
     id: 'faq-6',
     category: 'pricing',
     question: 'Do you offer ongoing retainer partnerships for technical maintenance and growth?',
     answer:
-      'Yes. Our Vanguard Growth Retainer includes dedicated engineering hours, continuous Core Web Vitals monitoring, monthly programmatic SEO content production, Google Business Profile management, conversion rate optimization (A/B testing), and 24/7 uptime monitoring with SLA guarantees.'
+      'Yes. Our Vanguard Growth Retainer includes dedicated development hours, continuous Core Web Vitals monitoring, monthly programmatic SEO content production, Google Business Profile management, conversion rate optimization (A/B testing), and 24/7 uptime monitoring with SLA guarantees.'
   }
 ];

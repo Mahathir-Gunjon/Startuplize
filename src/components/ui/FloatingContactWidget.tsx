@@ -81,7 +81,7 @@ export function FloatingContactWidget() {
   ];
 
   return (
-    <div ref={widgetRef} className="fixed bottom-6 right-6 z-50 select-none">
+    <div ref={widgetRef} className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 select-none">
       
       {/* 4-Channel Floating Popover */}
       <AnimatePresence>
@@ -91,14 +91,14 @@ export function FloatingContactWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.94 }}
             transition={{ type: 'spring', stiffness: 420, damping: 28 }}
-            className="absolute bottom-16 right-0 mb-3 w-[290px] sm:w-[320px] bg-white/95 backdrop-blur-2xl border border-[#e7e2dd] shadow-[0_25px_65px_rgba(0,0,0,0.18)] rounded-3xl p-4 sm:p-5 select-none"
+            className="absolute bottom-16 right-0 mb-3 w-[calc(100vw-2rem)] sm:w-[320px] max-w-[320px] bg-white/95 backdrop-blur-2xl border border-[#e7e2dd] shadow-[0_25px_65px_rgba(0,0,0,0.18)] rounded-lg p-4 sm:p-5 select-none"
           >
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-[#e7e2dd]">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-ping" />
-                  <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold">
+                  <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold">
                     ONLINE // DIRECT CHAT
                   </span>
                 </div>
@@ -124,11 +124,11 @@ export function FloatingContactWidget() {
                   href={channel.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-2xl border border-[#e7e2dd]/70 bg-[#faf9f8] hover:bg-white hover:border-[#ff6321]/40 hover:shadow-md transition-all group"
+                  className="flex items-center justify-between p-2.5 rounded-md border border-[#e7e2dd]/70 bg-[#faf9f8] hover:bg-white hover:border-[#ff6321]/40 hover:shadow-md transition-all group"
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${channel.bgColor}`}
+                      className={`w-10 h-10 rounded-md flex items-center justify-center transition-all ${channel.bgColor}`}
                     >
                       {channel.icon}
                     </div>
@@ -136,7 +136,7 @@ export function FloatingContactWidget() {
                       <div className="font-heading font-semibold text-sm text-[#060612] group-hover:text-[#ff6321] transition-colors flex items-center gap-1.5">
                         <span>{channel.name}</span>
                       </div>
-                      <p className="text-xs font-body text-[#69686e]">
+                      <p className="text-sm font-body text-[#69686e]">
                         {channel.handle}
                       </p>
                     </div>
@@ -151,7 +151,7 @@ export function FloatingContactWidget() {
 
             {/* Bottom Help Note */}
             <div className="mt-3 pt-2.5 border-t border-[#e7e2dd]/60 text-center">
-              <span className="text-[11px] font-mono text-[#69686e]">
+              <span className="text-sm font-mono text-[#69686e]">
                 Direct response from senior team within 15 mins
               </span>
             </div>

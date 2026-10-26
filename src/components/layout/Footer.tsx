@@ -69,7 +69,7 @@ export function Footer({ onOpenBooking }: FooterProps) {
             </a>
 
             <p className="text-xs sm:text-sm text-[#9CA3AF] max-w-sm leading-relaxed">
-              Vanguard is an elite engineering and growth studio. We specialize in high-performance headless WordPress, cinema-grade Webflow platforms, and Google Local 3-Pack market dominance.
+              Vanguard is an elite web and growth studio. We specialize in high-performance headless WordPress, cinema-grade Webflow platforms, and Google Local 3-Pack market dominance.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -99,7 +99,7 @@ export function Footer({ onOpenBooking }: FooterProps) {
             </div>
           </div>
 
-          {/* Directory Column 1: Engineering */}
+          {/* Directory Column 1: Development */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-white font-bold uppercase tracking-wider text-sm font-display mb-4">
               Core Architecture

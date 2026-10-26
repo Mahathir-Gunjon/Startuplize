@@ -29,7 +29,7 @@ export function BookingModal({ isOpen, onClose, defaultService }: BookingModalPr
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const servicesList = [
-    { id: 'wp', label: 'WordPress & Elementor Engineering', desc: 'New builds & revamps, custom Elementor Pro, sub-second speed' },
+    { id: 'wp', label: 'WordPress & Elementor Development', desc: 'New builds & revamps, custom Elementor Pro, sub-second speed' },
     { id: 'wf', label: 'Webflow Architecture & Motion', desc: 'Clean visual CMS, responsive design & fast navigation' },
     { id: 'seo', label: 'Technical & On-Page SEO', desc: 'Local schema, crawl optimization & organic traffic growth' },
     { id: 'local', label: 'Local SEO & Google Business Profile', desc: 'Google Business Profile setup, local citations & call funnels' },
@@ -131,8 +131,8 @@ export function BookingModal({ isOpen, onClose, defaultService }: BookingModalPr
                     {step === 3 && 'Finalize Architecture & Contact Details'}
                   </h3>
                   <p className="text-sm text-[#9CA3AF] mt-1">
-                    {step === 1 && 'Choose one or multiple services to engineer your high-converting system.'}
-                    {step === 2 && 'Help us allocate the right senior engineers and growth architects.'}
+                    {step === 1 && 'Choose one or multiple services to build your high-converting system.'}
+                    {step === 2 && 'Help us allocate the right senior builders and growth specialists.'}
                     {step === 3 && 'We will review your URL and deliver a custom roadmap in under 24 hours.'}
                   </p>
                 </div>

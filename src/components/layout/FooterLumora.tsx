@@ -58,7 +58,6 @@ export function FooterLumora({ onOpenBooking }: FooterLumoraProps) {
             <ul className="space-y-2.5 text-sm font-sans text-white/80">
               <li><a href="#home" className="hover:text-[#cf8047] transition-colors">Overview</a></li>
               <li><a href="#works" className="hover:text-[#cf8047] transition-colors">Selected Work</a></li>
-              <li><a href="#proof" className="hover:text-[#cf8047] transition-colors">Before / After Proof</a></li>
               <li><a href="#metrics" className="hover:text-[#cf8047] transition-colors">Field Metrics</a></li>
               <li><a href="#faq" className="hover:text-[#cf8047] transition-colors">Protocol & FAQ</a></li>
             </ul>

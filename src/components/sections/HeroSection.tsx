@@ -18,7 +18,7 @@ interface HeroSectionProps {
 export function HeroSection({ onOpenBooking, isReady }: HeroSectionProps) {
   const headlineWords = [
     'We',
-    'Engineer',
+    'Build',
     'High-Converting',
     'Digital',
     'Ecosystems',

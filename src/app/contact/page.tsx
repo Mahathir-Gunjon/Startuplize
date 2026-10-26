@@ -72,7 +72,7 @@ export default function ContactPage() {
 
   const capabilities = [
     {
-      title: 'Custom Web Engineering',
+      title: 'Custom Web Development',
       desc: 'Bespoke WordPress & Webflow platforms built with zero bloat and sub-second speed.',
       image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
       tag: 'Web & CMS Architecture',
@@ -166,35 +166,34 @@ export default function ContactPage() {
       {/* ========================================================================= */}
       {/* SECTION 1: Visual Hero — Flexible & Open (No Rigid Timers) */}
       {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 pt-36 sm:pt-48 pb-16 border-b border-[#e7e2dd]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 pt-28 sm:pt-36 lg:pt-48 pb-10 sm:pb-16 border-b border-[#e7e2dd]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
-          <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono text-[#ff6321] font-semibold tracking-wider uppercase">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-sm font-mono text-[#ff6321] font-semibold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff6321] animate-pulse" />
               <span>DIRECT DISCOVERY SESSION // TAKE YOUR TIME</span>
             </div>
 
             <h1 
               style={{ color: '#060612' }}
-              className="font-heading font-medium text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08]"
+              className="font-heading font-medium text-[3rem] sm:text-5xl lg:text-7xl tracking-tight leading-[1.12] sm:leading-[1.08]"
             >
               Let&apos;s talk about your next big project.
             </h1>
 
             <p 
-              style={{ color: '#55545a' }}
-              className="text-lg sm:text-xl font-body leading-relaxed max-w-2xl"
+              className="text-base sm:text-xl font-body leading-relaxed max-w-2xl text-[#444452]"
             >
               Whether you have a fully formed brief or just an early concept, we are here to listen. No strict clocks, no pressure — speak directly with our senior team.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-xs sm:text-sm font-mono text-[#060612]">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-sm font-mono text-[#060612]">
                 <Sparkles className="w-4 h-4 text-[#ff6321]" />
                 <span>Flexible Session</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-xs sm:text-sm font-mono text-[#060612]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7e2dd] text-sm font-mono text-[#060612]">
                 <Users2 className="w-4 h-4 text-[#ff6321]" />
                 <span>Direct with Senior Builders</span>
               </div>
@@ -202,7 +201,7 @@ export default function ContactPage() {
           </div>
 
           {/* Hero Visual Image Card */}
-          <div className="lg:col-span-5 relative aspect-[16/11] rounded-3xl overflow-hidden bg-[#eeecea]">
+          <div className="lg:col-span-5 relative aspect-[16/11] rounded-md sm:rounded-lg overflow-hidden bg-[#eeecea]">
             <Image
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
               alt="Startuplize Studio Workspace"
@@ -211,7 +210,7 @@ export default function ContactPage() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-mono flex items-center justify-between">
+            <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-mono flex items-center justify-between">
               <span>STARTUPLIZE LABS</span>
               <span className="text-[#ff7e47]">DIRECT COLLABORATION</span>
             </div>
@@ -223,27 +222,27 @@ export default function ContactPage() {
       {/* ========================================================================= */}
       {/* SECTION 2: Calendar Appointment (Cal.com Live Calendar) */}
       {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-10 space-y-2">
-          <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
+      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
+        <div className="max-w-3xl mb-8 sm:mb-10 space-y-2">
+          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
             • SECTION 01 // CALENDAR
           </span>
           <h2 
             style={{ color: '#060612' }}
-            className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
+            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
           >
             Pick a time that works for you.
           </h2>
-          <p style={{ color: '#55545a' }} className="text-base sm:text-lg font-body">
+          <p className="text-sm sm:text-lg font-body text-[#444452]">
             Choose a date and slot. We generate an automatic Google Meet link upon booking.
           </p>
         </div>
 
         {/* Clean Cal.com Embed Container */}
-        <div className="w-full bg-white rounded-3xl border border-[#e7e2dd] p-4 sm:p-8 overflow-hidden">
+        <div className="w-full bg-white rounded-md sm:rounded-lg border border-[#e7e2dd] p-3 sm:p-8 overflow-hidden">
           <div
             id="my-cal-inline-website"
-            className="w-full min-h-[680px] sm:min-h-[720px] overflow-auto"
+            className="w-full min-h-[600px] sm:min-h-[720px] overflow-auto"
           />
         </div>
       </section>
@@ -251,16 +250,16 @@ export default function ContactPage() {
       {/* ========================================================================= */}
       {/* SECTION 3: Visual Showcase — How We Work (Image-First, Minimal Copy) */}
       {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="max-w-3xl mb-12 space-y-2">
-          <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
+      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
+        <div className="max-w-3xl mb-8 sm:mb-12 space-y-2">
+          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
             • SECTION 02 // WHAT WE DELIVER
           </span>
           <h2 
             style={{ color: '#060612' }}
-            className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
+            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
           >
-            Built for growth. Engineered for speed.
+            Built for growth. Crafted for speed.
           </h2>
         </div>
 
@@ -268,7 +267,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {capabilities.map((item) => (
             <div key={item.title} className="space-y-4 group">
-              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-[#eeecea]">
+              <div className="relative aspect-[16/10] w-full rounded-md overflow-hidden bg-[#eeecea]">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -278,7 +277,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-1.5">
-                <span className="text-[11px] font-mono text-[#ff6321] uppercase tracking-wider font-semibold block">
+                <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-semibold block">
                   {item.tag}
                 </span>
                 <h3 
@@ -287,7 +286,7 @@ export default function ContactPage() {
                 >
                   {item.title}
                 </h3>
-                <p style={{ color: '#55545a' }} className="text-sm font-body leading-relaxed">
+                <p className="text-sm font-body leading-relaxed text-[#444452]">
                   {item.desc}
                 </p>
               </div>
@@ -299,39 +298,39 @@ export default function ContactPage() {
       {/* ========================================================================= */}
       {/* SECTION 4: Direct Instant Messaging (Icons + Fast Response) */}
       {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20 border-b border-[#e7e2dd]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 border-b border-[#e7e2dd]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
           <div className="space-y-2">
-            <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
+            <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
               • SECTION 03 // INSTANT CHAT
             </span>
             <h2 
               style={{ color: '#060612' }}
-              className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
+              className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
             >
               Prefer texting? We&apos;re online.
             </h2>
           </div>
-          <p style={{ color: '#69686e' }} className="text-sm font-mono">
+          <p className="text-sm font-mono text-[#52525b]">
             Fastest reply via WhatsApp or Instagram.
           </p>
         </div>
 
         {/* 4 Branded Channel Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {socialChannels.map((channel) => (
             <a
               key={channel.name}
               href={channel.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-6 rounded-2xl border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-40 ${channel.hoverColor}`}
+              className={`p-5 sm:p-6 rounded-md border border-[#e7e2dd] bg-white transition-all group flex flex-col justify-between h-36 sm:h-40 active:scale-[0.98] ${channel.hoverColor}`}
             >
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-xl bg-[#faf9f8] flex items-center justify-center">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-md bg-[#faf9f8] flex items-center justify-center">
                   {channel.icon}
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#faf9f8] group-hover:bg-[#ff6321] group-hover:text-white text-[#69686e] flex items-center justify-center transition-colors">
+                <div className="w-8 h-8 rounded-full bg-[#faf9f8] group-hover:bg-[#ff6321] group-hover:text-white text-[#52525b] flex items-center justify-center transition-colors">
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
@@ -339,11 +338,11 @@ export default function ContactPage() {
               <div>
                 <h4 
                   style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-lg"
+                  className="font-heading font-semibold text-base sm:text-lg"
                 >
                   {channel.name}
                 </h4>
-                <p style={{ color: '#69686e' }} className="text-xs font-mono mt-0.5">
+                <p className="text-sm font-mono mt-0.5 text-[#52525b]">
                   {channel.handle}
                 </p>
               </div>
@@ -355,14 +354,14 @@ export default function ContactPage() {
       {/* ========================================================================= */}
       {/* SECTION 5: Quick FAQ — Short & Clear */}
       {/* ========================================================================= */}
-      <section className="w-full max-w-[88rem] mx-auto px-6 sm:px-12 py-20">
-        <div className="max-w-3xl mb-10 space-y-2">
-          <span className="text-xs font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
+      <section className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20">
+        <div className="max-w-3xl mb-6 sm:mb-10 space-y-2">
+          <span className="text-sm font-mono text-[#ff6321] uppercase tracking-wider font-bold block">
             • SECTION 04 // QUICK ANSWERS
           </span>
           <h2 
             style={{ color: '#060612' }}
-            className="font-heading font-medium text-3xl sm:text-5xl tracking-tight"
+            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl tracking-tight leading-[1.18] sm:leading-tight"
           >
             Quick answers.
           </h2>
@@ -373,24 +372,27 @@ export default function ContactPage() {
           {quickFaqs.map((faq, idx) => (
             <div 
               key={idx} 
-              className="py-5 cursor-pointer group"
+              className="py-4 sm:py-5 cursor-pointer group"
               onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
             >
-              <div className="flex items-center justify-between gap-4">
+              <button 
+                type="button"
+                className="w-full flex items-center justify-between gap-4 text-left min-h-[44px] whitespace-normal bg-transparent p-0 border-none cursor-pointer"
+                aria-expanded={openFaq === idx}
+              >
                 <h3 
                   style={{ color: '#060612' }}
-                  className="font-heading font-semibold text-lg group-hover:text-[#ff6321] transition-colors"
+                  className="font-heading font-semibold text-base sm:text-lg group-hover:text-[#ff6321] transition-colors"
                 >
                   {faq.q}
                 </h3>
-                <ChevronDown className={`w-4 h-4 text-[#69686e] shrink-0 transition-transform ${openFaq === idx ? 'rotate-180 text-[#ff6321]' : ''}`} />
-              </div>
+                <ChevronDown className={`w-4 h-4 text-[#52525b] shrink-0 transition-transform ${openFaq === idx ? 'rotate-180 text-[#ff6321]' : ''}`} />
+              </button>
 
               {openFaq === idx && (
-                <div className="pt-2 pr-6">
+                <div className="pt-2 sm:pt-3 pr-4 sm:pr-6">
                   <p 
-                    style={{ color: '#55545a' }}
-                    className="text-base font-body leading-relaxed"
+                    className="text-sm sm:text-base font-body leading-relaxed text-[#444452]"
                   >
                     {faq.a}
                   </p>

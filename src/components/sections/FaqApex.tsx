@@ -36,23 +36,23 @@ export function FaqApex() {
   };
 
   return (
-    <section id="faq" className="py-24 sm:py-36 px-6 sm:px-12 bg-white select-none border-b border-[#e7e2dd]">
-      <div className="max-w-4xl mx-auto space-y-16">
+    <section id="faq" className="py-10 sm:py-12 md:py-24 lg:py-36 px-4 sm:px-6 lg:px-12 bg-white select-none border-b border-[#e7e2dd]">
+      <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12 lg:space-y-16">
         
         {/* Header with Word-by-Word Blur Reveal */}
-        <div className="text-center space-y-3">
+        <div className="text-center space-y-2 sm:space-y-3">
           <ScrollBlurFade>
             <span className="text-body-sm font-mono text-[#ff6321] uppercase tracking-widest font-semibold block whitespace-nowrap">
               • PROTOCOL & ANSWERS
             </span>
           </ScrollBlurFade>
           <ScrollBlurWords
-            className="font-heading font-medium text-3xl sm:text-5xl text-[#060612] tracking-tight"
+            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl text-[#060612] tracking-tight leading-[1.18] sm:leading-tight"
             segments={['Frequently Asked Questions']}
           />
           <ScrollBlurFade delay={0.2}>
-            <p className="text-body text-[#69686e] max-w-lg mx-auto font-body">
-              Everything you need to know about our engineering standards, migration safeguards, and delivery timelines.
+            <p className="text-body text-[#52525b] max-w-lg mx-auto font-body">
+              Everything you need to know about our build standards, migration safeguards, and delivery timelines.
             </p>
           </ScrollBlurFade>
         </div>
@@ -71,15 +71,20 @@ export function FaqApex() {
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full py-6 sm:py-7 flex items-center justify-between gap-4 text-left cursor-pointer group whitespace-normal"
+                  className="w-full py-4 sm:py-6 lg:py-7 min-h-[44px] flex items-center justify-between gap-3 sm:gap-4 text-left cursor-pointer group whitespace-normal"
+                  style={{ color: '#060612' }}
                 >
-                  <span className="font-heading font-medium text-lg sm:text-xl text-[#060612] group-hover:text-[#ff6321] transition-colors leading-snug">
+                  <span
+                    className="font-heading font-medium text-base sm:text-lg lg:text-xl text-[#060612] group-hover:text-[#ff6321] transition-colors leading-snug"
+                    style={{ color: '#060612' }}
+                  >
                     {item.q}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: 'spring' as const, stiffness: 350, damping: 25 }}
-                    className="w-8 h-8 rounded-full bg-[#f5f4f3] border border-[#e7e2dd] flex items-center justify-center shrink-0 text-[#060612] group-hover:bg-[#ff6321] group-hover:text-white transition-colors"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#f5f4f3] border border-[#e7e2dd] flex items-center justify-center shrink-0 text-[#060612] group-hover:bg-[#ff6321] group-hover:text-white transition-colors"
+                    style={{ color: '#060612' }}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.div>
@@ -94,7 +99,7 @@ export function FaqApex() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ type: 'spring' as const, stiffness: 350, damping: 30 }}
                     >
-                      <p className="pb-6 text-body text-[#69686e] leading-relaxed font-body max-w-3xl">
+                      <p className="pb-6 text-body text-[#374151] leading-relaxed font-body max-w-3xl">
                         {item.a}
                       </p>
                     </motion.div>

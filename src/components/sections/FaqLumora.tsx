@@ -23,11 +23,11 @@ export function FaqLumora() {
     },
     {
       q: 'What does a standard 4 to 8-week production sprint look like?',
-      a: 'Week 1 is Architectural Discovery & SEO Entity Mapping; Weeks 2-3 are Wireframing & High-Fidelity UI Prototyping; Weeks 4-6 are Production Engineering & 60fps Motion Coding; Week 7 is Rigorous QA & Field Auditing; Week 8 is DNS Cutover and Live Launch.',
+      a: 'Week 1 is Architectural Discovery & SEO Entity Mapping; Weeks 2-3 are Wireframing & High-Fidelity UI Prototyping; Weeks 4-6 are Custom Web Development & Motion Implementation; Week 7 is Rigorous QA & Field Auditing; Week 8 is DNS Cutover and Live Launch.',
     },
     {
       q: 'What is the investment range and partnership structure?',
-      a: 'Our bespoke engineering builds typically range from $10,000 to $40,000 depending on complexity (headless vs Webflow CMS, custom WooCommerce, or programmatic SEO engine). We also offer monthly growth retainers for continuous optimization.',
+      a: 'Our bespoke custom builds typically range from $10,000 to $40,000 depending on complexity (headless vs Webflow CMS, custom WooCommerce, or programmatic SEO engine). We also offer monthly growth retainers for continuous optimization.',
     },
   ];
 
@@ -48,7 +48,7 @@ export function FaqLumora() {
             <StackedLines trigger={true} delay={0.05} lines={['Frequently Asked Questions']} />
           </div>
           <p className="text-sm sm:text-base text-[#8d8d8d] max-w-lg mx-auto">
-            Everything you need to know about our engineering standards, migration safeguards, and delivery timelines.
+            Everything you need to know about our build standards, migration safeguards, and delivery timelines.
           </p>
         </div>
 

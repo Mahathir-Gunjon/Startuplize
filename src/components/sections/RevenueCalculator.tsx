@@ -57,7 +57,7 @@ export function RevenueCalculator({ onOpenBooking }: RevenueCalculatorProps) {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-[#9CA3AF]">
-            See how sub-second LCP engineering combined with Google Local 3-Pack and Technical SEO compounds your bottom line over 12 months.
+            See how sub-second site speed combined with Google Local 3-Pack and Technical SEO compounds your bottom line over 12 months.
           </p>
         </div>
 

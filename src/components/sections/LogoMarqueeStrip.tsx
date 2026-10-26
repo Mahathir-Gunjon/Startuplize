@@ -67,15 +67,16 @@ export function LogoMarqueeStrip() {
   ];
 
   return (
-    <div className="w-full bg-white border-b border-[#e6e5e2] py-8 overflow-hidden select-none">
+    <div className="w-full bg-white border-b border-[#e6e5e2] py-5 sm:py-8 overflow-hidden select-none">
       <div className="flex animate-ticker-left">
         {[...logos, ...logos, ...logos].map((logo, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2.5 mx-8 sm:mx-12 opacity-40 hover:opacity-100 transition-opacity cursor-pointer shrink-0 text-[#111111]"
+            className="flex items-center gap-2 sm:gap-2.5 mx-6 sm:mx-12 opacity-85 hover:opacity-100 transition-opacity cursor-pointer shrink-0 text-[#060612]"
+            style={{ color: '#060612' }}
           >
-            {logo.icon}
-            <span className="font-heading font-medium text-lg tracking-tight">
+            <span style={{ color: '#060612' }}>{logo.icon}</span>
+            <span className="font-heading font-semibold text-base sm:text-lg tracking-tight" style={{ color: '#060612' }}>
               {logo.name}
             </span>
           </div>

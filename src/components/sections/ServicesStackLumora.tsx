@@ -16,15 +16,13 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
   const services = [
     {
       num: '01',
-      title: 'WordPress & Elementor Engineering',
-      tagline: 'New Custom Builds · Full Website Revamps · Zero-Bloat Performance',
+      title: 'WordPress & Elementor Development',
       href: '#',
-      deliverables: ['New Builds & Revamps', 'Sub-Second Speed', 'Custom ACF Blocks'],
       parts: [
         {
           tag: '01 // BUILDS & REVAMPS',
           title: 'New Builds & Total Revamps',
-          desc: 'We engineer high-converting new websites from scratch and completely revamp slow, outdated legacy WordPress sites into modern commercial assets.',
+          desc: 'We build high-converting new websites from scratch and completely revamp slow, outdated legacy WordPress sites into modern commercial assets.',
         },
         {
           tag: '02 // ZERO-BLOAT SPEED',
@@ -41,9 +39,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
     {
       num: '02',
       title: 'Webflow CMS Architecture',
-      tagline: 'Custom Webflow Flagships · Visual Systems · Dynamic CMS Collections',
       href: '#',
-      deliverables: ['60 FPS Navigation', 'Dynamic Collections', 'Visual Client Editor'],
       parts: [
         {
           tag: '01 // BESPOKE DESIGN',
@@ -65,9 +61,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
     {
       num: '03',
       title: 'Technical & On-Page SEO',
-      tagline: 'Search Architecture · Core Web Vitals · Keyword Entity Dominance',
       href: '#',
-      deliverables: ['Local Schema Markup', 'Speed & Crawl Audit', '100% CWV Field Pass'],
       parts: [
         {
           tag: '01 // CRAWL & INDEX',
@@ -89,9 +83,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
     {
       num: '04',
       title: 'Local SEO & Google Business Profile',
-      tagline: 'Google Map Pack · Local Directory Citations · Automated Review Funnels',
       href: '#',
-      deliverables: ['GBP 3-Pack Rankings', 'Automated 5★ Reviews', 'Inbound Call Funnels'],
       parts: [
         {
           tag: '01 // MAP 3-PACK',
@@ -113,9 +105,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
     {
       num: '05',
       title: 'Brand Design & Visual Identity',
-      tagline: 'Complete Graphic Design · Bespoke Logo Suites · Marketing Collateral',
       href: '#',
-      deliverables: ['Complete Logo Suite', 'Brand Guidelines Book', 'Social & Print Assets'],
       parts: [
         {
           tag: '01 // LOGO SUITE',
@@ -137,9 +127,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
     {
       num: '06',
       title: 'Meta Ads & Paid Acquisition',
-      tagline: 'Facebook & Instagram Ads · Direct-Response Creative · Lead Generation Funnels',
       href: '#',
-      deliverables: ['Creative Ad Production', 'Conversion API Setup', 'Daily ROAS Scaling'],
       parts: [
         {
           tag: '01 // CREATIVE ADS',
@@ -149,7 +137,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
         {
           tag: '02 // CONVERSION FUNNELS',
           title: 'Direct-Response Copy & Pages',
-          desc: 'Persuasive ad copy and fast dedicated landing page funnels engineered to convert cold clicks into booked consultation calls.',
+          desc: 'Persuasive ad copy and fast dedicated landing page funnels built to convert cold clicks into booked consultation calls.',
         },
         {
           tag: '03 // CAPI TRACKING',
@@ -163,12 +151,12 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
   return (
     <section
       id="services"
-      className="py-28 sm:py-36 px-6 sm:px-12 bg-white relative select-none border-b border-[#e7e2dd]"
+      className="py-10 sm:py-12 md:py-24 lg:py-36 px-4 sm:px-6 lg:px-12 bg-white relative select-none border-b border-[#e7e2dd]"
     >
       <div className="max-w-[84rem] mx-auto">
         
         {/* Section Header with Word-by-Word Blur Reveal */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 lg:mb-16 gap-4 sm:gap-6">
           <div>
             <ScrollBlurFade>
               <span className="text-body-sm font-mono text-[#ff6321] uppercase tracking-widest font-semibold block mb-2 whitespace-nowrap">
@@ -176,13 +164,13 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
               </span>
             </ScrollBlurFade>
             <ScrollBlurWords
-              className="font-heading font-medium text-3xl sm:text-5xl text-[#060612] tracking-tight"
-              segments={['What we engineer best.']}
+              className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl text-[#060612] tracking-tight leading-[1.18] sm:leading-tight"
+              segments={['What we build best.']}
             />
           </div>
           <ScrollBlurFade delay={0.2}>
-            <p className="text-body text-[#69686e] max-w-md font-body leading-relaxed">
-              Precision web engineering, brand identity, and organic search dominance. Every discipline is executed strictly in-house with zero outsourcing.
+            <p className="text-body text-[#52525b] max-w-md font-body leading-relaxed">
+              Precision web development, brand identity, and organic search dominance. Every discipline is executed strictly in-house with zero outsourcing.
             </p>
           </ScrollBlurFade>
         </div>
@@ -197,57 +185,37 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                 delay={idx * 0.08 + 0.1}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className={`border-t border-[#e7e2dd] transition-all duration-300 group relative overflow-hidden py-7 sm:py-8 px-6 sm:px-8 rounded-2xl my-1 ${
+                onClick={() => setHoveredIdx(hoveredIdx === idx ? null : idx)}
+                className={`border-t border-[#e7e2dd] transition-all duration-300 group relative overflow-hidden py-4 sm:py-6 lg:py-8 px-3.5 sm:px-6 lg:px-8 rounded-md my-1 cursor-pointer ${
                   isHovered ? 'bg-[#f5f4f3] shadow-xs' : 'bg-transparent'
                 }`}
               >
-                {/* Header Row (Number, Title, Deliverables, Arrow) - Links to service page / # with NO click popup */}
-                <a
-                  href={item.href}
-                  className="flex items-center justify-between gap-4 sm:gap-6 relative z-10 w-full cursor-pointer no-underline"
+                {/* Header Row (Number, Title, Arrow) */}
+                <div
+                  className="flex items-center justify-between gap-3 sm:gap-6 relative z-10 w-full"
                 >
                   {/* Left Number & Title */}
-                  <div className="flex items-baseline gap-6 sm:gap-10 min-w-0">
-                    <span className="font-mono text-body text-[#69686e] whitespace-nowrap shrink-0">
+                  <div className="flex items-center gap-3 sm:gap-6 lg:gap-10 min-w-0">
+                    <span className="font-mono text-sm sm:text-body text-[#52525b] whitespace-nowrap shrink-0">
                       {item.num}
                     </span>
-                    <div className="min-w-0">
-                      <h3 className="font-heading font-medium text-2xl sm:text-3xl text-[#060612] group-hover:text-[#ff6321] transition-colors">
-                        {item.title}
-                      </h3>
-                      <div className="text-body-sm font-mono text-[#69686e] mt-0.5 whitespace-nowrap truncate">
-                        {item.tagline}
-                      </div>
-                    </div>
+                    <h3 className="font-heading font-medium text-lg sm:text-2xl lg:text-3xl text-[#060612] group-hover:text-[#ff6321] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  {/* Right Deliverables Tags + Equal-Aligned Arrow Button */}
-                  <div className="flex items-center gap-3 sm:gap-5 shrink-0 ml-auto">
-                    {/* Middle Deliverables Tags (Strictly whitespace-nowrap) */}
-                    <div className="hidden xl:flex items-center gap-2 whitespace-nowrap">
-                      {item.deliverables.map((del, dIdx) => (
-                        <span
-                          key={dIdx}
-                          className="px-3.5 py-1 rounded-full bg-white border border-[#e7e2dd] text-[11px] font-mono text-[#060612] shadow-2xs whitespace-nowrap shrink-0"
-                        >
-                          {del}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Right Arrow Badge (Strictly equal alignment on all rows, no text) */}
-                    <div className="w-10 sm:w-11 flex items-center justify-end shrink-0">
-                      <motion.div
-                        animate={isHovered ? { x: 4 } : { x: 0 }}
-                        transition={{ type: 'spring' as const, stiffness: 350, damping: 20 }}
-                        className="w-10 h-10 rounded-full bg-[#060612] text-white flex items-center justify-center shrink-0 group-hover:bg-[#ff6321] transition-colors shadow-xs"
-                      >
-                        <ArrowRight className="w-4 h-4" />
-                      </motion.div>
-                    </div>
+                  {/* Right Arrow Badge (Min 44px touch target) */}
+                  <div className="w-11 flex items-center justify-end shrink-0 ml-auto">
+                    <motion.div
+                      animate={isHovered ? { x: 4 } : { x: 0 }}
+                      transition={{ type: 'spring' as const, stiffness: 350, damping: 20 }}
+                      className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-[#060612] text-white flex items-center justify-center shrink-0 group-hover:bg-[#ff6321] transition-colors shadow-xs"
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.div>
                   </div>
 
-                </a>
+                </div>
 
                 {/* Description Drawer - 3 Clean Parts, NO CARDS, perfectly aligned */}
                 <AnimatePresence>
@@ -267,13 +235,13 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                               key={pIdx}
                               className={`${
                                 pIdx === 0
-                                  ? 'md:pr-8 lg:pr-10'
+                                  ? 'md:pr-6 lg:pr-10'
                                   : pIdx === 1
-                                  ? 'pt-5 md:pt-0 md:px-8 lg:px-10'
-                                  : 'pt-5 md:pt-0 md:pl-8 lg:pl-10'
+                                  ? 'pt-5 md:pt-0 md:px-6 lg:px-10'
+                                  : 'pt-5 md:pt-0 md:pl-6 lg:pl-10'
                               } flex flex-col`}
                             >
-                              <span className="text-[11px] font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
+                              <span className="text-sm font-mono font-bold text-[#ff6321] uppercase tracking-wider block">
                                 {part.tag}
                               </span>
                               <h4
@@ -283,8 +251,8 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
                                 {part.title}
                               </h4>
                               <p
-                                className="text-body-sm font-body mt-2 leading-relaxed text-[#444452]"
-                                style={{ color: '#444452' }}
+                                className="text-body-sm font-body mt-2 leading-relaxed text-[#374151]"
+                                style={{ color: '#374151' }}
                               >
                                 {part.desc}
                               </p>

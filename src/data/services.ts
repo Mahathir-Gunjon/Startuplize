@@ -4,10 +4,10 @@ export const servicesData: ServiceItem[] = [
   {
     id: 'wordpress',
     badge: '01 / ARCHITECTURE',
-    title: 'High-Performance WordPress Engineering',
+    title: 'High-Performance WordPress Development',
     subtitle: 'Zero-Bloat Headless, ACF Pro & Sub-Second WooCommerce',
     description:
-      'We strip out standard multi-plugin bloat in favor of custom-built object-oriented theme architectures, headless Next.js front-ends, ACF Pro flexible content grids, and optimized WooCommerce checkouts engineered for extreme throughput.',
+      'We strip out standard multi-plugin bloat in favor of custom-built object-oriented theme architectures, headless Next.js front-ends, ACF Pro flexible content grids, and optimized WooCommerce checkouts built for extreme throughput.',
     techStack: ['Headless Next.js', 'WordPress REST / GraphQL', 'ACF Pro & Custom Blocks', 'Redis Object Cache', 'WooCommerce High-Scale'],
     deliverables: [
       'Custom bespoke theme coded from scratch (Zero heavy templates)',
@@ -63,7 +63,7 @@ export const servicesData: ServiceItem[] = [
     features: [
       {
         title: 'Cinema-Grade Motion',
-        desc: 'Engineered scroll-linked sequences and 60fps micro-interactions.',
+        desc: 'Smooth scroll-linked sequences and 60fps micro-interactions.',
         metric: '60 FPS Physics Guaranteed'
       },
       {
@@ -156,7 +156,7 @@ export const servicesData: ServiceItem[] = [
       },
       {
         title: 'High-Converting Click Funnels',
-        desc: 'Mobile-first booking pages engineered to trigger immediate phone calls & leads.',
+        desc: 'Mobile-first booking pages crafted to trigger immediate phone calls & leads.',
         metric: '18.4% Average Conversion'
       },
       {

@@ -95,7 +95,7 @@ export function RequestModalLumora({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ type: 'spring' as const, stiffness: 350, damping: 25 }}
-            className="relative z-10 w-full max-w-xl bg-white rounded-[2rem] p-6 sm:p-10 border border-[#e6e5e2] shadow-2xl overflow-hidden my-6 select-none"
+            className="relative z-10 w-full max-w-xl bg-white rounded-lg p-6 sm:p-10 border border-[#e6e5e2] shadow-2xl overflow-hidden my-6 select-none"
           >
             {/* Close Button */}
             <button
@@ -121,7 +121,7 @@ export function RequestModalLumora({
                     {step === 3 && 'Project Details'}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#8d8d8d]">
-                    {step === 1 && 'Choose the core engineering architectures your brand requires.'}
+                    {step === 1 && 'Choose the core web and digital solutions your brand requires.'}
                     {step === 2 && 'Estimated capital allocation for the production sprint.'}
                     {step === 3 && 'We will review your URL and deliver a custom architecture roadmap.'}
                   </p>

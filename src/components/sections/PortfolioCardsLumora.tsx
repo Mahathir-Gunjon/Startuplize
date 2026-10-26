@@ -52,7 +52,7 @@ export function PortfolioCardsLumora({ onOpenBooking }: PortfolioCardsLumoraProp
       year: '2026',
       image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80',
       description:
-        'Engineered 1,200 automated programmatic comparison landing pages with JSON-LD entity schema, driving +340% organic GA4 session expansion.',
+        'Built 1,200 automated programmatic comparison landing pages with JSON-LD entity schema, driving +340% organic GA4 session expansion.',
       tags: ['Programmatic SEO', 'JSON-LD Graphs', 'Edge Indexing', '+$1.8M ARR'],
       badge: '+340% Traffic',
     },
@@ -72,7 +72,7 @@ export function PortfolioCardsLumora({ onOpenBooking }: PortfolioCardsLumoraProp
               <StackedLines
                 trigger={true}
                 delay={0.05}
-                lines={['Engineered proof.', 'Not promises.']}
+                lines={['Proven results.', 'Not promises.']}
               />
             </div>
           </div>

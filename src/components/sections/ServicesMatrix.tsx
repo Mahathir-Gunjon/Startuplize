@@ -50,7 +50,7 @@ export function ServicesMatrix({ onOpenBooking }: ServicesMatrixProps) {
               SERVICE MATRIX // HIGH-IMPACT CAPABILITIES
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white mt-3 leading-tight">
-              Engineered For Maximum <br />
+              Built For Maximum <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E06927] to-[#10B981]">
                 Speed & Organic Dominance.
               </span>

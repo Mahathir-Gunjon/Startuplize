@@ -50,11 +50,11 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
   ];
 
   return (
-    <section id="proof" className="py-28 sm:py-36 px-6 sm:px-12 bg-[#faf9f8] select-none border-t border-[#e7e2dd]">
-      <div className="max-w-[88rem] mx-auto space-y-24">
+    <section id="proof" className="py-10 sm:py-12 md:py-28 lg:py-36 px-4 sm:px-6 lg:px-12 bg-[#faf9f8] select-none border-t border-[#e7e2dd]">
+      <div className="max-w-[88rem] mx-auto space-y-8 sm:space-y-16 lg:space-y-24">
         
         {/* Section Header with Word-by-Word Blur Reveal */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
           <div>
             <ScrollBlurFade>
               <span className="text-body-sm font-mono text-[#ff6321] uppercase tracking-widest font-bold block mb-2">
@@ -62,33 +62,33 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
               </span>
             </ScrollBlurFade>
             <ScrollBlurWords
-              className="font-heading font-medium text-3xl sm:text-5xl text-[#060612] tracking-tight"
+              className="font-heading font-medium text-2xl sm:text-4xl lg:text-5xl text-[#060612] tracking-tight"
               segments={['Measured in revenue, not aesthetics alone.']}
             />
           </div>
           <ScrollBlurFade delay={0.2}>
-            <p className="text-body text-[#69686e] max-w-md font-body">
-              Compare real client systems before and after our engineering transformation. Drag the interactive sliders below.
+            <p className="text-body text-[#52525b] max-w-md font-body">
+              Compare real client systems before and after our digital transformation. Drag the interactive sliders below.
             </p>
           </ScrollBlurFade>
         </div>
 
         {/* 2 Deep Dive Studies with Slide Reveal & Staggered Delay */}
-        <div className="space-y-20">
+        <div className="space-y-8 sm:space-y-14 lg:space-y-20">
           {caseStudies.map((study, idx) => (
             <ScrollSlideCard
               key={study.id}
               delay={idx * 0.2 + 0.15}
-              className="bg-white rounded-[2rem] border border-[#e7e2dd] p-6 sm:p-10 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
+              className="bg-white rounded-[1.75rem] sm:rounded-[2rem] border border-[#e7e2dd] p-5 sm:p-8 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start"
             >
               {/* Left Column: Challenge, Solution, Metrics */}
-              <div className="lg:col-span-6 space-y-6">
+              <div className="lg:col-span-6 space-y-5 sm:space-y-6">
                 <div>
-                  <div className="text-body-sm font-mono text-[#b15f2c] font-bold uppercase tracking-wider">
+                  <div className="text-body-sm font-mono text-[#ff6321] font-bold uppercase tracking-wider">
                     STUDY 0{idx + 1} // {study.industry}
                   </div>
                   {/* H3 in Bricolage Grotesque 500 (font-h3 = 32px) */}
-                  <h3 className="font-h3 text-[#111111] mt-1">
+                  <h3 className="font-h3 text-2xl sm:text-3xl text-[#111111] mt-1">
                     {study.client}
                   </h3>
                 </div>
@@ -99,18 +99,18 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
                     <AlertCircle className="w-3.5 h-3.5" />
                     INITIAL BOTTLENECK
                   </div>
-                  <p className="text-body-sm text-[#111111]/80 leading-relaxed font-body">
+                  <p className="text-body-sm text-[#111111]/85 leading-relaxed font-body">
                     {study.challenge}
                   </p>
                 </div>
 
                 {/* Solution Card */}
                 <div className="p-4 rounded-xl bg-white border border-[#e6e5e2] space-y-1.5 shadow-xs">
-                  <div className="flex items-center gap-2 text-body-sm font-mono font-bold text-[#b15f2c] uppercase">
+                  <div className="flex items-center gap-2 text-body-sm font-mono font-bold text-[#ff6321] uppercase">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    ENGINEERING EXECUTION
+                    HOW WE BUILT IT
                   </div>
-                  <p className="text-body-sm text-[#111111]/80 leading-relaxed font-body">
+                  <p className="text-body-sm text-[#111111]/85 leading-relaxed font-body">
                     {study.solution}
                   </p>
                 </div>
@@ -122,11 +122,11 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
                       key={mIdx}
                       className="p-3.5 rounded-xl bg-[#f1f0ee] border border-[#e6e5e2] space-y-1"
                     >
-                      <div className="text-body-sm font-mono text-[#8d8d8d]">{m.label}</div>
+                      <div className="text-body-sm font-mono text-[#52525b] font-medium">{m.label}</div>
                       <div className="font-heading font-medium text-lg sm:text-xl text-[#111111]">
                         {m.value}
                       </div>
-                      <div className="text-[11px] font-mono text-[#b15f2c] font-medium">
+                      <div className="text-[11px] font-mono text-[#ff6321] font-semibold">
                         {m.note}
                       </div>
                     </div>
@@ -151,6 +151,7 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
                     variant="dark"
                     size="md"
                     onClick={() => onOpenBooking(study.client)}
+                    className="w-full sm:w-auto justify-between sm:justify-center shadow-sm"
                   >
                     Request similar audit
                   </PillButton>
@@ -159,9 +160,9 @@ export function CaseStudiesLumora({ onOpenBooking }: CaseStudiesLumoraProps) {
 
               {/* Right Column: Interactive Before/After Image Comparison Slider */}
               <div className="lg:col-span-6 space-y-3">
-                <div className="flex items-center justify-between text-body-sm font-mono text-[#8d8d8d]">
+                <div className="flex items-center justify-between text-body-sm font-mono text-[#52525b]">
                   <span>INTERACTIVE SPLIT COMPARISON</span>
-                  <span className="text-[#b15f2c] font-bold">DRAG SLIDER ◀ ▶</span>
+                  <span className="text-[#ff6321] font-bold">DRAG SLIDER ◀ ▶</span>
                 </div>
 
                 <div className="rounded-2xl overflow-hidden border border-[#e6e5e2] shadow-sm">

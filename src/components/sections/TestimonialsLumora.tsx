@@ -23,7 +23,7 @@ export function TestimonialsLumora() {
       avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
       metric: '142% Inbound Demo Lift',
       review:
-        'The Webflow cinema-motion system ApexStudio engineered for us won Awwwards SOTD on day one. Our inbound demo conversions doubled within eight weeks.',
+        'The Webflow cinema-motion system ApexStudio crafted for us won Awwwards SOTD on day one. Our inbound demo conversions doubled within eight weeks.',
     },
     {
       name: 'David Chen',

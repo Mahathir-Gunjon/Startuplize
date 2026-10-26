@@ -23,12 +23,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "startuplize — High-Performance Web & Digital Growth Engineering",
+  title: "startuplize — High-Performance Web Design & Digital Growth",
   description:
     "We design brands and platforms that move people. Custom WordPress, Webflow architecture, programmatic SEO, and local search dominance for ambitious businesses.",
   keywords: [
     "startuplize",
-    "WordPress Engineering",
+    "WordPress Development",
     "Webflow Systems",
     "Technical SEO",
     "Google Local 3-Pack Dominance",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "startuplize" }],
   openGraph: {
-    title: "startuplize — High-Performance Web & Digital Growth Engineering",
+    title: "startuplize — High-Performance Web Design & Digital Growth",
     description:
       "We design brands and platforms that move people. Custom WordPress, Webflow architecture, programmatic SEO, and local search dominance for ambitious businesses.",
     type: "website",
@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${manrope.variable} scroll-smooth`}>
+    <html lang="en" className={`${bricolage.variable} ${manrope.variable}`}>
       <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-hidden relative">
         {children}
         <FloatingContactWidget />

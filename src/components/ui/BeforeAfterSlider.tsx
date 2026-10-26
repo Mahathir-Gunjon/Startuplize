@@ -80,8 +80,8 @@ export function BeforeAfterSlider({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#08090C]/80 via-transparent to-black/30" />
           {/* After Tag */}
-          <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-full bg-[#10B981]/90 backdrop-blur-md text-black font-mono font-bold text-xs flex items-center gap-1.5 shadow-lg">
-            <CheckCircle2 className="w-3.5 h-3.5" />
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#10B981]/90 backdrop-blur-md text-black font-mono font-bold text-[10px] sm:text-xs flex items-center gap-1 sm:gap-1.5 shadow-lg">
+            <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             {afterLabel}
           </div>
         </div>
@@ -100,8 +100,8 @@ export function BeforeAfterSlider({
           />
           <div className="absolute inset-0 bg-black/40" />
           {/* Before Tag */}
-          <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-red-500/90 backdrop-blur-md text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-lg">
-            <AlertTriangle className="w-3.5 h-3.5" />
+          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-red-500/90 backdrop-blur-md text-white font-mono font-bold text-[10px] sm:text-xs flex items-center gap-1 sm:gap-1.5 shadow-lg">
+            <AlertTriangle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             {beforeLabel}
           </div>
         </div>
@@ -111,8 +111,8 @@ export function BeforeAfterSlider({
           className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-20"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0F1117] border-2 border-white flex items-center justify-center text-white shadow-[0_0_20px_rgba(224,105,39,0.5)]">
-            <div className="flex items-center gap-1 text-[10px] font-bold tracking-tighter">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-[#0F1117] border-2 border-white flex items-center justify-center text-white shadow-[0_0_20px_rgba(224,105,39,0.5)] cursor-grab active:cursor-grabbing">
+            <div className="flex items-center gap-1 text-[11px] font-bold tracking-tighter">
               <span>◀</span>
               <span>▶</span>
             </div>

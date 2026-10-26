@@ -41,7 +41,7 @@ export function HardEvidenceCaseStudies({ onOpenBooking }: HardEvidenceCaseStudi
             </h2>
           </div>
           <p className="text-sm sm:text-base text-[#9CA3AF] max-w-md">
-            Drag the Before/After sliders to see how our custom engineering and local search systems eliminate bloat and multiply revenue.
+            Drag the Before/After sliders to see how our custom builds and local search systems eliminate bloat and multiply revenue.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export function HardEvidenceCaseStudies({ onOpenBooking }: HardEvidenceCaseStudi
                 </div>
               </div>
 
-              {/* Grid: Left Before/After Slider, Right Engineering Blueprint */}
+              {/* Grid: Left Before/After Slider, Right Build Blueprint */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 {/* Left: Interactive Slider */}
@@ -112,10 +112,10 @@ export function HardEvidenceCaseStudies({ onOpenBooking }: HardEvidenceCaseStudi
                     </p>
                   </div>
 
-                  {/* The Engineering Solution */}
+                  {/* The Build Solution */}
                   <div className="space-y-3">
                     <div className="text-xs font-mono uppercase tracking-wider text-[#10B981] font-bold">
-                      VANGUARD ENGINEERING ROADMAP DEPLOYED
+                      VANGUARD STRATEGIC BUILD ROADMAP
                     </div>
                     <ul className="space-y-2">
                       {study.engineeringExecution.map((step, sIdx) => (

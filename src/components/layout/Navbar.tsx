@@ -50,7 +50,6 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   const navLinks = [
     { label: 'Capabilities', href: '#services' },
     { label: 'Showcase', href: '#portfolio' },
-    { label: 'Hard Proof', href: '#case-studies' },
     { label: 'ROI Engine', href: '#calculator' },
     { label: 'Client Reviews', href: '#testimonials' },
     { label: 'FAQ', href: '#faq' },

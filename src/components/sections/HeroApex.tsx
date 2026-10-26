@@ -81,7 +81,7 @@ export function HeroApex({ onOpenBooking, isReady }: HeroApexProps) {
               trigger={isReady}
               delay={0.1}
               lines={[
-                'Engineered speed,',
+                'Unmatched speed,',
                 'designed to convert,',
                 'built to dominate.',
               ]}
@@ -91,7 +91,7 @@ export function HeroApex({ onOpenBooking, isReady }: HeroApexProps) {
           {/* Swiss Proof Telemetry in Manrope text-body-lg (20px) / text-body (18px) */}
           <div className="space-y-3 pt-1">
             <p className="text-body-lg text-[#111111]/90 max-w-xl font-normal leading-snug">
-              We architect ultra-fast headless WordPress, Webflow systems, and programmatic SEO platforms engineered for mathematical market supremacy.
+              We architect ultra-fast headless WordPress, Webflow systems, and programmatic SEO platforms built for mathematical market supremacy.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -142,7 +142,7 @@ export function HeroApex({ onOpenBooking, isReady }: HeroApexProps) {
                 <svg viewBox="0 0 48 48" fill="currentColor" className="w-9 h-9">
                   <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z" />
                 </svg>
-                <span className="text-[9px] font-mono tracking-widest text-[#8d8d8d] mt-1.5 font-bold">
+                <span className="text-sm font-mono tracking-widest text-[#8d8d8d] mt-1.5 font-bold">
                   APEX
                 </span>
               </div>
@@ -162,7 +162,7 @@ export function HeroApex({ onOpenBooking, isReady }: HeroApexProps) {
                       <span className="text-body-sm font-mono text-[#b15f2c] font-bold tracking-wider uppercase">
                         {heroSlides[activeSlide].caption}
                       </span>
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#f1f0ee] border border-[#e6e5e2] text-[#111111] font-semibold">
+                      <span className="text-sm font-mono px-2.5 py-0.5 rounded-full bg-[#f1f0ee] border border-[#e6e5e2] text-[#111111] font-semibold">
                         {heroSlides[activeSlide].metric}
                       </span>
                     </div>
