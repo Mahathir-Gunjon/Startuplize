@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, LayoutGrid, Zap, HelpCircle, ArrowUpRight, Menu, X } from 'lucide-react';
+import { Sparkles, LayoutGrid, Zap, HelpCircle, ArrowUpRight, Menu, X, Star } from 'lucide-react';
 import { PillButton } from '@/components/ui/PillButton';
 
 interface HeaderProps {
@@ -79,6 +79,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
     { label: 'Services', href: '/#services', icon: Sparkles },
     { label: 'Work', href: '/#works', icon: LayoutGrid },
     { label: 'Why Us', href: '/#why-us', icon: Zap },
+    { label: 'Reviews', href: '/#reviews', icon: Star },
     { label: 'FAQ', href: '/#faq', icon: HelpCircle },
   ];
 
@@ -219,7 +220,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
 
                     {/* Upward pointer notch pointing directly to Services pill */}
                     <div
-                      className={`absolute -top-2 w-4 h-4 bg-white rotate-45 border-l border-t border-[#e7e2dd] ${isScrolled ? 'left-[calc(50%-130px)]' : 'left-[calc(50%-120px)]'
+                      className={`absolute -top-2 w-4 h-4 bg-white rotate-45 border-l border-t border-[#e7e2dd] ${isScrolled ? 'left-[calc(50%-160px)]' : 'left-[calc(50%-170px)]'
                         }`}
                     />
 

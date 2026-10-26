@@ -152,7 +152,9 @@ export function TestimonialLaunchSection({ onOpenBooking }: TestimonialLaunchSec
   ];
 
   return (
-    <section id="testimonials" className="py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 bg-[#faf9f8] select-none border-b border-[#e7e2dd] relative z-10 overflow-hidden">
+    <section id="reviews" className="py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 bg-[#faf9f8] select-none border-b border-[#e7e2dd] relative z-10 overflow-hidden">
+      {/* Anchor for backward compatibility with #testimonials */}
+      <div id="testimonials" className="absolute -top-24 pointer-events-none opacity-0" />
       <div className="max-w-[84rem] mx-auto space-y-10 sm:space-y-14">
         
         {/* Section Header & Action */}
