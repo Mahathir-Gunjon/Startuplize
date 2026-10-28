@@ -48,111 +48,6 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
     },
   ];
 
-  const clientLogos = [
-    {
-      name: 'Vance Commercial',
-      category: 'Roofing & Construction',
-      location: 'Melbourne, AU',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M3 17L12 4L21 17M12 11V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Sterling & Marsh',
-      category: 'Corporate Legal',
-      location: 'Chicago, IL',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M4 6h16M6 6v12M18 6v12M3 18h18M12 3v15M8 21h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Apex Healthcare',
-      category: 'Specialty Clinics',
-      location: 'Sydney, AU',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M12 3v18M3 12h18M7 9l3 6 4-8 3 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'ClearLine Arbor',
-      category: 'Field Services',
-      location: 'Texas, US',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M12 2L4 12h5l-3 7h12l-3-7h5L12 2zM12 19v3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Aeline Systems',
-      category: 'AI & SaaS Strategy',
-      location: 'San Francisco, CA',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-          <ellipse cx="12" cy="12" rx="9" ry="4" stroke="currentColor" strokeWidth="1.75" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Stodio Spatial',
-      category: 'Architecture & Design',
-      location: 'London, UK',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zM3 7l9 5 9-5M12 12v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Lumina Cloud',
-      category: 'Infrastructure & DevOps',
-      location: 'Berlin, DE',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M6.5 17.5A5 5 0 0 1 5 8a6 6 0 0 1 11.5-2A4.5 4.5 0 0 1 20 15a4 4 0 0 1-3.5 2.5H6.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Quantix Capital',
-      category: 'FinTech Platform',
-      location: 'New York, US',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M12 2l8 6-8 14L4 8l8-6zM4 8h16M12 2v20" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Solis Renewable',
-      category: 'Clean Energy Solutions',
-      location: 'Toronto, CA',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Metropolitan Law',
-      category: 'Commercial Counsel',
-      location: 'Dubai, UAE',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-          <path d="M12 3L4 6v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V6l-8-3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-  ];
-
   return (
     <section
       id="process"
@@ -194,7 +89,7 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
           <div className="flex justify-start relative">
             <ScrollSlideCard
               delay={0.1}
-              className="w-full md:w-[440px] lg:w-[470px] rounded-2xl p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-[#fff7f2] border border-[#ff6321]/25 hover:border-[#ff6321]/40"
+              className="w-full md:w-[440px] lg:w-[470px] rounded-[3px] p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-[#fff7f2] border border-[#ff6321]/25 hover:border-[#ff6321]/40"
             >
               {/* Vertical Time Pill (Coral Tinted) */}
               <div className="w-8 sm:w-9 rounded-full flex items-center justify-center shrink-0 self-stretch my-auto py-3 min-h-[90px] sm:min-h-[105px] bg-[#ff6321] text-white shadow-xs">
@@ -257,7 +152,7 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
           <div className="flex justify-end relative">
             <ScrollSlideCard
               delay={0.2}
-              className="w-full md:w-[440px] lg:w-[470px] rounded-2xl p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-white border border-[#e7e2dd] hover:border-[#ff6321]/30"
+              className="w-full md:w-[440px] lg:w-[470px] rounded-[3px] p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-white border border-[#e7e2dd] hover:border-[#ff6321]/30"
             >
               {/* Vertical Time Pill (Obsidian Dark) */}
               <div className="w-8 sm:w-9 rounded-full flex items-center justify-center shrink-0 self-stretch my-auto py-3 min-h-[90px] sm:min-h-[105px] bg-[#060612] text-white shadow-xs">
@@ -320,7 +215,7 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
           <div className="flex justify-start relative">
             <ScrollSlideCard
               delay={0.3}
-              className="w-full md:w-[440px] lg:w-[470px] rounded-2xl p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-white border border-[#e7e2dd] hover:border-[#ff6321]/30"
+              className="w-full md:w-[440px] lg:w-[470px] rounded-[3px] p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-white border border-[#e7e2dd] hover:border-[#ff6321]/30"
             >
               {/* Vertical Time Pill (Obsidian Dark) */}
               <div className="w-8 sm:w-9 rounded-full flex items-center justify-center shrink-0 self-stretch my-auto py-3 min-h-[90px] sm:min-h-[105px] bg-[#060612] text-white shadow-xs">
@@ -383,7 +278,7 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
           <div className="flex justify-end relative">
             <ScrollSlideCard
               delay={0.4}
-              className="w-full md:w-[440px] lg:w-[470px] rounded-2xl p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-[#fff7f2] border border-[#ff6321]/25 hover:border-[#ff6321]/40"
+              className="w-full md:w-[440px] lg:w-[470px] rounded-[3px] p-4 sm:p-5 lg:p-6 flex items-stretch gap-3.5 sm:gap-4 lg:gap-5 shadow-xs transition-all duration-300 hover:shadow-md bg-[#fff7f2] border border-[#ff6321]/25 hover:border-[#ff6321]/40"
             >
               {/* Vertical Time Pill (Coral Tinted) */}
               <div className="w-8 sm:w-9 rounded-full flex items-center justify-center shrink-0 self-stretch my-auto py-3 min-h-[90px] sm:min-h-[105px] bg-[#ff6321] text-white shadow-xs">
@@ -418,80 +313,6 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
 
         </div>
 
-      </div>
-
-      {/* Full-Width 2-Side Fade Out Clients Logo Marquee */}
-      <div className="mt-14 sm:mt-18 lg:mt-22 pt-8 sm:pt-10 border-t border-[#e7e2dd]/70 w-full relative">
-        <div className="text-center mb-6 sm:mb-8 px-4">
-          <span className="text-xs font-mono text-[#52525b] uppercase tracking-widest font-semibold block">
-            • TRUSTED BY LOCAL SERVICE LEADERS & SCALING ENTERPRISES
-          </span>
-        </div>
-
-        <div className="relative w-full overflow-hidden py-2 sm:py-3">
-          {/* Left Fade Out Gradient (Smooth 2-Side Fade) */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 md:w-64 bg-gradient-to-r from-white via-white/90 to-transparent z-20 pointer-events-none" />
-
-          {/* Right Fade Out Gradient (Smooth 2-Side Fade) */}
-          <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 md:w-64 bg-gradient-to-l from-white via-white/90 to-transparent z-20 pointer-events-none" />
-
-          {/* Continuous Infinite Marquee Track with CSS Mask */}
-          <div
-            className="animate-ticker-left flex items-center select-none"
-            style={{
-              maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-            }}
-          >
-            {/* Set 1 */}
-            <div className="flex items-center shrink-0">
-              {clientLogos.map((client, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-3 sm:gap-3.5 shrink-0 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-[#faf9f8] hover:bg-[#fff7f2] border border-[#e7e2dd] hover:border-[#ff6321]/35 transition-all duration-300 mx-2.5 sm:mx-3 group cursor-default shadow-2xs"
-                >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white border border-[#e7e2dd] flex items-center justify-center text-[#060612] group-hover:text-[#ff6321] group-hover:border-[#ff6321]/30 shadow-2xs transition-colors shrink-0">
-                    {client.icon}
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-xs sm:text-sm text-[#060612] group-hover:text-[#ff6321] transition-colors tracking-tight whitespace-nowrap">
-                      {client.name}
-                    </div>
-                    <div className="text-[10px] font-mono text-[#71717a] uppercase tracking-wider whitespace-nowrap flex items-center gap-1.5">
-                      <span>{client.category}</span>
-                      <span className="text-zinc-300">•</span>
-                      <span className="text-[#a1a1aa]">{client.location}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Set 2 (Identical Duplicate for 100% Seamless Continuous Infinite Looping) */}
-            <div className="flex items-center shrink-0">
-              {clientLogos.map((client, idx) => (
-                <div
-                  key={`dup-${idx}`}
-                  className="flex items-center gap-3 sm:gap-3.5 shrink-0 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-[#faf9f8] hover:bg-[#fff7f2] border border-[#e7e2dd] hover:border-[#ff6321]/35 transition-all duration-300 mx-2.5 sm:mx-3 group cursor-default shadow-2xs"
-                >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white border border-[#e7e2dd] flex items-center justify-center text-[#060612] group-hover:text-[#ff6321] group-hover:border-[#ff6321]/30 shadow-2xs transition-colors shrink-0">
-                    {client.icon}
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-xs sm:text-sm text-[#060612] group-hover:text-[#ff6321] transition-colors tracking-tight whitespace-nowrap">
-                      {client.name}
-                    </div>
-                    <div className="text-[10px] font-mono text-[#71717a] uppercase tracking-wider whitespace-nowrap flex items-center gap-1.5">
-                      <span>{client.category}</span>
-                      <span className="text-zinc-300">•</span>
-                      <span className="text-[#a1a1aa]">{client.location}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

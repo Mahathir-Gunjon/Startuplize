@@ -2,49 +2,60 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { Sparkles, Palette, Layers, Shield, type LucideIcon } from 'lucide-react';
 import { ScrollBlurWords, ScrollSlideCard, ScrollBlurFade } from '@/components/ui/ScrollAnimations';
+
+interface Project {
+  id: string;
+  title: string;
+  year: string;
+  stageBg: string;
+  image: string;
+  tags: string[];
+  icon: LucideIcon;
+}
 
 interface PortfolioCardsApexProps {
   onOpenBooking: (service?: string) => void;
 }
 
 export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
-  const projects = [
+  const projects: Project[] = [
     {
       id: 'aeline',
       title: 'Aeline',
       year: '2026',
       stageBg: '#0284c7', // Sky Azure Blue
-      dots: [true, true, false, false],
       image: '/portfolio/aeline.jpg',
       tags: ['AI Strategy', 'Consulting'],
+      icon: Sparkles,
     },
     {
       id: 'stodio',
       title: 'Stodio',
       year: '2026',
       stageBg: '#450a0a', // Deep Wine Crimson
-      dots: [true, true, true, false],
       image: '/portfolio/stodio.jpg',
       tags: ['Design Agency', 'Branding'],
+      icon: Palette,
     },
     {
       id: 'artemis',
       title: 'Artemis',
       year: '2026',
       stageBg: '#23120b', // Deep Ember Charcoal
-      dots: [true, true, false, false],
       image: '/portfolio/artemis.jpg',
       tags: ['Creative Studio', 'Webflow'],
+      icon: Layers,
     },
     {
       id: 'sterling-marsh',
       title: 'Sterling & Marsh',
       year: '2026',
       stageBg: '#262626', // Titanium Dark Slate
-      dots: [true, true, true, true],
       image: '/portfolio/sterling-marsh.png',
       tags: ['Legal Counsel', 'Corporate Law'],
+      icon: Shield,
     },
   ];
 
@@ -108,18 +119,11 @@ export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
 
               {/* Bottom Meta Bar: Dots + Title/Year on Left, Tags on Right */}
               <div className="pt-2.5 sm:pt-3 pb-0.5 px-0.5 sm:px-1 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-                {/* Left: Indicator Dots + Title & Year */}
+                {/* Left: Category Icon + Title & Year */}
                 <div className="flex items-center gap-2.5 sm:gap-3">
-                  {/* 4 Status Dots */}
-                  <div className="flex items-center gap-1.5 shrink-0" aria-hidden="true">
-                    {project.dots.map((isActive, i) => (
-                      <span
-                        key={i}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          isActive ? 'bg-[#ff4d29]' : 'bg-[#d4d4d8]'
-                        }`}
-                      />
-                    ))}
+                  {/* Category Icon Badge */}
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-white border border-[#e5e2dd] flex items-center justify-center text-[#ff6321] group-hover:bg-[#ff6321] group-hover:text-white transition-all duration-300 shadow-2xs shrink-0">
+                    <project.icon className="w-4 h-4 stroke-[2]" />
                   </div>
 
                   {/* Project Title and Year */}

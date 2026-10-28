@@ -67,6 +67,10 @@ button, a {
   color: #27272a !important;
 }
 
+.text-white {
+  color: #ffffff !important;
+}
+
 /* Lenis Normalized Smooth Scroll across devices */
 html.lenis,
 html.lenis body {

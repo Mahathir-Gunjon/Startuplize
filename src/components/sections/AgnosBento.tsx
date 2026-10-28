@@ -102,7 +102,7 @@ export function AgnosBento({ onOpenBooking }: AgnosBentoProps = {}) {
               </span>
               <div>
                 <div className="text-5xl sm:text-6xl font-heading font-extrabold text-white tracking-tight leading-none mb-3">
-                  13+
+                  130+
                 </div>
                 <h3 className="font-heading font-semibold text-2xl sm:text-3xl text-white">
                   Businesses We&apos;ve Helped
@@ -122,7 +122,7 @@ export function AgnosBento({ onOpenBooking }: AgnosBentoProps = {}) {
                 ))}
               </div>
               <span className="text-body-sm font-mono font-bold text-white whitespace-nowrap">
-                100% IN-HOUSE
+                DEDICATED SENIOR BUILDERS
               </span>
             </div>
           </ScrollSlideCard>
@@ -160,19 +160,16 @@ export function AgnosBento({ onOpenBooking }: AgnosBentoProps = {}) {
               <div className="p-4 sm:p-5 rounded-md bg-white/5 border border-white/10 space-y-1">
                 <div className="font-heading font-bold text-3xl sm:text-4xl text-[#ff7e47]">&lt; 24h</div>
                 <div className="font-heading font-medium text-base text-white">Issue Resolution</div>
-                <div className="text-xs font-mono text-zinc-400">Fast fixes &amp; minor adjustments</div>
               </div>
 
               <div className="p-4 sm:p-5 rounded-md bg-white/5 border border-white/10 space-y-1">
                 <div className="font-heading font-bold text-3xl sm:text-4xl text-white">100%</div>
                 <div className="font-heading font-medium text-base text-white">Platform Handover</div>
-                <div className="text-xs font-mono text-zinc-400">Full Webflow transfer &amp; WordPress admin</div>
               </div>
 
               <div className="p-4 sm:p-5 rounded-md bg-white/5 border border-white/10 space-y-1">
                 <div className="font-heading font-bold text-3xl sm:text-4xl text-[#ff7e47]">$0</div>
                 <div className="font-heading font-medium text-base text-white">Zero Hidden Fees</div>
-                <div className="text-xs font-mono text-zinc-400">No retainers or forced contracts</div>
               </div>
             </div>
           </ScrollSlideCard>
