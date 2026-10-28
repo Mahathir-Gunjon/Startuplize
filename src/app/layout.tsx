@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Manrope } from "next/font/google";
+import { Bricolage_Grotesque, Manrope, Onest } from "next/font/google";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -16,6 +16,13 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const onest = Onest({
+  variable: "--font-onest",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   themeColor: "#060612",
   width: "device-width",
@@ -23,23 +30,25 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "startuplize — High-Performance Web Design & Digital Growth",
+  title: "startuplize — High-Performance WordPress & Webflow Agency",
   description:
-    "We design brands and platforms that move people. Custom WordPress, Webflow architecture, programmatic SEO, and local search dominance for ambitious businesses.",
+    "We build and redesign high-converting WordPress and Webflow websites. Specialists in custom WordPress architecture, Webflow systems, WordPress redesigns, and local SEO marketing.",
   keywords: [
     "startuplize",
+    "WordPress Agency",
+    "WordPress Redesign",
+    "Webflow Agency",
     "WordPress Development",
     "Webflow Systems",
-    "Technical SEO",
+    "Local SEO Marketing",
     "Google Local 3-Pack Dominance",
-    "Headless WordPress",
     "Core Web Vitals",
   ],
   authors: [{ name: "startuplize" }],
   openGraph: {
-    title: "startuplize — High-Performance Web Design & Digital Growth",
+    title: "startuplize — High-Performance WordPress & Webflow Agency",
     description:
-      "We design brands and platforms that move people. Custom WordPress, Webflow architecture, programmatic SEO, and local search dominance for ambitious businesses.",
+      "We build and redesign high-converting WordPress and Webflow websites. Specialists in custom WordPress architecture, Webflow systems, WordPress redesigns, and local SEO marketing.",
     type: "website",
   },
 };
@@ -52,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${manrope.variable} ${onest.variable}`}>
       <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-hidden relative">
         {children}
         <FloatingContactWidget />

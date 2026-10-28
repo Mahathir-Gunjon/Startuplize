@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
     company: 'Apex Physical Therapy',
     location: 'Sydney, AU',
     quote:
-      'Most agencies we spoke with tried to lock us into a 12-month retainer with zero guarantees. Here, the scope was fixed, we kept 100% ownership of our domain and code, and direct phone calls from Google Maps increased noticeably within the first two months.',
+      'Most agencies we spoke with tried to lock us into a 12-month retainer with zero guarantees. Here, the scope was fixed, we kept 100% ownership of our domain and website assets, and direct phone calls from Google Maps increased noticeably within the first two months.',
     stars: 5,
     date: '09/28/2026',
     platform: 'google',

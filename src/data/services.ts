@@ -10,7 +10,7 @@ export const servicesData: ServiceItem[] = [
       'We strip out standard multi-plugin bloat in favor of custom-built object-oriented theme architectures, headless Next.js front-ends, ACF Pro flexible content grids, and optimized WooCommerce checkouts built for extreme throughput.',
     techStack: ['Headless Next.js', 'WordPress REST / GraphQL', 'ACF Pro & Custom Blocks', 'Redis Object Cache', 'WooCommerce High-Scale'],
     deliverables: [
-      'Custom bespoke theme coded from scratch (Zero heavy templates)',
+      'Custom bespoke theme built from scratch (Zero heavy templates)',
       'Sub-800ms Largest Contentful Paint (LCP) guarantee',
       'ACF Pro flexible module schema tailored to marketing workflows',
       'Enterprise Redis caching and server-level Nginx optimization',
@@ -58,7 +58,7 @@ export const servicesData: ServiceItem[] = [
       'Client-First V2 naming convention for seamless team scalability',
       'Complex scroll-driven parallax, 3D card tilts, and physics cursor effects',
       'Dynamic multi-reference CMS architecture with automated filtering',
-      'Custom attribute code for real-time calculations and search'
+      'Custom attribute integrations for real-time calculations and search'
     ],
     features: [
       {

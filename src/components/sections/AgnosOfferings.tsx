@@ -38,7 +38,7 @@ export function AgnosOfferings({ onOpenBooking }: AgnosOfferingsProps) {
         'Custom WordPress, Elementor, or Webflow Build',
         '100% Mobile Core Web Vitals Pass',
         'Google Business Profile & Local Search Setup',
-        'Direct Access to Senior Developers',
+        'Direct Access to Senior Builders',
       ],
       isPopular: true,
       btnText: 'Book production sprint',

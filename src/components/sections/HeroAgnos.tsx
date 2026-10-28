@@ -10,25 +10,25 @@ interface HeroAgnosProps {
 }
 
 export function HeroAgnos({ onOpenBooking }: HeroAgnosProps) {
-  // Services list for the orange ribbon (local-business friendly, no headless/Next.js)
+  // Services list for the orange ribbon (WordPress mostly, Webflow, Redesign, Local SEO)
   const servicesList = [
     'WordPress Development',
     'Webflow Systems',
-    'Elementor Pro Architecture',
+    'WordPress Redesign',
     'Local SEO & GMB Optimization',
-    'Custom ACF Pro Theme Builds',
+    'Elementor Pro Architecture',
     'Sub-Second WooCommerce',
-    'Mobile Speed Optimization',
+    'Local Search Marketing',
     'Google Map Pack Visibility',
   ];
 
-  // Build standards list for the black ribbon (no fake rank promises)
+  // Build standards list for the black ribbon
   const standardsList = [
-    'Senior Developers Only',
+    'WordPress & Webflow Pros',
     '100% Core Web Vitals Pass',
     'Over 140+ Deployments',
     'Sub-Second Mobile Speed',
-    'Clean Zero-Bloat Code',
+    'WordPress Redesign Experts',
     'Zero Junior Hand-Offs',
     'Direct Senior Support',
     'High Conversion Results',

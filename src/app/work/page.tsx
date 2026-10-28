@@ -24,7 +24,6 @@ import {
   Cpu,
   Scale,
   LayoutGrid,
-  Code2,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -212,7 +211,7 @@ export default function WorkPage() {
   const filterTabs: FilterTabItem[] = [
     { id: 'All', name: 'All', icon: LayoutGrid },
     { id: 'UI/UX', name: 'UI/UX', icon: Sparkles },
-    { id: 'Developments', name: 'Developments', icon: Code2 },
+    { id: 'Developments', name: 'Developments', icon: Layers },
     { id: 'SEO', name: 'SEO', icon: TrendingUp },
     { id: 'Brand Design', name: 'Brand Design', icon: Palette },
   ];

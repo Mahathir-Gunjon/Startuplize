@@ -32,7 +32,7 @@ export function ServicesStackLumora({ onOpenBooking }: ServicesStackLumoraProps)
         {
           tag: '03 // EASY CLIENT EDITING',
           title: 'Effortless Content Handover',
-          desc: 'Intuitive backend your team can update in seconds, 100% full site ownership, and zero monthly developer dependency.',
+          desc: 'Intuitive backend your team can update in seconds, 100% full site ownership, and zero monthly maintenance headaches.',
         },
       ],
     },

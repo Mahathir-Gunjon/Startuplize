@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Code2,
   LayoutGrid,
   Search,
   MapPin,
@@ -28,7 +27,7 @@ export function ServicesMatrix({ onOpenBooking }: ServicesMatrixProps) {
     servicesData.find((s) => s.id === activeServiceId) || servicesData[0];
 
   const iconMap = {
-    wordpress: <Code2 className="w-5 h-5" />,
+    wordpress: <Layers className="w-5 h-5" />,
     webflow: <LayoutGrid className="w-5 h-5" />,
     'technical-seo': <Search className="w-5 h-5" />,
     'local-growth': <MapPin className="w-5 h-5" />,
