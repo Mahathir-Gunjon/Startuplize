@@ -8,6 +8,8 @@ interface PillButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
   variant?: 'coral' | 'dark' | 'light' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   showArrow?: boolean;
@@ -18,6 +20,8 @@ export function PillButton({
   children,
   onClick,
   href,
+  type = 'button',
+  disabled = false,
   variant = 'coral',
   size = 'md',
   showArrow = true,
@@ -149,11 +153,12 @@ export function PillButton({
 
   return (
     <button
-      type="button"
+      type={type}
+      disabled={disabled}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={baseClasses}
+      className={`${baseClasses} ${disabled ? 'opacity-60 cursor-not-allowed pointer-events-none' : ''}`}
     >
       {content}
     </button>

@@ -7,7 +7,6 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvide
 import { useAdaptiveRem } from '@/hooks/useAdaptiveRem';
 import { Header } from '@/components/layout/Header';
 import { FooterApex } from '@/components/layout/FooterApex';
-import { AgnosCtaBanner } from '@/components/sections/AgnosCtaBanner';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PillButton } from '@/components/ui/PillButton';
 import {
@@ -398,11 +397,6 @@ export default function WorkPage() {
               </AnimatePresence>
             </motion.div>
           </section>
-
-          {/* CTA Banner Section */}
-          <div className="mt-14 sm:mt-20 lg:mt-28">
-            <AgnosCtaBanner onOpenBooking={() => handleOpenBooking()} />
-          </div>
         </main>
 
         {/* Global Footer */}

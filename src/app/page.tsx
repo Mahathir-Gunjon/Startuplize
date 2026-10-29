@@ -16,7 +16,6 @@ import { TestimonialLaunchSection } from '@/components/sections/TestimonialLaunc
 import { WorkProcessSection } from '@/components/sections/WorkProcessSection';
 import { FounderSection } from '@/components/sections/FounderSection';
 import { FaqApex } from '@/components/sections/FaqApex';
-import { AgnosCtaBanner } from '@/components/sections/AgnosCtaBanner';
 import { FooterApex } from '@/components/layout/FooterApex';
 import { useRouter } from 'next/navigation';
 
@@ -66,10 +65,7 @@ export default function Home() {
         {/* 9. FAQ Protocol Accordion */}
         <FaqApex />
 
-        {/* 12. Pre-Footer Coral CTA Banner */}
-        <AgnosCtaBanner onOpenBooking={() => handleOpenBooking()} />
-
-        {/* 13. Agnos Footer (Startuplize Directory & Watermark) */}
+        {/* 10. Footer Section with Free Audit Form */}
         <FooterApex onOpenBooking={() => handleOpenBooking()} />
       </div>
     </SmoothScrollProvider>
