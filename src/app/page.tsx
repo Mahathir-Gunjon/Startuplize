@@ -14,6 +14,7 @@ import { ServicesStackLumora } from '@/components/sections/ServicesStackLumora';
 import { PortfolioCardsApex } from '@/components/sections/PortfolioCardsApex';
 import { TestimonialLaunchSection } from '@/components/sections/TestimonialLaunchSection';
 import { WorkProcessSection } from '@/components/sections/WorkProcessSection';
+import { FounderSection } from '@/components/sections/FounderSection';
 import { FaqApex } from '@/components/sections/FaqApex';
 import { AgnosCtaBanner } from '@/components/sections/AgnosCtaBanner';
 import { FooterApex } from '@/components/layout/FooterApex';
@@ -56,7 +57,10 @@ export default function Home() {
         {/* 7. How We Work (Start-to-Finish Work Process & Clients Marquee) */}
         <WorkProcessSection onOpenBooking={handleOpenBooking} />
 
-        {/* 8. What They Say After Launch (Verified Client Feedback Carousel) */}
+        {/* 8. Founder Section (Bento Grid without Cards, Full Width Borders, 1280px Content) */}
+        <FounderSection onOpenBooking={handleOpenBooking} />
+
+        {/* 9. What They Say After Launch (Verified Client Feedback Carousel) */}
         <TestimonialLaunchSection onOpenBooking={handleOpenBooking} />
 
         {/* 9. FAQ Protocol Accordion */}
