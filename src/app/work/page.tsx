@@ -230,7 +230,7 @@ export default function WorkPage() {
         <main className="w-full pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-24">
           
           {/* Page Hero Header: Centered Eyebrow, Hook Headline, Body Text & CTA Button */}
-          <section className="w-full max-w-[84rem] mx-auto px-4 sm:px-6 lg:px-12 pb-10 sm:pb-14 border-b border-[#e7e2dd] text-center">
+          <section className="w-full max-w-[84rem] mx-auto px-4 sm:px-6 lg:px-12 pb-10 sm:pb-14 text-center">
             <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 max-w-4xl mx-auto">
               
               {/* Eyebrow: Same style as other sections */}

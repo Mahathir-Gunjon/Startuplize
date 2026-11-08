@@ -51,9 +51,18 @@ export function WorkProcessSection({ onOpenBooking }: WorkProcessSectionProps = 
   return (
     <section
       id="process"
-      className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white select-none border-b border-[#e7e2dd] relative z-10 overflow-hidden"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white select-none relative z-10 overflow-hidden"
     >
-      <div className="max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-12 space-y-12 sm:space-y-16 lg:space-y-20">
+      {/* Subtle Architectural Grid Background Pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="relative z-10 max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-12 space-y-12 sm:space-y-16 lg:space-y-20">
         
         {/* Section Header with Word-by-Word Blur Reveal (Same as Other Sections) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 pb-6 sm:pb-8 border-b border-[#e7e2dd]">

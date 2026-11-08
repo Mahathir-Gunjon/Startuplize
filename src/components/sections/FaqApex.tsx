@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { ScrollBlurWords, ScrollSlideCard, ScrollBlurFade } from '@/components/ui/ScrollAnimations';
+import { Plus, Minus } from 'lucide-react';
+import { ScrollBlurWords, ScrollBlurFade } from '@/components/ui/ScrollAnimations';
 
 export function FaqApex() {
   const [openId, setOpenId] = useState<number | null>(0);
@@ -36,76 +36,90 @@ export function FaqApex() {
   };
 
   return (
-    <section id="faq" className="py-10 sm:py-12 md:py-24 lg:py-36 px-4 sm:px-6 lg:px-12 bg-white select-none border-b border-[#e7e2dd]">
-      <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12 lg:space-y-16">
+    <section id="faq" className="relative py-16 sm:py-20 md:py-28 lg:py-36 px-4 sm:px-6 lg:px-8 bg-white select-none">
+      <div className="max-w-[1280px] mx-auto">
         
-        {/* Header with Word-by-Word Blur Reveal */}
-        <div className="text-center space-y-2 sm:space-y-3">
-          <ScrollBlurFade>
-            <span className="text-body-sm font-mono text-[#ff6321] uppercase tracking-widest font-semibold block whitespace-nowrap">
-              • PROTOCOL & ANSWERS
-            </span>
-          </ScrollBlurFade>
+        {/* Section Header: "Questions" (Left) & "• FAQ" (Right) matching reference screenshot */}
+        <div className="flex items-center justify-between mb-10 sm:mb-14 lg:mb-16">
           <ScrollBlurWords
-            className="font-heading font-medium text-[2rem] sm:text-4xl lg:text-5xl text-[#060612] tracking-tight leading-[1.18] sm:leading-tight"
-            segments={['Frequently Asked Questions']}
+            as="h2"
+            className="font-heading font-medium text-4xl sm:text-5xl lg:text-[3.75rem] text-[#060612] tracking-tight leading-none"
+            segments={['Questions']}
           />
-          <ScrollBlurFade delay={0.2}>
-            <p className="text-body text-[#52525b] max-w-lg mx-auto font-body">
-              Everything you need to know about our build standards, migration safeguards, and delivery timelines.
-            </p>
+          <ScrollBlurFade delay={0.15}>
+            <div className="flex items-center gap-2 font-mono text-xs sm:text-sm text-zinc-500 uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-full bg-[#ff6321] inline-block animate-pulse" />
+              <span>FAQ</span>
+            </div>
           </ScrollBlurFade>
         </div>
 
-        {/* 5 Targeted FAQ Items with Hairline Borders & Staggered Slide Reveals */}
-        <div className="border-b border-[#e7e2dd]">
+        {/* FAQ Accordion List */}
+        <div className="border-t border-[#e7e2dd]">
           {faqs.map((item, idx) => {
             const isOpen = openId === idx;
+            const numStr = String(idx + 1).padStart(2, '0') + '.';
             return (
-              <ScrollSlideCard
+              <div
                 key={idx}
-                delay={idx * 0.08 + 0.1}
-                yOffset={20}
-                className="border-t border-[#e7e2dd]"
+                className={`transition-colors duration-300 ${
+                  isOpen ? 'border-b border-[#ffedd5]' : 'border-b border-[#e7e2dd]'
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full py-4 sm:py-6 lg:py-7 min-h-[44px] flex items-center justify-between gap-3 sm:gap-4 text-left cursor-pointer group whitespace-normal"
-                  style={{ color: '#060612' }}
+                  className="w-full whitespace-normal py-7 sm:py-8 lg:py-9 flex items-start justify-between text-left cursor-pointer group"
                 >
+                  {/* Left Column: Number (01., 02., etc.) */}
                   <span
-                    className="font-heading font-medium text-base sm:text-lg lg:text-xl text-[#060612] group-hover:text-[#ff6321] transition-colors leading-snug"
-                    style={{ color: '#060612' }}
+                    className={`font-mono text-base sm:text-lg lg:text-xl font-medium shrink-0 w-14 sm:w-20 lg:w-24 pt-0.5 transition-colors duration-200 ${
+                      isOpen ? 'text-[#ff6321]' : 'text-[#060612] group-hover:text-[#ff6321]'
+                    }`}
                   >
-                    {item.q}
+                    {numStr}
                   </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ type: 'spring' as const, stiffness: 350, damping: 25 }}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#f5f4f3] border border-[#e7e2dd] flex items-center justify-center shrink-0 text-[#060612] group-hover:bg-[#ff6321] group-hover:text-white transition-colors"
-                    style={{ color: '#060612' }}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ type: 'spring' as const, stiffness: 350, damping: 30 }}
+                  {/* Middle Column: Question & Expanded Answer */}
+                  <div className="flex-1 min-w-0 pr-6 lg:pr-12">
+                    <h3
+                      className={`font-heading font-medium text-lg sm:text-xl lg:text-[1.45rem] tracking-tight leading-snug whitespace-normal break-words transition-colors duration-200 ${
+                        isOpen ? 'text-[#ff6321]' : 'text-[#060612] group-hover:text-[#ff6321]'
+                      }`}
                     >
-                      <p className="pb-6 text-body text-[#374151] leading-relaxed font-body max-w-3xl">
-                        {item.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </ScrollSlideCard>
+                      {item.q}
+                    </h3>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="answer"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="pt-3 sm:pt-4 text-xs sm:text-sm lg:text-[15px] text-zinc-500 font-body leading-relaxed max-w-3xl whitespace-normal break-words">
+                            {item.a}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Right Column: Minus (—) when open, Plus (+) when closed */}
+                  <div className="shrink-0 pt-1 sm:pt-1.5 ml-2">
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      {isOpen ? (
+                        <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff6321] stroke-[1.5]" />
+                      ) : (
+                        <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-[#060612] group-hover:text-[#ff6321] transition-colors stroke-[1.5]" />
+                      )}
+                    </div>
+                  </div>
+                </button>
+              </div>
             );
           })}
         </div>
@@ -114,3 +128,5 @@ export function FaqApex() {
     </section>
   );
 }
+
+

@@ -7,7 +7,6 @@ import { useAdaptiveRem } from '@/hooks/useAdaptiveRem';
 import { PageLoader } from '@/components/ui/PageLoader';
 import { Header } from '@/components/layout/Header';
 import { HeroAgnos } from '@/components/sections/HeroAgnos';
-import { CoreServicesSection } from '@/components/sections/CoreServicesSection';
 import { AgnosOfferings } from '@/components/sections/AgnosOfferings';
 import { AgnosBento } from '@/components/sections/AgnosBento';
 import { ServicesStackLumora } from '@/components/sections/ServicesStackLumora';
@@ -31,7 +30,7 @@ export default function Home() {
 
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-[#faf9f8] text-[#060612] overflow-x-hidden">
+      <div className="relative min-h-screen bg-[#faf9f8] text-[#060612] overflow-x-clip">
         {/* 2. Menu Navbar (Startuplize floating header, transparent sticky phase) */}
         <Header onOpenBooking={handleOpenBooking} />
 
@@ -41,10 +40,7 @@ export default function Home() {
         {/* 2. Why Startuplize (Bento Grid: Global Footprint, Founder Partnership, Benchmarks, Audit CTA) */}
         <AgnosBento onOpenBooking={handleOpenBooking} />
 
-        {/* 3. Our Core Services (3 Cards: Build/Redesign, Local SEO, Brand Design) */}
-        <CoreServicesSection onOpenBooking={handleOpenBooking} />
-
-        {/* 4. Selected Work (Verified Production Platforms - Portfolio) */}
+        {/* 3. Selected Work (Verified Production Platforms - Portfolio) */}
         <PortfolioCardsApex onOpenBooking={handleOpenBooking} />
 
         {/* 5. Agnos Offerings (Free Audit vs Dedicated Sprint) */}

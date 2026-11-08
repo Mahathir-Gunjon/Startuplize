@@ -12,8 +12,10 @@ export function FounderSection({ onOpenBooking }: FounderSectionProps = {}) {
   return (
     <section
       id="founder"
-      className="relative w-full min-h-[110vh] flex flex-col justify-center bg-[#07090a] border-y border-white/10 py-16 sm:py-20 lg:py-24 overflow-hidden select-none"
+      className="w-full bg-[#faf9f8] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 select-none"
     >
+      {/* ── Floating Dark Founder Card with Low Radius (Preserves Surrounding Whitespace, No Shadow) ── */}
+      <div className="relative w-full min-h-[110vh] flex flex-col justify-center bg-[#07090a] rounded-[4px] sm:rounded-[6px] lg:rounded-[8px] border border-white/10 py-16 sm:py-20 lg:py-24 overflow-hidden">
       {/* ── Background Texture Layers ── */}
       {/* Layer 1: Subtle Architectural Dot Grid Pattern */}
       <div
@@ -139,6 +141,7 @@ export function FounderSection({ onOpenBooking }: FounderSectionProps = {}) {
           </motion.div>
 
         </div>
+      </div>
       </div>
     </section>
   );

@@ -19,8 +19,17 @@ export function AgnosBento({ onOpenBooking }: AgnosBentoProps = {}) {
   ];
 
   return (
-    <section id="why-us" className="py-10 sm:py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 bg-white select-none border-b border-[#e7e2dd]">
-      <div className="max-w-[84rem] mx-auto space-y-8 sm:space-y-12 lg:space-y-16">
+    <section id="why-us" className="relative py-10 sm:py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 bg-white select-none overflow-hidden">
+      {/* Subtle Architectural Grid Background Pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="relative z-10 max-w-[84rem] mx-auto space-y-8 sm:space-y-12 lg:space-y-16">
         
         {/* Header with Word-by-Word Blur Reveal */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">

@@ -71,22 +71,19 @@ export function FooterApex({ onOpenBooking }: FooterApexProps = {}) {
 
   return (
     <footer id="contact" className="w-full bg-[#faf9f8] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 select-none">
-      {/* ── Expanded Floating Dark Card with Low Radius (Preserves Surrounding Whitespace, Max 60vh) ── */}
-      <div className="w-full bg-[#07090d] rounded-[4px] sm:rounded-[6px] lg:rounded-[8px] p-6 sm:p-8 lg:p-10 text-white border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+      {/* ── Expanded Floating Dark Card with Low Radius (80vh Height, Preserves Surrounding Whitespace) ── */}
+      <div className="w-full min-h-[80vh] lg:h-[80vh] bg-[#07090d] rounded-[4px] sm:rounded-[6px] lg:rounded-[8px] p-6 sm:p-10 lg:p-12 text-white border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between">
         
         {/* Inner Content Container Constrained to 1280px */}
-        <div className="w-full max-w-[1280px] mx-auto flex flex-col justify-between space-y-6 sm:space-y-8">
+        <div className="w-full max-w-[1280px] mx-auto flex flex-col justify-between h-full space-y-6 sm:space-y-8 my-auto">
 
         {/* Main 2-Column Split: 65% Free Audit Content vs 35% Audit Form */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-14">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-14 my-auto">
 
-          {/* Left Column (65% width): Free Audit Headline & Short Delivery Description */}
-          <div className="w-full lg:w-[65%] flex flex-col justify-center pr-0 lg:pr-6">
-            <h2 className="font-heading font-medium text-3xl sm:text-4xl lg:text-[2.65rem] xl:text-[3.15rem] text-white tracking-tight leading-[1.12]">
-              Get Your Free Website &amp; Performance Audit.
-            </h2>
-            <p className="mt-3.5 sm:mt-4 text-zinc-400 font-body text-sm sm:text-base lg:text-[17px] leading-relaxed max-w-xl">
-              We will personally audit your site architecture, mobile speed bottlenecks, and conversion leaks — delivered straight to your inbox within 24 to 48 hours. 100% free with zero obligation.
+          {/* Left Column (65% width): 24px Short Story Description (No Header) */}
+          <div className="w-full lg:w-[65%] flex flex-col justify-center pr-0 lg:pr-8">
+            <p className="font-heading font-normal text-xl sm:text-[22px] lg:text-[24px] text-white tracking-tight leading-[1.4] max-w-2xl">
+              Claim your free website &amp; performance audit. We personally review your site architecture, mobile speed bottlenecks, and conversion gaps — delivered straight to your inbox within 24 to 48 hours, 100% free.
             </p>
           </div>
 

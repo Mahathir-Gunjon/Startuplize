@@ -62,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} ${manrope.variable} ${onest.variable}`}>
-      <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-hidden relative">
+      <body className="min-h-screen bg-[#faf9f8] text-[#060612] font-body text-body antialiased selection:bg-[#ff6321] selection:text-white overflow-x-clip relative">
         {children}
         <FloatingContactWidget />
       </body>

@@ -60,7 +60,7 @@ export function PortfolioCardsApex({ onOpenBooking }: PortfolioCardsApexProps) {
   ];
 
   return (
-    <section id="works" className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-12 bg-transparent select-none border-b border-[#e7e2dd]">
+    <section id="works" className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-12 bg-transparent select-none">
       <div className="max-w-[84rem] mx-auto space-y-6 sm:space-y-8 lg:space-y-10">
         
         {/* Section Header with Word-by-Word Blur Reveal */}
